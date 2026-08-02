@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leader session 2 · The metric dictionary - learn ecommerce metrics with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ecommerce-metrics-with-phoebe</a> / Leader session 2 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Ecommerce Metrics with Phoebe · Leader track · Session 2 of 6</div>
+    <h1>The <span class="accent">metric dictionary</span></h1>
+    <p class="sub">In a1 you learned to read the top line as three levers. Today you put precise definitions under the words - because "conversion rate" means two different honest numbers depending on the tool, "users" means three different things inside GA4 alone, and the most expensive misunderstandings in ecommerce are two executives using the same word for different counts. Still reading mode: no computation, just the vocabulary and the one rule that keeps it honest.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Leader track</span>
+      <span class="chip audience">C-level · category heads · managers</span>
+      <span class="chip audience">Reading mode - no computation</span>
+      <span class="chip time">Builds on a1</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Recap a1</span>
+      <span class="a2" style="flex:4">3-16 · People vs visits vs screens</span>
+      <span class="a3" style="flex:5">16-40 · Two CRs &amp; the funnel dictionary</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ PART 1: VISITOR VS SESSION VS PAGEVIEW ============ -->
+  <section class="section" id="counting">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · the three counts under every metric</span>
+      <h2>Visitor, session, pageview <span class="tag concept">13 min live</span></h2>
+    </div>
+    <p class="lede">Every ecommerce metric divides one count by another, so the dictionary starts with the counts. A <strong>visitor</strong> is a person. A <strong>session</strong> is one visit - in GA4 it ends after <strong>30 minutes of inactivity</strong>, so a lunch break mid-browse splits one shopping trip into two sessions. A <strong>pageview</strong> is one screen loaded. Mango Lane's month: <strong>240,000 visitors</strong> generating <strong>360,000 sessions</strong> - 1.5 visits per person, the store's window-shopping habit made visible - and far more pageviews than either.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One shopper, Maya, generating one visitor, two sessions, and eight pageviews across two days">
+        <style>
+          .mdH { font: 700 13px Inter, sans-serif; fill: #1E1B4B; }
+          .mdW { font: 800 14px Inter, sans-serif; fill: #FFFFFF; }
+          .mdP { font: 700 10.5px Inter, sans-serif; fill: #FFFFFF; }
+          .mdV { font: 800 16px Inter, sans-serif; fill: #9A3412; }
+          .mdC { font: 400 11px Inter, sans-serif; fill: #575385; }
+          .mdN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .mdArr { stroke: #FB923C; stroke-width: 2.5; fill: none; marker-end: url(#mdArrHead); }
+        </style>
+        <defs>
+          <marker id="mdArrHead" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="#FB923C"/>
+          </marker>
+        </defs>
+
+        <rect x="20" y="55" width="120" height="80" rx="10" fill="#9A3412"/>
+        <text class="mdW" x="80" y="88" text-anchor="middle">Maya</text>
+        <text class="mdW" x="80" y="110" text-anchor="middle" style="font-size:12px">1 visitor</text>
+
+        <path class="mdArr" d="M140,95 L172,95"/>
+
+        <rect x="180" y="40" width="300" height="110" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="mdH" x="330" y="64" text-anchor="middle">Monday lunch · session 1</text>
+        <rect x="196" y="80" width="62" height="24" rx="6" fill="#EA580C"/>
+        <text class="mdP" x="227" y="96" text-anchor="middle">home</text>
+        <rect x="266" y="80" width="62" height="24" rx="6" fill="#EA580C"/>
+        <text class="mdP" x="297" y="96" text-anchor="middle">dresses</text>
+        <rect x="336" y="80" width="62" height="24" rx="6" fill="#EA580C"/>
+        <text class="mdP" x="367" y="96" text-anchor="middle">PDP</text>
+        <rect x="406" y="80" width="62" height="24" rx="6" fill="#EA580C"/>
+        <text class="mdP" x="437" y="96" text-anchor="middle">PDP</text>
+        <text class="mdC" x="330" y="132" text-anchor="middle">4 pageviews · browses, leaves, buys nothing</text>
+
+        <text class="mdC" x="505" y="80" text-anchor="middle">30+ min</text>
+        <text class="mdC" x="505" y="95" text-anchor="middle">idle =</text>
+        <text class="mdC" x="505" y="110" text-anchor="middle">expired</text>
+
+        <rect x="530" y="40" width="330" height="110" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="mdH" x="695" y="64" text-anchor="middle">Tuesday evening · session 2</text>
+        <rect x="546" y="80" width="68" height="24" rx="6" fill="#EA580C"/>
+        <text class="mdP" x="580" y="96" text-anchor="middle">PDP</text>
+        <rect x="622" y="80" width="68" height="24" rx="6" fill="#EA580C"/>
+        <text class="mdP" x="656" y="96" text-anchor="middle">cart</text>
+        <rect x="698" y="80" width="68" height="24" rx="6" fill="#EA580C"/>
+        <text class="mdP" x="732" y="96" text-anchor="middle">checkout</text>
+        <rect x="774" y="80" width="68" height="24" rx="6" fill="#9A3412"/>
+        <text class="mdP" x="808" y="96" text-anchor="middle">paid ✓</text>
+        <text class="mdC" x="695" y="132" text-anchor="middle">4 pageviews · returns and completes the order</text>
+
+        <rect x="130" y="188" width="180" height="64" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="mdH" x="220" y="212" text-anchor="middle">Visitors</text>
+        <text class="mdV" x="220" y="236" text-anchor="middle">1</text>
+        <rect x="350" y="188" width="180" height="64" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="mdH" x="440" y="212" text-anchor="middle">Sessions</text>
+        <text class="mdV" x="440" y="236" text-anchor="middle">2</text>
+        <rect x="570" y="188" width="180" height="64" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="mdH" x="660" y="212" text-anchor="middle">Pageviews</text>
+        <text class="mdV" x="660" y="236" text-anchor="middle">8</text>
+
+        <text class="mdC" x="440" y="278" text-anchor="middle">Scale Maya up 240,000 times: Mango Lane's 240K visitors, 360K sessions (1.5 per person)</text>
+
+        <rect x="20" y="300" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="mdN" x="44" y="312">One shopper, three different counts. Every metric picks one of them as its denominator.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - Maya over two days: 1 visitor, 2 sessions, 8 pageviews</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>And "users" means three things inside GA4 alone<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>When your team says "users", GA4 gives them three choices, and the reports default differently:</p>
+        <ul>
+          <li><strong>Total users</strong> - everyone who fired any event in the period. The biggest number.</li>
+          <li><strong>Active users</strong> - users with an engaged visit; this is what GA4 usually means by just "Users". Smaller.</li>
+          <li><strong>New users</strong> - first-ever visit in the period. Smallest, and the one growth decks love.</li>
+        </ul>
+        <p>Three honest numbers, one word. A "user growth" chart can rise or fall depending on which was picked - so the dictionary habit is simply to ask which. Nobody is lying; the word is just overloaded.</p>
+      </div>
+    </details>
+
+    <div class="callout tip">
+      <strong>What to ask your data team after Part 1</strong>
+      "In our weekly report, is 'users' total, active, or new - and is 'traffic' visitors or sessions?" Two questions, four words of answer each, and half the cross-team confusion in your metrics gone.
+    </div>
+  </section>
+
+  <!-- ============ PART 2: TWO CONVERSION RATES ============ -->
+  <section class="section" id="conversion">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · the same word, two honest numbers</span>
+      <h2>The two conversion rates <span class="tag concept">12 min live</span></h2>
+    </div>
+    <p class="lede">Here is the dictionary's most important entry. Shopify's "online store conversion rate" divides purchase <em>sessions</em> by total <em>sessions</em>. GA4's purchase-journey funnel counts <em>users</em> at each step instead. Same store, same month, and Mango Lane shows <strong>2.7%</strong> in one tool and roughly <strong>3.9%</strong> in the other - a 44% gap with zero change in the business. Neither tool is wrong. They chose different denominators.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Side by side - and why both are honest<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Where you see it</th><th>What it counts</th><th>Mango Lane</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Shopify - online store conversion rate</strong></td><td>Sessions that ended in a purchase, divided by all sessions</td><td>9,720 of 360,000 sessions = <strong>2.7%</strong></td></tr>
+            <tr><td><strong>GA4 - purchase journey funnel</strong></td><td>People (users) who purchased, divided by all people who started</td><td>~9,300 of 240,000 visitors = <strong>~3.9%</strong></td></tr>
+          </tbody>
+        </table>
+        <p>Remember Maya from Part 1: her Monday session converted at 0%, her Tuesday session at 100%, and Maya-the-person converted at 100%. Session counting scores each visit; user counting scores each shopper. Because visitors make 1.5 sessions each, the user-based rate is always the larger number at Mango Lane. Both describe the same reality from a different seat.</p>
+        <div class="callout tip">
+          <strong>The rule: declare the denominator</strong>
+          Never accept or present "conversion rate" unqualified. Say "session conversion rate, 2.7%" or "visitor conversion rate, about 3.9%". A rate without a declared denominator is a rumor with a percent sign.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>AOV - the quiet fine print<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Average order value sounds definition-proof: revenue divided by orders, $68 at Mango Lane (typically 2 items around $34 each). The fine print is what gets excluded - Shopify, for instance, leaves gift card sales and post-order adjustments out of its AOV. Small print, but if merchandising celebrates an AOV lift the same month a gift card promotion ran, you want to know whether the tool even saw the gift cards. Dictionary habit: ask what is excluded, not just what is divided.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>GMV in one line<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>GMV is the total value of goods sold before the deductions start - and there is <strong>no universal standard</strong> for which deductions (discounts, returns, tax, shipping) are netted out at which line. Shopify alone reports a ladder from gross sales to net sales to total sales. The leader move is one question: <strong>"what is netted out of this number?"</strong> The analyst track (b2) climbs the full ladder rung by rung; for this track, the question is enough.</p>
+      </div>
+    </details>
+
+    <div class="callout tip">
+      <strong>What to ask your data team after Part 2</strong>
+      "Which conversion rate do we report to the board - session-based or user-based - and is it written down anywhere?" If it is not written down, a6 (metric governance) shows you what the write-up should look like.
+    </div>
+  </section>
+
+  <!-- ============ PART 3: FUNNEL DICTIONARY ============ -->
+  <section class="section" id="funnel">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · the words for the middle of the journey</span>
+      <h2>The funnel metrics, in dictionary form <span class="tag concept">10 min live</span></h2>
+    </div>
+    <p class="lede">Between "arrived" and "paid" sit four metrics your team will quote at you. At Mango Lane: <strong>PDP penetration 40%</strong> (sessions that reached at least one product page), <strong>add-to-cart 25%</strong> of those PDP sessions - though the same behavior is honestly <strong>10%</strong> if you divide by all sessions instead, the denominator rule again - <strong>checkout start 45%</strong> of cart sessions, and <strong>checkout completion 60%</strong> of started checkouts. You do not need to compute these (a3 teaches you to read them as a chart). You need to know which question each one answers.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decision map routing five leader questions to the metric that answers each one">
+        <style>
+          .qmQ { font: 700 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .qmM { font: 800 12.5px Inter, sans-serif; fill: #FFFFFF; }
+          .qmC { font: 400 11px Inter, sans-serif; fill: #575385; }
+          .qmN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .qmArr { stroke: #FB923C; stroke-width: 2.5; fill: none; marker-end: url(#qmArrHead); }
+        </style>
+        <defs>
+          <marker id="qmArrHead" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="#FB923C"/>
+          </marker>
+        </defs>
+
+        <text class="qmC" x="210" y="22" text-anchor="middle">The question you are really asking</text>
+        <text class="qmC" x="680" y="22" text-anchor="middle">The metric that answers it</text>
+
+        <rect x="20" y="34" width="380" height="44" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="qmQ" x="210" y="61" text-anchor="middle">"Are shoppers even finding products?"</text>
+        <path class="qmArr" d="M400,56 L496,56"/>
+        <rect x="500" y="34" width="360" height="44" rx="10" fill="#EA580C"/>
+        <text class="qmM" x="680" y="61" text-anchor="middle">PDP penetration · 40% of sessions</text>
+
+        <rect x="20" y="94" width="380" height="44" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="qmQ" x="210" y="121" text-anchor="middle">"Are product pages tempting enough?"</text>
+        <path class="qmArr" d="M400,116 L496,116"/>
+        <rect x="500" y="94" width="360" height="44" rx="10" fill="#EA580C"/>
+        <text class="qmM" x="680" y="121" text-anchor="middle">Add-to-cart · 25% of PDP sessions</text>
+
+        <rect x="20" y="154" width="380" height="44" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="qmQ" x="210" y="181" text-anchor="middle">"Is checkout broken?"</text>
+        <path class="qmArr" d="M400,176 L496,176"/>
+        <rect x="500" y="154" width="360" height="44" rx="10" fill="#EA580C"/>
+        <text class="qmM" x="680" y="181" text-anchor="middle">Checkout completion · 60% of starts</text>
+
+        <rect x="20" y="214" width="380" height="44" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="qmQ" x="210" y="241" text-anchor="middle">"Do we have a traffic or a converting problem?"</text>
+        <path class="qmArr" d="M400,236 L496,236"/>
+        <rect x="500" y="214" width="360" height="44" rx="10" fill="#EA580C"/>
+        <text class="qmM" x="680" y="241" text-anchor="middle">Sessions (360K) vs session CR (2.7%)</text>
+
+        <rect x="20" y="274" width="380" height="44" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="qmQ" x="210" y="301" text-anchor="middle">"Are orders getting bigger or smaller?"</text>
+        <path class="qmArr" d="M400,296 L496,296"/>
+        <rect x="500" y="274" width="360" height="44" rx="10" fill="#EA580C"/>
+        <text class="qmM" x="680" y="301" text-anchor="middle">AOV · $68 (2 items x $34)</text>
+
+        <rect x="20" y="348" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="qmN" x="44" y="360">Start from the question, not the dashboard. Every leader question routes to one metric.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - which question routes to which metric</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Add-to-cart: one behavior, two honest framings<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Mango Lane's 36,000 cart-adding sessions can be honestly described two ways: <strong>25%</strong> of the sessions that saw a product page, or <strong>10%</strong> of all sessions. The first tells product how persuasive the PDP is; the second tells you how much of total traffic ever shows purchase intent. A team quoting 25% and a benchmark report quoting 10%-style numbers are not contradicting each other - they picked different denominators. This is the denominator rule making its third appearance today, which is exactly how often it deserves to appear.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>Checkout start vs completion earn their keep in incidents.</strong> When a payment provider hiccups, checkout <em>completion</em> craters while everything upstream looks normal - the sharpest possible signal of where the problem lives. A leader who knows the word "completion" asks a 30-second question; one who only knows "conversion is down" convenes a meeting.</p>
+        </div>
+      </div>
+    </details>
+
+    <div class="callout tip">
+      <strong>What to ask your data team after Part 3</strong>
+      "When you report add-to-cart rate, is the denominator PDP sessions or all sessions?" Then ask them to label it on the dashboard itself, so nobody has to ask twice.
+    </div>
+  </section>
+
+  <!-- ============ DEMO: THE QUESTION DRILL ============ -->
+  <section class="section" id="drill">
+    <div class="section-kicker">
+      <span class="klabel">Demo · read-along</span>
+      <h2>The question drill <span class="tag demo">★ 10 min · everyone reads</span></h2>
+    </div>
+    <p class="lede">Five questions leaders actually ask in reviews, routed to the metric that answers each. Read them once now; a3 makes the routing automatic.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Five real questions, five right metrics<span class="mini">10 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <div class="steps">
+          <div class="step"><p><strong>"Are people finding products?"</strong> - PDP penetration (40%). If shoppers never reach a product page, nothing downstream can save the month. Ask for its trend, not one week's value.</p></div>
+          <div class="step"><p><strong>"Is checkout broken?"</strong> - checkout completion (60%). The last gate, and the one that moves violently when payments, shipping costs, or a release go wrong.</p></div>
+          <div class="step"><p><strong>"Do we have an attracting problem or a converting problem?"</strong> - sessions vs session CR, side by side. Fewer visits is marketing's lever; the same visits buying less is product's. One chart settles which meeting to hold.</p></div>
+          <div class="step"><p><strong>"Was the promo worth it?"</strong> - AOV next to session CR. Discounts often lift conversion while shrinking order value; you need both words to see whether the trade paid.</p></div>
+          <div class="step"><p><strong>"Why do our two tools disagree?"</strong> - almost always denominators, not data quality. Session-counting vs user-counting (2.7% vs 3.9%), of-PDP vs of-all-sessions (25% vs 10%). Ask for the denominators before commissioning an audit.</p></div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 15-20 min total</span></h2>
+    </div>
+    <ul>
+      <li>List every tool your company uses that reports a "conversion rate" (Shopify or your storefront, GA4, ad platforms, email tools). For each, hunt down the denominator - sessions, users, clicks? It usually hides in a tooltip or the docs.</li>
+      <li>Ask your data team the Part 1 question: does our reporting say "users" meaning total, active, or new?</li>
+      <li>Take last session's three-levers-with-owners sheet and rewrite each lever with its precise name and denominator (e.g. "conversion" becomes "session conversion rate, purchase sessions / all sessions").</li>
+      <li>Bring the list of denominators to a3 - you will read a full funnel chart with them.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources</span>
+      <h2>Sources this session draws on</h2>
+    </div>
+    <p class="lede">Every definition on this page comes from the platforms' own documentation - which is exactly where your team's numbers come from. This page draws on:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">GA4 sessions &amp; users documentation - the 30-minute session timeout; total vs active vs new users</span><span class="note">Part 1 · people vs visits vs screens</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Shopify analytics - session-based online store conversion rate, the storefront funnel, AOV exclusions</span><span class="note">Parts 2-3 · the session-counting side</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">GA4 purchase journey report - the user-counting five-step funnel from session start to purchase</span><span class="note">Part 2 · the user-counting side</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Industry benchmarks - what "good" looks like for each dictionary entry</span><span class="note">Deliberately absent today · full treatment in a5</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · Mango Lane has 240,000 visitors and 360,000 sessions in the same month. What does that mean?</p>
+      <button class="qopt" type="button">A · The tracking is double-counting and needs an audit</button>
+      <button class="qopt" type="button">B · Nothing is wrong - people visit 1.5 times each on average, since a session is one visit and expires after ~30 minutes idle</button>
+      <button class="qopt" type="button">C · 120,000 visitors were counted twice by mistake</button>
+      <p class="qwhy">A visitor is a person; a session is one visit. Shoppers who browse, leave, and come back generate multiple sessions each - Mango Lane's ratio is 1.5, ordinary window-shopping behavior for fashion.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · Shopify shows conversion at 2.7% while GA4's purchase journey shows about 3.9%. What is the first explanation to check?</p>
+      <button class="qopt" type="button">A · One of the tools has a tracking bug</button>
+      <button class="qopt" type="button">B · GA4 is counting test orders</button>
+      <button class="qopt" type="button">C · Different denominators - Shopify divides by sessions, GA4's journey counts users</button>
+      <p class="qwhy">Both are honest. Purchase sessions / all sessions gives 2.7%; buying people / all people gives about 3.9%. Ask for denominators before commissioning any audit - it is almost always this.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · Your team reports add-to-cart at 25%; a benchmark report says stores like yours see around 10%. What do you ask first?</p>
+      <button class="qopt" type="button">A · "What is the denominator in each number - PDP sessions or all sessions?"</button>
+      <button class="qopt" type="button">B · "Why are we so much better than the benchmark?"</button>
+      <button class="qopt" type="button">C · "Can we get our rate up to 50%?"</button>
+      <p class="qwhy">Mango Lane's own add-to-cart is honestly 25% of PDP sessions and 10% of all sessions - the same 36,000 cart sessions. Different denominators, not different performance. Declare before you compare.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Leader session 2 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The three counts</b><span>Visitor = a person. Session = one visit (expires after ~30 min idle). Pageview = one screen. Mango Lane: 240K / 360K / many.</span></div>
+      <div class="cheat-item"><b>Three kinds of "users"</b><span>GA4: total (any event) vs active (engaged - the default) vs new (first visit). Always ask which.</span></div>
+      <div class="cheat-item"><b>Two conversion rates</b><span>Session CR 2.7% (Shopify-style) vs visitor CR ~3.9% (GA4 journey, user-counting). Both honest, different denominators.</span></div>
+      <div class="cheat-item"><b>Declare the denominator</b><span>Never say or accept "conversion rate" unqualified. A rate without a denominator is a rumor.</span></div>
+      <div class="cheat-item"><b>AOV fine print</b><span>$68 = 2 items x $34. Ask what is excluded - Shopify's AOV leaves out gift cards and post-order adjustments.</span></div>
+      <div class="cheat-item"><b>GMV one-liner</b><span>Goods value before deductions - and no universal standard for which. Always ask "what is netted out?"</span></div>
+      <div class="cheat-item"><b>Funnel dictionary</b><span>PDP penetration 40% · add-to-cart 25% of PDP (10% of all) · checkout start 45% · completion 60%.</span></div>
+      <div class="cheat-item"><b>Running skill</b><span>Route the question to the metric, then check its denominator. Next: a3, reading the whole funnel as one chart.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Leader session 2 of 6 · learn-ecommerce-metrics-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="a1-the-gmv-equation.html">← Prev: The GMV equation</a> &nbsp;·&nbsp; <a href="a3-reading-the-funnel.html">Next: Reading the funnel →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/tree-live.js?v=1"></script>
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

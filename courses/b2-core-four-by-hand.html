@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyst session 2 · The core four by hand - learn ecommerce metrics with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ecommerce-metrics-with-phoebe</a> / Analyst session 2 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Ecommerce Metrics with Phoebe · Analyst track · Session 2 of 8</div>
+    <h1>The core four <span class="accent">by hand</span></h1>
+    <p class="sub">Conversion rate, AOV, GMV, and the units-times-price split hiding inside AOV. Today you compute all of them from Mango Lane's raw event counts with a pen and paper - no dashboard, no tool. Once you have derived a metric yourself, no report can ever bluff you about what it means, and you gain the analyst's superpower: catching a dashboard that quietly disagrees with its own raw counts.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Analyst track</span>
+      <span class="chip audience">Analysts · marketers · ops · founders</span>
+      <span class="chip audience">Pen, paper, no tool</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-4 · Recap</span>
+      <span class="a2" style="flex:2">4-12 · The raw counts</span>
+      <span class="a3" style="flex:6">12-40 · Compute the core four</span>
+      <span class="a4" style="flex:1">40-45 · Sanity habits</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>From reading numbers to making them</h2>
+    </div>
+    <p class="lede">Last session (b1) you learned what Mango Lane records: the five-event trail and the counting rules. Today those events become metrics. Everything is arithmetic a twelve-year-old can do - division, mostly - and that is the point. The core four (conversion rate, AOV, GMV, and units per transaction x item price) are the spine of every review pack you will ever build, so you should be able to produce them from raw counts on the back of a napkin.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Demo - everyone computes along</span>
+      <span class="pill inkpill">Sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      The core four computed by hand from raw counts, the two-factor split inside AOV (basket size vs item price), the GMV-to-money ladder that turns headline GMV into actual net revenue, and two sanity habits that catch broken tracking before it embarrasses you in a meeting.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: RAW COUNTS ============ -->
+  <section class="section" id="rawcounts">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · the ingredients</span>
+      <h2>The month's raw counts <span class="tag concept">8 min live</span></h2>
+    </div>
+    <p class="lede">Here is everything Mango Lane's event trail recorded last month, before anyone divided anything. Five counts. Every metric in this session is built from exactly these - if a number on this page cannot be traced back to this table, it does not belong on this page.</p>
+    <table class="clean">
+      <thead><tr><th>Raw count</th><th>Value</th><th>Where it comes from</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Distinct visitors</strong></td><td>240,000</td><td>unique people, however often they returned</td></tr>
+        <tr><td><strong>Sessions</strong></td><td>360,000</td><td>one per visit; expires after ~30 min idle (b1)</td></tr>
+        <tr><td><strong>Purchase events</strong></td><td>9,720</td><td>orders - each purchase event is one order</td></tr>
+        <tr><td><strong>Total item revenue</strong></td><td>$660,960</td><td>summed from every purchase event's line items</td></tr>
+        <tr><td><strong>Units sold</strong></td><td>19,440</td><td>items across all those orders</td></tr>
+      </tbody>
+    </table>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Why we start from raw counts, not from the dashboard<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A dashboard shows you a 2.7% and asks you to trust it. Raw counts let you <em>make</em> the 2.7% and check it. The difference matters because tracking breaks quietly: a checkout script update drops purchase events for a week, a bot filter changes and session counts jump, a currency setting doubles revenue. The analyst who can recompute a metric from raw counts notices; everyone else presents the wrong number confidently.</p>
+        <ul>
+          <li><strong>Counts are facts, metrics are choices.</strong> 9,720 purchase events happened - fact. Whether you divide them by sessions or visitors is a definition choice (b1's denominator lesson).</li>
+          <li><strong>Every metric today is one division away</strong> from this table, or one division and one multiplication.</li>
+          <li><strong>Keep the table.</strong> The homework asks you to build the same five-row table for your own store.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1: CONVERSION RATE ============ -->
+  <section class="section" id="demo-cr">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 · everyone computes</span>
+      <h2>Conversion rate - both denominators <span class="tag demo">★ 8 min · pens out</span></h2>
+    </div>
+    <p class="lede">Conversion rate is orders divided by traffic - but b1 taught you that "traffic" has two honest meanings. So we compute both, and see with real numbers why they differ.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Session CR, then visitor CR, step by step<span class="mini">6 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <div class="steps">
+          <div class="step"><p><strong>Session CR</strong> = purchase events ÷ sessions = 9,720 ÷ 360,000. Divide: 9,720 ÷ 360,000 = 0.027 = <strong>2.7%</strong>. This is Shopify's "online store conversion rate" definition, and this course's default.</p></div>
+          <div class="step"><p><strong>Visitor CR</strong> needs buying <em>people</em>, not orders. Roughly 9,300 distinct visitors placed those 9,720 orders - some people bought twice in the month. So buying visitors &lt; orders, always.</p></div>
+          <div class="step"><p><strong>Visitor CR</strong> = buying visitors ÷ distinct visitors = 9,300 ÷ 240,000 ≈ 0.0388 = <strong>~3.9%</strong>. Same store, same month, and both numbers are correct.</p></div>
+          <div class="step"><p>Notice you could NOT compute visitor CR from the raw-counts table alone - "buying visitors" is a sixth count, a people-level dedupe of the purchase events. When a tool reports visitor CR, that dedupe is happening behind the curtain.</p></div>
+        </div>
+        <div class="callout tip">
+          <strong>Why 3.9% is bigger than 2.7%</strong>
+          Each visitor averages 1.5 sessions, so the visitor denominator is smaller (240,000 vs 360,000) while the numerator barely shrinks (9,300 vs 9,720). Smaller denominator, similar numerator, bigger rate. If your two CRs ever get <em>closer</em> together, your shoppers stopped returning - itself a finding.
+        </div>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>Which one do the tools give you?</strong> Shopify's "online store conversion rate" is session-based, exactly like our 2.7%. GA4's purchase journey funnel counts users, so its top-to-bottom rate behaves like our visitor CR. Put a Shopify dashboard and a GA4 funnel side by side and they will disagree on "conversion rate" every single day - correctly. Teams have run week-long "data quality investigations" over exactly this gap.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 2: AOV ============ -->
+  <section class="section" id="demo-aov">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 · everyone computes</span>
+      <h2>AOV and the two factors inside it <span class="tag demo">★ 8 min · pens out</span></h2>
+    </div>
+    <p class="lede">Average order value is revenue per order - one division. But AOV has its own mini driver tree: an order's value is how many items it holds times what each item costs. Splitting AOV into those two factors is what turns "AOV moved" from a fact into a diagnosis.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>AOV, then its two-factor split<span class="mini">6 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <div class="steps">
+          <div class="step"><p><strong>AOV</strong> = total item revenue ÷ orders = $660,960 ÷ 9,720 = <strong>$68</strong>. Every order averaged sixty-eight dollars.</p></div>
+          <div class="step"><p><strong>Units per transaction</strong> = units sold ÷ orders = 19,440 ÷ 9,720 = <strong>2</strong>. The average basket holds two items.</p></div>
+          <div class="step"><p><strong>Average item price</strong> = revenue ÷ units = $660,960 ÷ 19,440 = <strong>$34</strong>. Cross-check the tree: 2 units x $34 = $68 = AOV. It closes exactly - it always must, because the two factors are just AOV's own numerator and denominator rearranged.</p></div>
+        </div>
+        <div class="callout tip">
+          <strong>The habit to build</strong>
+          When AOV moves, never stop at "AOV is down". Ask WHICH factor moved: basket size (units per transaction) or item price. A $68 to $61 drop could be shoppers buying 1.8 items instead of 2 (bundling broke, cross-sell widget died) or the same 2 items at $30.50 (discounting crept up, mix shifted to cheaper categories). The fixes have different owners.
+        </div>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>Shopify's fine print:</strong> Shopify computes AOV as revenue ÷ orders <strong>excluding gift cards and post-order adjustments</strong> (refunds and edits made after the order). So a Shopify AOV can disagree with your own revenue-÷-orders arithmetic without either being wrong - they netted differently. This is the session's recurring theme, and Demo 3 makes it the whole lesson.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 3: GMV LADDER ============ -->
+  <section class="section" id="demo-gmv">
+    <div class="section-kicker">
+      <span class="klabel">Demo 3 · everyone computes</span>
+      <h2>GMV and the ladder down to real money <span class="tag demo">★ 12 min · pens out</span></h2>
+    </div>
+    <p class="lede">GMV - gross merchandise value - is the headline number: everything shoppers ordered. Compute it two ways: sum the purchase events ($660,960 from the raw table) or multiply orders x AOV (9,720 x $68 = $660,960). Same answer, as it must be. But GMV is not money in the bank. Between "ordered" and "kept revenue" sits a ladder of deductions, and every rung is a place two reports can honestly disagree.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The GMV-to-net-revenue ladder: GMV minus cancellations, returns, and discounts lands at net revenue">
+        <style>
+          .ldW { font: 800 13px Inter, sans-serif; fill: #FFFFFF; }
+          .ldWv { font: 800 16px Inter, sans-serif; fill: #FFFFFF; }
+          .ldWc { font: 400 11px Inter, sans-serif; fill: #FFF7ED; }
+          .ldH { font: 700 12px Inter, sans-serif; fill: #1E1B4B; }
+          .ldV { font: 800 15px Inter, sans-serif; fill: #9A3412; }
+          .ldC { font: 400 11px Inter, sans-serif; fill: #575385; }
+          .ldN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .ldArr { stroke: #FB923C; stroke-width: 2.5; fill: none; marker-end: url(#ldArrHead); }
+        </style>
+        <defs>
+          <marker id="ldArrHead" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="#FB923C"/>
+          </marker>
+        </defs>
+
+        <rect x="20" y="36" width="158" height="78" rx="10" fill="#EA580C"/>
+        <text class="ldW" x="99" y="60" text-anchor="middle">GMV - orders placed</text>
+        <text class="ldWv" x="99" y="83" text-anchor="middle">$660,960</text>
+        <text class="ldWc" x="99" y="101" text-anchor="middle">9,720 orders x $68</text>
+
+        <rect x="191" y="76" width="158" height="78" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="ldH" x="270" y="100" text-anchor="middle">minus cancellations</text>
+        <text class="ldV" x="270" y="122" text-anchor="middle">-$13,219 (2%)</text>
+        <text class="ldC" x="270" y="140" text-anchor="middle">left: $647,741</text>
+
+        <rect x="362" y="116" width="158" height="78" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="ldH" x="441" y="140" text-anchor="middle">minus returns / refunds</text>
+        <text class="ldV" x="441" y="162" text-anchor="middle">-$52,877 (8%)</text>
+        <text class="ldC" x="441" y="180" text-anchor="middle">left: $594,864</text>
+
+        <rect x="533" y="156" width="158" height="78" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="ldH" x="612" y="180" text-anchor="middle">minus discounts</text>
+        <text class="ldV" x="612" y="202" text-anchor="middle">-$33,048 (5%)</text>
+        <text class="ldC" x="612" y="220" text-anchor="middle">left: $561,816</text>
+
+        <rect x="704" y="196" width="158" height="78" rx="10" fill="#9A3412"/>
+        <text class="ldW" x="783" y="220" text-anchor="middle">Net revenue</text>
+        <text class="ldWv" x="783" y="243" text-anchor="middle">~$561,816</text>
+        <text class="ldWc" x="783" y="261" text-anchor="middle">85% of headline GMV</text>
+
+        <path class="ldArr" d="M178,90 L187,110"/>
+        <path class="ldArr" d="M349,130 L358,150"/>
+        <path class="ldArr" d="M520,170 L529,190"/>
+        <path class="ldArr" d="M691,210 L700,230"/>
+
+        <rect x="20" y="300" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="ldN" x="44" y="312">Returns of 8% are fashion-typical; some apparel stores see 20-30%. Always ask the category norm.</text>
+        <rect x="20" y="326" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="ldN" x="44" y="338">Shopify's own ladder: Gross sales → Net sales (less discounts, returns) → Total sales (plus tax, shipping).</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the ladder from headline GMV down to net revenue, one deduction per rung</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Walk the ladder with the actual arithmetic<span class="mini">6 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <div class="steps">
+          <div class="step"><p>Start at <strong>GMV $660,960</strong> - the value of everything ordered, the moment it was ordered.</p></div>
+          <div class="step"><p><strong>Cancellations</strong> (orders killed before shipping - payment failed, stock out): 2% of GMV = $13,219. Left: $660,960 - $13,219 = <strong>$647,741</strong>.</p></div>
+          <div class="step"><p><strong>Returns and refunds</strong> (shipped, then sent back or refunded): 8% = $52,877. Left: $647,741 - $52,877 = <strong>$594,864</strong>. Eight percent is realistic for fashion - wrong size, wrong color, "ordered three, kept one".</p></div>
+          <div class="step"><p><strong>Discounts</strong> (promo codes, markdowns applied at checkout): 5% = $33,048. Left: $594,864 - $33,048 = <strong>$561,816 net revenue</strong>. The store keeps about 85 cents of every headline GMV dollar.</p></div>
+        </div>
+        <div class="callout tip">
+          <strong>There is no GMV standards body</strong>
+          No universal rule says what GMV nets out. Some companies quote it before cancellations, some after; some deduct discounts, some do not. Shopify does not even use the word - its ladder is Gross sales → Net sales → Total sales. So the professional move is never "what is GMV?" but <strong>"what is netted out of this number?"</strong> Ask it every time someone shows you a revenue figure, and you will catch more errors than any formula will.
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ RECAP TABLE ============ -->
+  <section class="section" id="recap-table">
+    <div class="section-kicker">
+      <span class="klabel">Pulling it together</span>
+      <h2>The core four on one page <span class="tag concept">3 min live</span></h2>
+    </div>
+    <p class="lede">Everything you computed today, in the format you should keep at your desk: metric, formula, this month's value, and the one thing that makes each number lie to you.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Metric · formula · value · watch-out<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Metric</th><th>Formula</th><th>Mango Lane</th><th>Watch out for</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Conversion rate</strong></td><td>orders ÷ sessions (or buying visitors ÷ visitors)</td><td>2.7% session / ~3.9% visitor</td><td>Undeclared denominator - the b1 trap</td></tr>
+            <tr><td><strong>AOV</strong></td><td>revenue ÷ orders</td><td>$68</td><td>Platform exclusions (Shopify: gift cards, post-order adjustments)</td></tr>
+            <tr><td><strong>AOV's factors</strong></td><td>units ÷ orders, then revenue ÷ units</td><td>2 units x $34</td><td>Reporting AOV moves without saying which factor moved</td></tr>
+            <tr><td><strong>GMV</strong></td><td>orders x AOV = summed order value</td><td>$660,960</td><td>Nobody agrees what it nets out - always ask</td></tr>
+          </tbody>
+        </table>
+        <p>Next session (b3) these four stop being separate rows: you assemble them into one GMV driver tree in a live simulator, where wiggling any input recomputes everything downstream - the arithmetic you did by hand today, running continuously.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 4: SANITY HABITS ============ -->
+  <section class="section" id="sanity">
+    <div class="section-kicker">
+      <span class="klabel">Part 4 · the analyst's hygiene</span>
+      <h2>Two sanity habits that catch broken numbers <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">The core four are easy. Keeping them <em>trustworthy</em> is the actual job. Two habits do most of the work.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Habit 1 - cross-foot everything<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Cross-footing is accountant-speak for checking that a table's parts sum to its total. For metrics: <strong>orders x AOV must equal summed revenue</strong> (9,720 x $68 = $660,960 ✓), units per transaction x item price must equal AOV (2 x $34 = $68 ✓), and channel revenues must sum to total GMV. If two of these disagree, one of the source counts is wrong - and you found out at your desk, not in the Monday meeting.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The check that pays for itself:</strong> a team celebrates a 12% AOV jump. A cross-foot shows orders x new AOV overshoots summed revenue by 9%. Cause: a deploy started double-firing the revenue parameter on some purchase events. Revenue was fine; the metric was broken. Ten seconds of multiplication beat a week of wrong decisions.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Habit 2 - recompute one metric from raw counts monthly<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Once a month, pick one core metric and rebuild it from raw event counts, exactly as you did today, then compare against the dashboard. A small standing drift (dashboard says 2.65%, you get 2.7%) usually means a definition difference - find it once, write it down (b8's spec sheet). A <em>new</em> drift means tracking broke: an event stopped firing, a filter changed, a script update ate the purchase pixel. Tracking rot is silent; this habit is the smoke alarm.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 20-30 min total</span></h2>
+    </div>
+    <ul>
+      <li>Build your own five-row raw-counts table for last month: visitors, sessions, orders, revenue, units. Pull the counts from wherever your store records them.</li>
+      <li>Compute your core four by hand: session CR, AOV, GMV, and AOV's split into units per transaction x average item price. Cross-foot: orders x AOV should equal revenue.</li>
+      <li>Compare each against your dashboard's version. Any mismatch over ~1% deserves an investigation: different denominator? gift cards excluded? refunds netted out? Write down what you find.</li>
+      <li>Ask one colleague what your company's "revenue" number nets out (cancellations? returns? discounts?). If nobody knows for sure, you have just discovered why b8 exists.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources</span>
+      <h2>Sources this session draws on</h2>
+    </div>
+    <p class="lede">The formulas are arithmetic, but the definitions - what gets excluded, what gets netted - come from the platforms' own documentation. This page draws on:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Shopify AOV definition - revenue ÷ orders, excluding gift cards and post-order adjustments</span><span class="note">Demo 2 · why platform AOV can differ from your arithmetic</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Shopify sales ladder - Gross sales → Net sales → Total sales</span><span class="note">Demo 3 · one platform's version of the money ladder</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">GA4 users and sessions documentation - distinct users vs sessions as denominators</span><span class="note">Demo 1 · session CR vs visitor CR</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">GMV convention - honest note: there is no standard-setter; every company nets differently</span><span class="note">Demo 3 · why "what's netted out?" beats any formula</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · Mango Lane has 9,720 orders, 360,000 sessions, and ~9,300 buying visitors out of 240,000. Why is visitor CR (~3.9%) higher than session CR (2.7%)?</p>
+      <button class="qopt" type="button">A · Because some visitors buy twice, inflating the visitor numerator</button>
+      <button class="qopt" type="button">B · It should not be - one of the two is computed wrong</button>
+      <button class="qopt" type="button">C · The visitor denominator is much smaller (240K vs 360K) while the numerator barely shrinks (9,300 vs 9,720)</button>
+      <p class="qwhy">Each visitor averages 1.5 sessions, so switching from sessions to visitors shrinks the denominator by a third. The numerator shrinks only slightly (repeat buyers dedupe 9,720 orders to ~9,300 people). Smaller denominator, similar numerator, bigger rate. Note repeat buying makes buying-visitors SMALLER than orders, not bigger - that is why A is wrong.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">2 · AOV drops from $68 to $61. Units per transaction is still exactly 2. What moved, and roughly to what?</p>
+      <button class="qopt" type="button">A · Basket size fell - shoppers are buying fewer items</button>
+      <button class="qopt" type="button">B · Average item price fell to about $30.50 - check discounting and category mix</button>
+      <button class="qopt" type="button">C · Cannot tell without more data</button>
+      <p class="qwhy">AOV = units per transaction x average item price. If units held at 2, then price = $61 ÷ 2 = $30.50, down from $34. The two-factor split turns "AOV is down" into a specific question with a specific owner (pricing, promo, or merchandising mix - not the cross-sell widget).</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · A partner announces "$660,960 GMV". Which of these is definitely NOT yet deducted from that number?</p>
+      <button class="qopt" type="button">A · You cannot know - GMV has no universal standard, so ask what is netted out</button>
+      <button class="qopt" type="button">B · Returns are always deducted from GMV</button>
+      <button class="qopt" type="button">C · Discounts are always deducted from GMV</button>
+      <p class="qwhy">Trick question, deliberately. No standards body defines GMV: some companies quote it before cancellations, some net out discounts, some do not. Shopify avoids the term entirely (Gross sales → Net sales → Total sales). The only safe move is the question: "what is netted out of this number?"</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Analyst session 2 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Raw counts first</b><span>240K visitors · 360K sessions · 9,720 orders · $660,960 revenue · 19,440 units. Metrics are divisions of these.</span></div>
+      <div class="cheat-item"><b>Session CR</b><span>9,720 ÷ 360,000 = 2.7%. Shopify's definition and this course's default. Always name the denominator.</span></div>
+      <div class="cheat-item"><b>Visitor CR</b><span>~9,300 buying visitors ÷ 240,000 = ~3.9%. Buying visitors &lt; orders because some people buy twice.</span></div>
+      <div class="cheat-item"><b>AOV</b><span>$660,960 ÷ 9,720 = $68. Shopify excludes gift cards + post-order adjustments - platform AOV can differ.</span></div>
+      <div class="cheat-item"><b>AOV's mini-tree</b><span>AOV = units per transaction (19,440 ÷ 9,720 = 2) x avg item price ($34). When AOV moves, ask WHICH factor.</span></div>
+      <div class="cheat-item"><b>GMV ladder</b><span>$660,960 - cancellations 2% - returns 8% - discounts 5% = ~$561,816 net. Fashion returns run high.</span></div>
+      <div class="cheat-item"><b>No GMV standard</b><span>Nobody regulates what GMV nets out. The pro question: "what is netted out of this number?"</span></div>
+      <div class="cheat-item"><b>Sanity habits</b><span>Cross-foot (orders x AOV = revenue) and recompute one metric from raw counts monthly to catch tracking drift.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Analyst session 2 of 8 · learn-ecommerce-metrics-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b1-meet-mango-lane.html">← Meet Mango Lane</a> &nbsp;·&nbsp; <a href="b3-build-the-gmv-tree.html">Next: Build the GMV driver tree →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/tree-live.js?v=1"></script>
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

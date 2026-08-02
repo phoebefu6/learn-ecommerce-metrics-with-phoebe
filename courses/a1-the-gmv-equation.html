@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leader session 1 · The GMV equation - learn ecommerce metrics with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ecommerce-metrics-with-phoebe</a> / Leader session 1 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Ecommerce Metrics with Phoebe · Leader track · Session 1 of 6</div>
+    <h1>The <span class="accent">GMV equation</span></h1>
+    <p class="sub">Every ecommerce top line - however big the company - is three numbers multiplied together: how many people came, what share of them bought, and how much a purchase was worth. You will never be asked to compute anything in this track. You will be asked to do something more useful: read any store's revenue as three levers, know which team owns each one, and know exactly what to ask when a lever moves.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Leader track</span>
+      <span class="chip audience">C-level · category heads · managers</span>
+      <span class="chip audience">Reading mode - no computation</span>
+      <span class="chip time">Start here</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-15 · The equation</span>
+      <span class="a3" style="flex:5">15-40 · Levers, owners &amp; the read-along</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>How the leader track works</h2>
+    </div>
+    <p class="lede">Six sessions, zero spreadsheets. You learn the GMV equation and who owns each lever today (a1), get a working dictionary of the ten metrics your team throws around (a2), learn to read a funnel chart in under a minute (a3), run an Amazon-style weekly business review (a4), judge your numbers against honest industry benchmarks and seasonality (a5), and finish with metric governance - the rules that stop two teams reporting two different "conversion rates" to the same board (a6). The analyst track (b1-b8) computes everything by hand on the same store; this track teaches you what to ask, not what to calculate.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">★ Read-along - everyone reads</span>
+      <span class="pill inkpill">Sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      The ability to read any store's top line - yours, a competitor's, an acquisition target's - as three levers with three named owners, and the three questions to ask when any lever moves. That is the whole session, and it is the foundation for the other five.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: THE EQUATION ============ -->
+  <section class="section" id="equation">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · one equation, whole course</span>
+      <h2>GMV = Traffic x Conversion x AOV <span class="tag concept">12 min live</span></h2>
+    </div>
+    <p class="lede">This course runs on one fictional store, Mango Lane - a mobile-first fashion app - so every number holds still and cross-checks. In a typical month it gets <strong>360,000 sessions</strong> (visits), <strong>2.7%</strong> of those sessions end in an order, and the average order is worth <strong>$68</strong>. Multiply the three and you get the month's top line: <strong>$660,960 of GMV</strong> (gross merchandise value - the total value of goods sold, before anyone argues about returns and discounts; a2 handles the arguing). Three numbers in, one board number out. There is no fourth lever hiding anywhere.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The GMV equation: traffic times conversion times AOV, each lever with its owning team, feeding the GMV total">
+        <style>
+          .gqT { font: 800 15px Inter, sans-serif; fill: #FFFFFF; }
+          .gqH { font: 700 13px Inter, sans-serif; fill: #1E1B4B; }
+          .gqV { font: 800 17px Inter, sans-serif; fill: #9A3412; }
+          .gqC { font: 400 11px Inter, sans-serif; fill: #575385; }
+          .gqO { font: 700 11px Inter, sans-serif; fill: #FFFFFF; }
+          .gqX { font: 800 22px Inter, sans-serif; fill: #FB923C; }
+          .gqN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .gqLine { stroke: #FED7AA; stroke-width: 2; fill: none; }
+        </style>
+
+        <rect x="30" y="30" width="230" height="100" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="gqH" x="145" y="56" text-anchor="middle">Traffic</text>
+        <text class="gqV" x="145" y="80" text-anchor="middle">360,000 sessions</text>
+        <rect x="60" y="94" width="170" height="22" rx="6" fill="#EA580C"/>
+        <text class="gqO" x="145" y="109" text-anchor="middle">Owner: marketing</text>
+
+        <text class="gqX" x="292" y="88" text-anchor="middle">x</text>
+
+        <rect x="325" y="30" width="230" height="100" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="gqH" x="440" y="56" text-anchor="middle">Conversion rate</text>
+        <text class="gqV" x="440" y="80" text-anchor="middle">2.7% of sessions</text>
+        <rect x="355" y="94" width="170" height="22" rx="6" fill="#EA580C"/>
+        <text class="gqO" x="440" y="109" text-anchor="middle">Owner: product &amp; UX</text>
+
+        <text class="gqX" x="587" y="88" text-anchor="middle">x</text>
+
+        <rect x="620" y="30" width="230" height="100" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="gqH" x="735" y="56" text-anchor="middle">Avg order value</text>
+        <text class="gqV" x="735" y="80" text-anchor="middle">$68 per order</text>
+        <rect x="650" y="94" width="170" height="22" rx="6" fill="#EA580C"/>
+        <text class="gqO" x="735" y="109" text-anchor="middle">Owner: merchandising</text>
+
+        <path class="gqLine" d="M145,130 L145,168 L440,168 M440,130 L440,192 M735,130 L735,168 L440,168"/>
+
+        <rect x="300" y="192" width="280" height="64" rx="10" fill="#9A3412"/>
+        <text class="gqT" x="440" y="219" text-anchor="middle">GMV $660,960</text>
+        <text class="gqT" x="440" y="240" text-anchor="middle" style="font-size:12px">the only line the board sees</text>
+
+        <rect x="30" y="284" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="gqN" x="54" y="296">Three levers, three owners, one outcome. Every top-line conversation fits in this picture.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the GMV equation: three levers with owners, one outcome</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Why leaders love this equation (and finance quietly does too)<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Multiplying a few operational drivers into one headline number is an old, respectable trick: DuPont was decomposing return on equity into margin x turnover x leverage a century ago, and every modern growth model is the same move applied to revenue. The power is not the arithmetic - it is that <strong>each factor lands on a different team's desk</strong>:</p>
+        <ul>
+          <li><strong>Traffic (sessions)</strong> - how many visits happened. Bought, earned, or emailed into existence by <strong>marketing</strong>.</li>
+          <li><strong>Conversion rate</strong> - what share of visits ended in an order. Won or lost in the shopping experience, so it belongs to <strong>product and UX</strong>.</li>
+          <li><strong>AOV</strong> - what an average order was worth. Shaped by pricing, bundling, and assortment: <strong>merchandising</strong>.</li>
+        </ul>
+        <p>When GMV moves, exactly one question matters first: <em>which of the three moved?</em> Everything else in this track builds on that reflex.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The same equation works at any altitude<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Traffic x conversion x AOV is not just a whole-company view - it holds for any slice you point it at. Each of Mango Lane's four channels has its own three levers and its own mini-GMV:</p>
+        <ul>
+          <li><strong>Organic</strong> - $264,384 (40% of GMV)</li>
+          <li><strong>Paid</strong> - $198,288 (30%)</li>
+          <li><strong>CRM (email &amp; push)</strong> - $132,192 (20%)</li>
+          <li><strong>Social</strong> - $66,096 (10%)</li>
+        </ul>
+        <p>The same is true per category, per country, per campaign. When a leader asks "why is paid underperforming?", the answer is always the same three-lever read, one altitude down. The analyst track's b6 (segment cuts) computes these slices; you just need to know they exist and sum to the total.</p>
+      </div>
+    </details>
+
+    <div class="callout tip">
+      <strong>What to ask your data team after Part 1</strong>
+      "Show me last month's GMV as the three factors - sessions, conversion rate, AOV - side by side with the month before." One slide, six numbers. If they cannot produce it in a day, that is itself a finding (and a6 is for you).
+    </div>
+  </section>
+
+  <!-- ============ PART 2: OUTCOME VS LEVER ============ -->
+  <section class="section" id="levers">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · the mental model</span>
+      <h2>You cannot "do GMV" - you can only pull levers <span class="tag concept">10 min live</span></h2>
+    </div>
+    <p class="lede">GMV is an <strong>outcome</strong>. No team can walk into the office and work on GMV directly, any more than a football team can work on "the score". Teams can only pull <strong>levers</strong> - run a campaign (traffic), fix a clunky checkout (conversion), bundle products (AOV) - and the outcome follows. A target set on the outcome without naming a lever is a wish. This distinction sounds obvious and is violated in roughly every second board deck.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pass-through: a ten percent drop in one lever produces roughly a ten percent drop in GMV">
+        <style>
+          .ptH { font: 700 13px Inter, sans-serif; fill: #1E1B4B; }
+          .ptB { font: 800 13px Inter, sans-serif; fill: #FFFFFF; }
+          .ptC { font: 400 11px Inter, sans-serif; fill: #575385; }
+          .ptN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+        </style>
+        <text class="ptH" x="20" y="30">One lever slips, the top line follows - same month, three what-ifs</text>
+
+        <text class="ptH" x="20" y="72">Baseline month</text>
+        <text class="ptC" x="20" y="88">360K x 2.7% x $68</text>
+        <rect x="240" y="56" width="620" height="34" rx="8" fill="#9A3412"/>
+        <text class="ptB" x="550" y="78" text-anchor="middle">GMV $660,960</text>
+
+        <text class="ptH" x="20" y="132">Traffic falls 10%</text>
+        <text class="ptC" x="20" y="148">324K x 2.7% x $68</text>
+        <rect x="240" y="116" width="558" height="34" rx="8" fill="#EA580C"/>
+        <text class="ptB" x="519" y="138" text-anchor="middle">GMV $594,864 · down 10%</text>
+
+        <text class="ptH" x="20" y="192">CR slips 2.7% to 2.4%</text>
+        <text class="ptC" x="20" y="208">360K x 2.4% x $68</text>
+        <rect x="240" y="176" width="551" height="34" rx="8" fill="#EA580C"/>
+        <text class="ptB" x="515" y="198" text-anchor="middle">GMV $587,520 · down 11%</text>
+
+        <rect x="20" y="228" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="ptN" x="44" y="240">No shock absorber anywhere: a lever move of X% is a top-line move of about X%.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - pass-through: what a "small" lever slip does to the month</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The pass-through idea in plain words<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Because the three levers are <em>multiplied</em>, a change in any one of them passes straight through to the top line. If traffic falls 10% and nothing else changes, GMV falls about 10%. If AOV rises 10%, GMV rises about 10%. There is no cushion and no delay - the equation has no shock absorber.</p>
+        <p>Two useful consequences for a leader:</p>
+        <ul>
+          <li><strong>Small lever moves are never small.</strong> A "minor" 0.3-point conversion dip at Mango Lane (2.7% to 2.4%) is about an 11% haircut on the lever - and therefore about an 11% haircut on GMV. Roughly $73,000 gone in a month, from a change that looks like rounding.</li>
+          <li><strong>Lever moves combine.</strong> Traffic up 10% while conversion is down 10% roughly cancels out - the top line looks flat while two big stories hide underneath. Flat GMV is not automatically good news; a3 teaches you to look underneath.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why each lever needs an owner BEFORE it needs a target<span class="mini">4 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The natural instinct is to set targets first: "conversion to 3% by Q3." But a target on an unowned lever produces a predictable failure mode - when it slips, the review meeting becomes an archaeology dig into whose fault it was, and every team has a plausible alibi (marketing blames site speed, product blames traffic quality, both are sometimes right).</p>
+        <p>Ownership first reverses the dynamic:</p>
+        <ul>
+          <li><strong>An owner watches the lever weekly</strong> - so a dip is caught in days, not discovered at quarter end.</li>
+          <li><strong>An owner can explain a move</strong> - "conversion dipped because the new checkout shipped Tuesday" is only available from someone who owns the number and the roadmap behind it.</li>
+          <li><strong>Only then does a target mean anything</strong> - a target is a promise, and promises need a person attached.</li>
+        </ul>
+        <p>Your homework today is exactly this: levers and owners, no targets yet. Targets come in a5 when you can see benchmarks.</p>
+      </div>
+    </details>
+
+    <div class="callout tip">
+      <strong>What to ask your data team after Part 2</strong>
+      "For each of the three levers, who is the single named owner - a person, not a department?" If the answer contains the word "shared", ask again.
+    </div>
+  </section>
+
+  <!-- ============ DEMO: READ-ALONG ============ -->
+  <section class="section" id="readalong">
+    <div class="section-kicker">
+      <span class="klabel">Demo · read-along</span>
+      <h2>Three moves, three phone calls <span class="tag demo">★ 15 min · everyone reads</span></h2>
+    </div>
+    <p class="lede">No math here - just reading. Three things happen at Mango Lane. For each one: which lever moved, which team you call, and what you ask. This is the whole leadership skill: right lever, right owner, right question, in that order.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Scenario 1 - sessions dip 10% after an ad budget cut<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Finance trimmed paid spend mid-month. Two weeks later the weekly report shows sessions down about 10%, and GMV down about the same. Nobody should be surprised - a traffic lever move passes straight through - but somebody should own the response.</p>
+        <div class="steps">
+          <div class="step"><p><strong>Which lever:</strong> traffic. Conversion and AOV are steady, so the top line fell purely because fewer visits happened.</p></div>
+          <div class="step"><p><strong>Who you call:</strong> marketing - traffic is their lever, and the budget cut hit their channel mix.</p></div>
+          <div class="step"><p><strong>What you ask:</strong> "Which channel lost the sessions, and were they sessions that used to convert?" Cheap traffic converting at 0.5% and CRM traffic converting at 5% are not the same loss - the answer decides whether the cut was smart or expensive.</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Scenario 2 - conversion dips after a checkout redesign<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Product shipped a sleeker checkout on the 1st. By the 10th, conversion has drifted from 2.7% toward 2.4%. Traffic is normal, AOV is normal - GMV is quietly bleeding through one lever, and the timing is not a coincidence until proven otherwise.</p>
+        <div class="steps">
+          <div class="step"><p><strong>Which lever:</strong> conversion. Same number of visits, same order size - a smaller share of visits is finishing the purchase.</p></div>
+          <div class="step"><p><strong>Who you call:</strong> product and UX - the shopping experience is their lever, and they just changed it.</p></div>
+          <div class="step"><p><strong>What you ask:</strong> "Where in the journey are shoppers now dropping, compared to before the release - and can we roll back while we investigate?" You do not need the funnel vocabulary yet (a3 gives it to you); you need the date of the change and a before/after picture.</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Scenario 3 - AOV rises after bundling<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Merchandising launched "complete the look" bundles. AOV climbs from $68 toward $75, and GMV rises with it. Good news - but good news deserves the same discipline as bad news, because you want to know whether it will still be there next quarter.</p>
+        <div class="steps">
+          <div class="step"><p><strong>Which lever:</strong> AOV. Same visits, same share buying - each order simply got bigger.</p></div>
+          <div class="step"><p><strong>Who you call:</strong> merchandising - to congratulate them, and then to interrogate the win.</p></div>
+          <div class="step"><p><strong>What you ask:</strong> "Is the lift from more items per order or pricier items - and did conversion hold while AOV rose?" Bundles sometimes lift order size while scaring off smaller buyers; a real win moves one lever without quietly denting another.</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>When two levers move at once<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Real months are rarely as clean as the three scenarios above. A sale event typically pushes traffic and conversion up while pulling AOV down; an ad cut pulls traffic down while conversion drifts up (the remaining visitors are the keen ones). Two habits keep multi-lever months readable:</p>
+        <ul>
+          <li><strong>Ask for all three levers every time, even when the answer seems obvious.</strong> The lever nobody mentioned is where surprises hide.</li>
+          <li><strong>Ask which lever moved <em>because of us</em> and which moved on its own.</strong> A deliberate trade (discount lowers AOV, lifts conversion) is strategy; the same picture arriving uninvited is a problem.</li>
+        </ul>
+        <p>a3 gives you the funnel view that makes multi-lever months quick to read, and a4 puts the reading on a weekly rhythm so no lever drifts unwatched for long.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The pattern to keep:</strong> in all three scenarios the first question was never "why is GMV down/up?" - it was "which lever moved?" GMV itself never gets a phone call. Levers have owners; outcomes only have meetings.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 15-20 min total</span></h2>
+    </div>
+    <ul>
+      <li>Write your own business's top line as the three levers: traffic x conversion x average order (or your industry's equivalents - visits, win rate, deal size work the same way). Rough numbers are fine; the structure is the exercise.</li>
+      <li>Next to each lever, write one named owner - a person, not a team. Note where you had to hesitate: hesitation is the finding.</li>
+      <li>Ask your data team the Part 1 question: last month's three factors next to the month before, on one slide.</li>
+      <li>Bring your three-levers-with-owners sheet to a2 - the metric dictionary will sharpen every word on it.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources</span>
+      <h2>Sources this session draws on</h2>
+    </div>
+    <p class="lede">Ecommerce metrics have no single certificate - the definitions live in the analytics platforms' documentation and a century of decomposition practice. This page draws on:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">DuPont decomposition heritage - breaking one headline number into multiplied operational drivers, each with an owner</span><span class="note">Part 1 · the GMV equation</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">GA4 &amp; Shopify metric definitions - what exactly counts as a session, a conversion, an order value</span><span class="note">Used loosely today · defined properly in a2</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Amazon-style weekly business review ritual - reading the levers on a cadence, not on a crisis</span><span class="note">Previewed here · full treatment in a4</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · Which of these is an outcome rather than a lever?</p>
+      <button class="qopt" type="button">A · Sessions</button>
+      <button class="qopt" type="button">B · Average order value</button>
+      <button class="qopt" type="button">C · GMV</button>
+      <p class="qwhy">GMV is the result of the three levers multiplied - no team can work on it directly. Sessions, conversion rate, and AOV are the levers teams actually pull.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">2 · Traffic falls 10% while conversion rate and AOV stay flat. What happens to GMV?</p>
+      <button class="qopt" type="button">A · Nothing much - the other two levers absorb it</button>
+      <button class="qopt" type="button">B · It falls by about 10% - lever moves pass straight through</button>
+      <button class="qopt" type="button">C · It falls by about 30% - the effect multiplies</button>
+      <p class="qwhy">The levers are multiplied, so a 10% drop in one factor (with the others flat) is about a 10% drop in the product. No cushion, no amplification - straight pass-through.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · Conversion rate dips the week after a site release. Which team gets the first call?</p>
+      <button class="qopt" type="button">A · Product &amp; UX - conversion is their lever and they just changed the experience</button>
+      <button class="qopt" type="button">B · Marketing - they should send more traffic to cover the gap</button>
+      <button class="qopt" type="button">C · Finance - to reforecast the quarter</button>
+      <p class="qwhy">Right lever, right owner: conversion belongs to product and UX, and a dip timed to a release points at the release. More traffic would paper over a leak instead of fixing it.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Leader session 1 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The equation</b><span>GMV = traffic x conversion rate x AOV. Mango Lane: 360K sessions x 2.7% x $68 = $660,960.</span></div>
+      <div class="cheat-item"><b>Outcome vs lever</b><span>GMV is an outcome - nobody can work on it directly. Teams pull levers; the outcome follows.</span></div>
+      <div class="cheat-item"><b>Three owners</b><span>Traffic = marketing. Conversion = product &amp; UX. AOV = merchandising. One named person per lever.</span></div>
+      <div class="cheat-item"><b>Pass-through</b><span>A lever falls 10%, the top line falls about 10%. Small lever moves are never small.</span></div>
+      <div class="cheat-item"><b>Flat can lie</b><span>Traffic up 10% + conversion down 10% = flat GMV hiding two big stories. Always look underneath.</span></div>
+      <div class="cheat-item"><b>First question</b><span>When GMV moves, never ask "why is GMV down?" Ask "which lever moved?" - then call its owner.</span></div>
+      <div class="cheat-item"><b>Owners before targets</b><span>A target on an unowned lever is a wish. Name the owner first; set targets in a5 with benchmarks.</span></div>
+      <div class="cheat-item"><b>Running skill</b><span>Read any store as three levers with owners. Next: a2 puts precise definitions under every word.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Leader session 1 of 6 · learn-ecommerce-metrics-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="../index.html">← All sessions</a> &nbsp;·&nbsp; <a href="a2-the-metric-dictionary.html">Next: The metric dictionary →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/tree-live.js?v=1"></script>
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyst session 1 · Meet Mango Lane - learn ecommerce metrics with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ecommerce-metrics-with-phoebe</a> / Analyst session 1 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Ecommerce Metrics with Phoebe · Analyst track · Session 1 of 8</div>
+    <h1>Meet <span class="accent">Mango Lane</span></h1>
+    <p class="sub">Every ecommerce number you will ever compute - conversion rate, AOV, PDP penetration, GMV - starts as a shopper doing something in an app: opening it, viewing a product, adding to cart, paying. Before you can measure a store you have to know what it records. Today you meet Mango Lane, the fashion app this whole course runs on, and learn the event trail and the counting rules every later session builds from.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Analyst track</span>
+      <span class="chip audience">Analysts · marketers · ops · founders</span>
+      <span class="chip audience">No code - counting rules first</span>
+      <span class="chip time">Start here</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · The store &amp; the event trail</span>
+      <span class="a3" style="flex:5">18-42 · Counting rules that trip everyone</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>How this track works</h2>
+    </div>
+    <p class="lede">Eight analyst sessions, one store. You meet Mango Lane and its event trail today (b1), compute the core four metrics by hand (b2), build the GMV driver tree in a live simulator (b3), measure the full funnel including PDP penetration (b4), diagnose a real drop (b5), cut every metric by segment (b6), turn the numbers into a weekly review pack (b7), and finish by writing the metric spec sheet that keeps the whole company honest (b8). The leader track (a1-a6) teaches the same numbers in reading mode - what to ask, not what to compute.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">▶ Live tree - editable &amp; runnable</span>
+      <span class="pill inkpill">Sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      Mango Lane's five-step event trail (session start to purchase), the difference between a visitor, a session, and a pageview - the single most common source of wrong ecommerce numbers - and the store's baseline scorecard you will decompose all course long.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: THE STORE ============ -->
+  <section class="section" id="store">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · the running case for all 8 sessions</span>
+      <h2>The store: Mango Lane <span class="tag concept">6 min live</span></h2>
+    </div>
+    <p class="lede">Mango Lane is a mobile-first fashion and lifestyle store: about 3,000 products across womenswear, menswear, accessories, and home. It gets traffic from four places - organic search, paid ads, CRM (email and push), and social. In a typical month, <strong>240,000 people</strong> open the app or site, generating <strong>360,000 sessions</strong>, and <strong>9,720 of those sessions end in an order</strong> averaging <strong>$68</strong>. Every number in this course is one of these, or derived from them.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mango Lane baseline scorecard: visitors, sessions, orders, AOV, and GMV">
+        <style>
+          .mlT { font: 800 15px Inter, sans-serif; fill: #FFFFFF; }
+          .mlH { font: 700 13px Inter, sans-serif; fill: #1E1B4B; }
+          .mlV { font: 800 17px Inter, sans-serif; fill: #9A3412; }
+          .mlC { font: 400 11px Inter, sans-serif; fill: #575385; }
+          .mlN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .mlLine { stroke: #FED7AA; stroke-width: 2; fill: none; }
+        </style>
+        <rect x="20" y="24" width="840" height="54" rx="10" fill="#EA580C"/>
+        <text class="mlT" x="440" y="47" text-anchor="middle">Mango Lane · fashion &amp; lifestyle · one typical month</text>
+        <text class="mlT" x="440" y="66" text-anchor="middle" style="font-size:12px">4 channels: organic · paid · CRM · social</text>
+
+        <path class="mlLine" d="M110,78 L110,108 M330,78 L330,108 M550,78 L550,108 M770,78 L770,108"/>
+
+        <rect x="30" y="108" width="160" height="74" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="mlH" x="110" y="132" text-anchor="middle">Visitors</text>
+        <text class="mlV" x="110" y="156" text-anchor="middle">240,000</text>
+        <text class="mlC" x="110" y="172" text-anchor="middle">unique people</text>
+
+        <rect x="250" y="108" width="160" height="74" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="mlH" x="330" y="132" text-anchor="middle">Sessions</text>
+        <text class="mlV" x="330" y="156" text-anchor="middle">360,000</text>
+        <text class="mlC" x="330" y="172" text-anchor="middle">1.5 visits per person</text>
+
+        <rect x="470" y="108" width="160" height="74" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="mlH" x="550" y="132" text-anchor="middle">Orders</text>
+        <text class="mlV" x="550" y="156" text-anchor="middle">9,720</text>
+        <text class="mlC" x="550" y="172" text-anchor="middle">2.7% of sessions</text>
+
+        <rect x="690" y="108" width="160" height="74" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="mlH" x="770" y="132" text-anchor="middle">Avg order value</text>
+        <text class="mlV" x="770" y="156" text-anchor="middle">$68</text>
+        <text class="mlC" x="770" y="172" text-anchor="middle">2 items x $34</text>
+
+        <path class="mlLine" d="M440,182 L440,210"/>
+        <rect x="330" y="210" width="220" height="58" rx="10" fill="#9A3412"/>
+        <text class="mlT" x="440" y="234" text-anchor="middle">GMV $660,960</text>
+        <text class="mlT" x="440" y="253" text-anchor="middle" style="font-size:12px">orders x AOV</text>
+
+        <rect x="30" y="290" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="mlN" x="54" y="302">This scorecard is the baseline. Every session decomposes one slice of it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - Mango Lane's month at a glance: the baseline you will decompose</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Why one made-up store beats ten real screenshots<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Real dashboards change weekly and hide their definitions. Mango Lane holds still: the same 360,000 sessions and 9,720 orders appear in every session of this course, so when b4 tells you PDP penetration is 40%, you can check it against numbers you already know. By b8 you will have decomposed one month of one store completely - which is exactly how real analysts learn a new company's numbers.</p>
+        <ul>
+          <li><strong>One month, one store, every metric</strong> - the numbers cross-check across all 8 sessions.</li>
+          <li><strong>Fashion, mobile-first</strong> - typical mid-size ecommerce: enough traffic for stable rates, small enough to reason about.</li>
+          <li><strong>Four channels</strong> - organic, paid, CRM, social - because b6 (segment cuts) needs something to cut by.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: EVENT TRAIL ============ -->
+  <section class="section" id="events">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers the GA4 ecommerce event model</span>
+      <h2>The event trail: five things a shopper can do <span class="tag concept">9 min live</span></h2>
+    </div>
+    <p class="lede">A store's analytics is just a diary of shopper actions. The industry-standard vocabulary (this is what Google Analytics 4 calls them, and every tool has an equivalent) is five events: <strong>session_start</strong>, <strong>view_item</strong> (a product detail page - a PDP - gets viewed), <strong>add_to_cart</strong>, <strong>begin_checkout</strong>, and <strong>purchase</strong>. Every ecommerce metric in existence is a count of one of these events, or a ratio between two of them.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The five-step ecommerce event trail from session start to purchase">
+        <style>
+          .etH { font: 700 13px Inter, sans-serif; fill: #1E1B4B; }
+          .etE { font: 700 12px 'SF Mono', Menlo, monospace; fill: #FFFFFF; }
+          .etC { font: 400 11px Inter, sans-serif; fill: #575385; }
+          .etN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .etArr { stroke: #FB923C; stroke-width: 2.5; fill: none; marker-end: url(#etArrHead); }
+        </style>
+        <defs>
+          <marker id="etArrHead" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="#FB923C"/>
+          </marker>
+        </defs>
+
+        <rect x="20" y="60" width="150" height="80" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="etH" x="95" y="86" text-anchor="middle">Arrive</text>
+        <rect x="35" y="98" width="120" height="22" rx="6" fill="#EA580C"/>
+        <text class="etE" x="95" y="113" text-anchor="middle">session_start</text>
+
+        <rect x="196" y="60" width="150" height="80" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="etH" x="271" y="86" text-anchor="middle">View a product</text>
+        <rect x="211" y="98" width="120" height="22" rx="6" fill="#EA580C"/>
+        <text class="etE" x="271" y="113" text-anchor="middle">view_item</text>
+
+        <rect x="372" y="60" width="150" height="80" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="etH" x="447" y="86" text-anchor="middle">Add to cart</text>
+        <rect x="387" y="98" width="120" height="22" rx="6" fill="#EA580C"/>
+        <text class="etE" x="447" y="113" text-anchor="middle">add_to_cart</text>
+
+        <rect x="548" y="60" width="150" height="80" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="etH" x="623" y="86" text-anchor="middle">Start paying</text>
+        <rect x="563" y="98" width="120" height="22" rx="6" fill="#EA580C"/>
+        <text class="etE" x="623" y="113" text-anchor="middle">begin_checkout</text>
+
+        <rect x="724" y="60" width="136" height="80" rx="10" fill="#9A3412"/>
+        <text class="etH" x="792" y="86" text-anchor="middle" style="fill:#FFFFFF">Pay</text>
+        <rect x="737" y="98" width="110" height="22" rx="6" fill="#EA580C"/>
+        <text class="etE" x="792" y="113" text-anchor="middle">purchase</text>
+
+        <path class="etArr" d="M170,100 L192,100"/>
+        <path class="etArr" d="M346,100 L368,100"/>
+        <path class="etArr" d="M522,100 L544,100"/>
+        <path class="etArr" d="M698,100 L720,100"/>
+
+        <text class="etC" x="95" y="162" text-anchor="middle">every visit fires one</text>
+        <text class="etC" x="271" y="162" text-anchor="middle">the PDP view</text>
+        <text class="etC" x="447" y="162" text-anchor="middle">intent shows up</text>
+        <text class="etC" x="623" y="162" text-anchor="middle">wallet comes out</text>
+        <text class="etC" x="792" y="162" text-anchor="middle">the only one with $</text>
+
+        <rect x="20" y="212" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="etN" x="44" y="224">Every ecommerce metric is a count of one event or a ratio of two. That is the whole secret.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the five-step event trail every shop records</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Each step loses people - that is normal<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Of Mango Lane's 360,000 monthly sessions, only some view a product, fewer add to cart, fewer still start checkout, and 9,720 pay. That narrowing is the <strong>funnel</strong>, and it is not a failure - no store converts everyone. What matters is <em>how much</em> narrows at each step compared to last month and compared to peers. Session b4 measures each step precisely; today you just need the shape.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The vocabulary is genuinely universal.</strong> GA4 uses these exact event names; Amplitude, Mixpanel, Adobe, and Shopify each use near-identical ones (Shopify's funnel report literally shows "added to cart → reached checkout → converted"). Learn the five steps once and every analytics tool you ever open becomes readable.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>What each event carries with it<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Events are not bare ticks - each carries properties. A <code>view_item</code> knows which product; an <code>add_to_cart</code> knows the quantity and price; a <code>purchase</code> carries the order id, every line item, and the total. Two consequences worth remembering:</p>
+        <ul>
+          <li><strong>Metrics can be sliced by any property</strong> - CR by channel, AOV by category - which is all "segmentation" (b6) means.</li>
+          <li><strong>Money lives only on purchase.</strong> Everything before it measures attention and intent; only the purchase event measures revenue. When a report mixes the two, ask which event each number came from.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3 / DEMO: COUNTING RULES ============ -->
+  <section class="section" id="counting">
+    <div class="section-kicker">
+      <span class="klabel">Demo · everyone counts along</span>
+      <h2>Visitor, session, pageview: the counting rules <span class="tag demo">★ 15 min · everyone works</span></h2>
+    </div>
+    <p class="lede">The most common wrong number in ecommerce is not a wrong formula - it is a right formula fed the wrong count. One person (a <strong>visitor</strong>) can visit three times (three <strong>sessions</strong>) and look at ten pages (ten <strong>pageviews</strong>). Divide orders by the wrong one and your "conversion rate" is off by half. Work these three rules with real Mango Lane numbers.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Rule 1 - a session is a visit, and it expires<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A session is one continuous visit. In GA4 a session ends after <strong>30 minutes of inactivity</strong> - walk away for lunch mid-browse and your return is a new session. Mango Lane's 240,000 visitors produce 360,000 sessions: 1.5 sessions per visitor. Fashion shoppers browse, leave, come back - that ratio is the store's window-shopping habit made visible.</p>
+        <div class="steps">
+          <div class="step"><p>Maya opens Mango Lane on Monday lunch, browses, leaves. Tuesday she returns and buys. Count: <strong>1 visitor, 2 sessions, 1 order</strong>.</p></div>
+          <div class="step"><p>Her Monday session converted at 0%. Her Tuesday session converted at 100%. As a visitor, she converted at 100%.</p></div>
+          <div class="step"><p>Now scale that up: session CR and visitor CR are <em>different numbers</em> for the same store, and both are correct. You must say which one you mean.</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Rule 2 - conversion rate needs a declared denominator<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Mango Lane, same month, two honest conversion rates:</p>
+        <table class="clean">
+          <thead><tr><th>Definition</th><th>Formula</th><th>Mango Lane</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Session CR</strong> (Shopify's "online store conversion rate")</td><td>purchase sessions ÷ sessions</td><td>9,720 ÷ 360,000 = <strong>2.7%</strong></td></tr>
+            <tr><td><strong>Visitor CR</strong> (how GA4's purchase-journey funnel counts - by user)</td><td>buying visitors ÷ visitors</td><td>≈ 9,300 ÷ 240,000 = <strong>≈ 3.9%</strong></td></tr>
+          </tbody>
+        </table>
+        <p>Same store, same month, 2.7% vs 3.9% - a 44% difference with zero change in the business. This is why b8 makes you write a spec sheet: a metric without a declared denominator is a rumor.</p>
+        <div class="callout tip">
+          <strong>The habit to build</strong>
+          Never say "conversion rate" unqualified. Say "session conversion rate" or "visitor conversion rate". This course uses <strong>session CR (2.7%)</strong> as Mango Lane's default, and says so every time.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Rule 3 - pageviews inflate, events discriminate<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Pageviews count every screen load - home, listing, PDP, cart, all mashed together. They are fine for "is the site up and busy" and nearly useless for diagnosis. The event trail is sharper: <code>view_item</code> counts only PDP views, which is why b4's <strong>PDP penetration</strong> (sessions that viewed at least one product ÷ all sessions - 40% at Mango Lane) tells you something pageviews never can: whether shoppers are actually reaching products or bouncing around navigation.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The classic trap:</strong> a redesign ships, pageviews jump 20%, the team celebrates. Then someone checks: shoppers now need three screens to reach a product instead of two. Pageviews rose <em>because the journey got worse</em>. PDP penetration - flat. Orders - flat. Count events, not screens.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 15-20 min total</span></h2>
+    </div>
+    <ul>
+      <li>Open any analytics tool you have access to (GA4, Shopify, anything). Find where it reports visitors vs sessions. Compute the sessions-per-visitor ratio - is your audience more or less of a window-shopper than Mango Lane's 1.5?</li>
+      <li>Find the tool's conversion rate. Hunt down its denominator - sessions or visitors? (It is usually in a tooltip or the docs, rarely on the dashboard itself.)</li>
+      <li>Say Mango Lane's baseline out loud from memory: 240K visitors, 360K sessions, 9,720 orders, $68 AOV, $660,960 GMV. You will use these numbers in every remaining session.</li>
+      <li>Write the five event names on a sticky note. Next session (b2) you compute the core four metrics from them by hand.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources</span>
+      <h2>Sources this session draws on</h2>
+    </div>
+    <p class="lede">Ecommerce metrics have no single certificate - the definitions live in the analytics platforms' own documentation. This course teaches the working core of these, applied to one store end to end. This page draws on:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">GA4 ecommerce event model - session_start, view_item, add_to_cart, begin_checkout, purchase</span><span class="note">Part 2 · the five-step event trail</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">GA4 sessions documentation - the 30-minute inactivity timeout, sessions vs users</span><span class="note">Demo rule 1 · what a session is</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Shopify analytics - session-based conversion rate and the added-to-cart / reached-checkout / converted funnel</span><span class="note">Demo rule 2 · why denominators differ by platform</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Event properties &amp; item-level data - what each event carries</span><span class="note">Self-study card · full use in b6 segment cuts</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · Maya visits Mango Lane on Monday, leaves, returns Tuesday and buys. What did the store count?</p>
+      <button class="qopt" type="button">A · 2 visitors, 2 sessions, 1 order</button>
+      <button class="qopt" type="button">B · 1 visitor, 2 sessions, 1 order</button>
+      <button class="qopt" type="button">C · 1 visitor, 1 session, 1 order</button>
+      <p class="qwhy">One person = one visitor, however often she returns. Each separate visit is its own session (they expire after ~30 min of inactivity). This is why session CR and visitor CR are different numbers.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · Mango Lane's session CR is 2.7%, but a user-counting funnel (like GA4's purchase journey) shows roughly 3.9%. Why?</p>
+      <button class="qopt" type="button">A · One tool tracks more orders</button>
+      <button class="qopt" type="button">B · One of the two numbers is a bug</button>
+      <button class="qopt" type="button">C · Different denominators - orders per session vs buying visitors per visitor</button>
+      <p class="qwhy">Both are correct. 9,720 orders ÷ 360,000 sessions = 2.7%; ~9,300 buying visitors ÷ 240,000 visitors ≈ 3.9%. A conversion rate without a declared denominator is a rumor.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · After a redesign, pageviews jump 20% but orders are flat. What should you check first?</p>
+      <button class="qopt" type="button">A · Whether shoppers now need more screens to reach a product - check PDP penetration</button>
+      <button class="qopt" type="button">B · Nothing - more pageviews is always good</button>
+      <button class="qopt" type="button">C · The ad budget</button>
+      <p class="qwhy">Pageviews count screen loads, not progress. If the journey got longer, pageviews rise while the funnel is unchanged or worse. PDP penetration (sessions reaching a product page) tells you whether attention is reaching products.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Analyst session 1 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Mango Lane baseline</b><span>240K visitors · 360K sessions · 9,720 orders · $68 AOV · $660,960 GMV. One month, memorize it.</span></div>
+      <div class="cheat-item"><b>The event trail</b><span>session_start → view_item → add_to_cart → begin_checkout → purchase. Every metric is a count or ratio of these.</span></div>
+      <div class="cheat-item"><b>Visitor vs session</b><span>Visitor = a person. Session = one visit; expires after ~30 min idle. Mango Lane: 1.5 sessions per visitor.</span></div>
+      <div class="cheat-item"><b>Declare the denominator</b><span>Session CR (2.7%) ≠ visitor CR (≈3.9%) for the same store. Never say "conversion rate" unqualified.</span></div>
+      <div class="cheat-item"><b>Pageviews vs events</b><span>Pageviews count screens and inflate easily. Events count shopper actions. Diagnose with events.</span></div>
+      <div class="cheat-item"><b>PDP</b><span>Product detail page - one product's own page. Its view event is view_item; its reach metric is PDP penetration (b4).</span></div>
+      <div class="cheat-item"><b>Money lives on purchase</b><span>Every event before purchase measures attention or intent. Only purchase carries revenue.</span></div>
+      <div class="cheat-item"><b>Running skill</b><span>Know what the store records before computing anything. Next: b2, the core four by hand.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Analyst session 1 of 8 · learn-ecommerce-metrics-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="../index.html">← All sessions</a> &nbsp;·&nbsp; <a href="b2-core-four-by-hand.html">Next: The core four by hand →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/tree-live.js?v=1"></script>
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyst session 3 · Build the GMV driver tree - learn ecommerce metrics with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ecommerce-metrics-with-phoebe</a> / Analyst session 3 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Ecommerce Metrics with Phoebe · Analyst track · Session 3 of 8</div>
+    <h1>Build the <span class="accent">GMV driver tree</span></h1>
+    <p class="sub">In b2 you computed Mango Lane's core four by hand. Today you wire them together. GMV is not a number you control - it is what falls out when sessions, conversion, and order value multiply. A driver tree writes that relationship down and makes it pokeable. You build three trees live: the simple one, the funnel-deep one, and the channel one - and every leaf is editable.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Analyst track</span>
+      <span class="chip audience">Analysts · marketers · ops · founders</span>
+      <span class="chip audience">▶ Live tree simulator</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-15 · The multiply rule</span>
+      <span class="a3" style="flex:6">15-42 · Build all three trees</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where you are</h2>
+    </div>
+    <p class="lede">You know the store (b1) and you can compute UV, session CR, AOV, and GMV by hand (b2). This session turns those isolated numbers into a <strong>structure</strong>: a tree where GMV sits at the root and every number under it is a lever someone at Mango Lane owns. In b4 the tree grows the full funnel; in b5 you use it to diagnose a real drop. This is the course's centerpiece skill.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">▶ Live tree - editable &amp; runnable</span>
+      <span class="pill inkpill">Sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      Three working GMV trees you built and broke yourself, the percentage pass-through rule that lets you read a drop off the branches, and the reflex of asking "which lever?" before "why?".
+    </div>
+  </section>
+
+  <!-- ============ PART 1: THE MULTIPLY RULE ============ -->
+  <section class="section" id="multiply">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers the multiplicative decomposition + pass-through</span>
+      <h2>GMV is a product, and products pass through <span class="tag concept">10 min live</span></h2>
+    </div>
+    <p class="lede">Mango Lane's month: 360,000 sessions x 2.7% session CR x $68 AOV = <strong>$660,960 GMV</strong>. Because the top line is a pure product, a percentage change in any single driver flows to the top line as roughly the same percentage. Sessions down 10%, everything else flat? GMV down 10%. Conversion down 10% <em>and</em> AOV down 5%? GMV down about 15%. That clean pass-through is the entire trick behind fast diagnosis.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mango Lane GMV decomposed into sessions, conversion rate, and AOV with owners">
+      <style>
+        .gtT { font: 800 15px Inter, sans-serif; fill: #FFFFFF; }
+        .gtH { font: 700 13px Inter, sans-serif; fill: #1E1B4B; }
+        .gtV { font: 800 15px Inter, sans-serif; fill: #9A3412; }
+        .gtC { font: 400 11px Inter, sans-serif; fill: #575385; }
+        .gtN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+        .gtLine { stroke: #FED7AA; stroke-width: 2; fill: none; }
+        .gtX { font: 700 14px Inter, sans-serif; fill: #FB923C; }
+      </style>
+        <rect x="350" y="26" width="180" height="54" rx="10" fill="#EA580C"/>
+        <text class="gtT" x="440" y="49" text-anchor="middle">GMV</text>
+        <text class="gtT" x="440" y="68" text-anchor="middle" style="font-size:12px">$660,960 / mo</text>
+
+        <path class="gtLine" d="M440,80 L440,102 M160,102 L720,102 M160,102 L160,124 M440,102 L440,124 M720,102 L720,124"/>
+
+        <rect x="70" y="124" width="180" height="78" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="gtH" x="160" y="148" text-anchor="middle">Sessions</text>
+        <text class="gtV" x="160" y="170" text-anchor="middle">360,000</text>
+        <text class="gtC" x="160" y="188" text-anchor="middle">marketing owns it</text>
+
+        <rect x="350" y="124" width="180" height="78" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="gtH" x="440" y="148" text-anchor="middle">Session CR</text>
+        <text class="gtV" x="440" y="170" text-anchor="middle">2.7%</text>
+        <text class="gtC" x="440" y="188" text-anchor="middle">product/UX owns it</text>
+
+        <rect x="630" y="124" width="180" height="78" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="gtH" x="720" y="148" text-anchor="middle">AOV</text>
+        <text class="gtV" x="720" y="170" text-anchor="middle">$68</text>
+        <text class="gtC" x="720" y="188" text-anchor="middle">merchandising owns it</text>
+
+        <text class="gtX" x="290" y="116" text-anchor="middle">x</text>
+        <text class="gtX" x="570" y="116" text-anchor="middle">x</text>
+
+        <rect x="70" y="256" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="gtN" x="94" y="268">Every lever has an owner. A drop assigned to a lever is a drop assigned to a team.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the simple GMV tree: three levers, three owners</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The pass-through rule, precisely<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>For the small moves you see week to week, <strong>percentage changes in a product roughly add</strong>. If sessions fall 10% and CR falls 5%, GMV falls about 15% (exactly: 1 − 0.90 × 0.95 = 14.5%). Two consequences:</p>
+        <ul>
+          <li><strong>Diagnosis is subtraction.</strong> GMV fell 12%? Find drivers whose percentage falls sum to about 12 and you have explained the drop.</li>
+          <li><strong>Percentages, never absolutes.</strong> "Sessions fell 36,000" and "AOV fell $7" cannot be compared. "Sessions fell 10%" and "AOV fell 10%" hit GMV identically. Always convert to percentage change per driver first.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The one trap</strong>
+          Pass-through works driver by driver only when the drivers are roughly independent. A price cut that lifts CR while cutting AOV moves two levers at once - the tree still shows both moves, but crediting "the price change" needs both branches read together.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Where this idea comes from<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Breaking a top-line ratio into multiplied levers is the <strong>DuPont analysis</strong> move from the 1910s (return on equity = margin x turnover x leverage), and it never stopped working. Ecommerce inherited it as GMV = traffic x conversion x AOV. If driver trees themselves fascinate you - additive trees, flow bridges, leading indicators - the sibling course <a href="https://phoebefu6.github.io/learn-metric-decomposition-with-phoebe/">learn-metric-decomposition-with-phoebe</a> teaches the pattern across six industries. This course keeps the focus on the ecommerce numbers themselves.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1: SIMPLE TREE ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 3</span>
+      <h2>Tree one: the simple GMV tree <span class="tag demo">★ 8 min · everyone builds</span></h2>
+    </div>
+    <p class="lede">Here is Mango Lane's simple tree as a live simulator. Every leaf is editable and GMV recomputes instantly. Read the baseline, then run the drills below.</p>
+
+    <div class="treebox" data-caption="Edit Sessions, Session CR, or AOV and GMV recomputes. Press Simulate a drop, then trace the coral trail to the driver that moved.">
+      <pre class="tree-src">{
+  "unit": "$",
+  "root": {
+    "label": "GMV", "op": "x",
+    "children": [
+      { "label": "Sessions",   "value": 360000, "unit": "sessions" },
+      { "label": "Session CR", "value": 0.027,  "pct": true },
+      { "label": "AOV",        "value": 68,     "unit": "$" }
+    ]
+  }
+}</pre>
+    </div>
+
+    <div class="steps">
+      <div class="step"><p>Read the baseline: 360,000 x 2.7% x $68 = about $661K. Match it to the b2 numbers you computed by hand - same store, same month.</p></div>
+      <div class="step"><p>Drop Session CR from 2.7 to 2.43 (exactly −10%). Watch GMV fall 10%. That is pass-through, live.</p></div>
+      <div class="step"><p>Reset. Now raise AOV from 68 to 74.80 (+10%). GMV rises 10%. Levers work in both directions.</p></div>
+      <div class="step"><p>Press <strong>Simulate a drop</strong>. One driver falls at random and its path lights coral. Say the diagnosis out loud: "GMV fell X% because [driver] fell Y%."</p></div>
+    </div>
+  </section>
+
+  <!-- ============ DEMO 2: FUNNEL-DEEP TREE ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 3</span>
+      <h2>Tree two: open the conversion black box <span class="tag demo">★ 10 min · everyone builds</span></h2>
+    </div>
+    <p class="lede">"Session CR fell" is better than "GMV fell", but CR is still a black box - it hides the whole shopping journey. Replace the single 2.7% with the chain that produces it: PDP penetration (40% of sessions reach a product page) x add-to-cart (25% of those) x checkout start (45% of those) x checkout completion (60% of those). Multiply the chain: 0.40 x 0.25 x 0.45 x 0.60 = 2.7%. Same number, four levers deep.</p>
+
+    <div class="treebox" data-caption="Orders = sessions through the four funnel gates. Every gate is a lever with its own owner - edit any of them.">
+      <pre class="tree-src">{
+  "unit": "$",
+  "root": {
+    "label": "GMV", "op": "x",
+    "children": [
+      { "label": "Orders", "op": "x", "unit": "orders", "children": [
+        { "label": "Sessions",          "value": 360000, "unit": "sessions" },
+        { "label": "PDP penetration",   "value": 0.40, "pct": true },
+        { "label": "Add-to-cart rate",  "value": 0.25, "pct": true },
+        { "label": "Checkout start",    "value": 0.45, "pct": true },
+        { "label": "Checkout completion","value": 0.60, "pct": true }
+      ] },
+      { "label": "AOV", "value": 68, "unit": "$" }
+    ]
+  }
+}</pre>
+    </div>
+
+    <div class="steps">
+      <div class="step"><p>Read the middle node: Orders = 9,720. The funnel chain and the flat 2.7% CR are the same fact at two zoom levels.</p></div>
+      <div class="step"><p>Cut Checkout completion from 60 to 48 (−20%). GMV falls 20% - a checkout bug passes straight through, however healthy the rest of the funnel is.</p></div>
+      <div class="step"><p>Reset. Cut PDP penetration from 40 to 36 (−10%). Same −10% GMV. A navigation problem and a payment problem hit the top line by the same rule - but land on different teams' desks.</p></div>
+      <div class="step"><p>Simulate a drop and name the guilty <em>gate</em>, not just "conversion". That precision is what b4 measures and b5 exploits.</p></div>
+    </div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>Why the deep tree earns its keep:</strong> industry-wide, roughly 70% of carts are abandoned (Baymard Institute's running average across 50 studies is 70.22%). A store watching only "conversion rate" sees a fuzzy 2.7%; a store watching the four gates sees exactly which one leaks worse than its benchmark - and Mango Lane's 60% checkout completion is actually strong (typical Shopify stores complete around 45%, per Littledata's 2025 panel).</p>
+    </div>
+  </section>
+
+  <!-- ============ DEMO 3: CHANNEL TREE ============ -->
+  <section class="section" id="demo-3">
+    <div class="section-kicker">
+      <span class="klabel">Demo 3 of 3</span>
+      <h2>Tree three: GMV as a sum of channels <span class="tag demo">★ 8 min · everyone builds</span></h2>
+    </div>
+    <p class="lede">Trees do not have to multiply. The same $660,960 is also the <strong>sum</strong> of what each traffic channel brought in: organic + paid + CRM + social. The multiply tree answers "which lever?"; the additive tree answers "which slice?". Real diagnosis (b5, b6) uses both.</p>
+
+    <div class="treebox" data-caption="An additive tree: GMV = sum of channel GMV. Drop one channel and only its share of the top line goes with it.">
+      <pre class="tree-src">{
+  "unit": "$",
+  "root": {
+    "label": "GMV", "op": "+",
+    "children": [
+      { "label": "Organic", "value": 264384, "unit": "$" },
+      { "label": "Paid",    "value": 198288, "unit": "$" },
+      { "label": "CRM",     "value": 132192, "unit": "$" },
+      { "label": "Social",  "value": 66096,  "unit": "$" }
+    ]
+  }
+}</pre>
+    </div>
+
+    <div class="steps">
+      <div class="step"><p>Read the shares: organic 40%, paid 30%, CRM 20%, social 10%. They sum to $660,960 exactly - the same month as trees one and two.</p></div>
+      <div class="step"><p>Cut Paid by half (198,288 to 99,144). GMV falls 15% - a 50% fall in a 30% slice moves the total by 0.5 x 30%. In an additive tree, impact = the branch's percentage move x its share.</p></div>
+      <div class="step"><p>Compare the rules: multiplicative pass-through (full percentage) vs additive weighting (percentage x share). Knowing which tree you are reading is half the diagnosis.</p></div>
+    </div>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Which tree when<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Question</th><th>Tree</th><th>Rule</th></tr></thead>
+          <tbody>
+            <tr><td>Which <strong>lever</strong> moved? (rate vs volume vs value)</td><td>Multiplicative (trees 1-2)</td><td>% change passes straight through</td></tr>
+            <tr><td>Which <strong>slice</strong> moved? (channel, device, category)</td><td>Additive (tree 3)</td><td>% change x that slice's share</td></tr>
+            <tr><td>Both - lever first, then slice</td><td>b5's diagnosis walk</td><td>multiply tree aims you, additive tree locates it</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 20-30 min total</span></h2>
+    </div>
+    <ul>
+      <li>Rebuild tree one from memory on paper: three leaves, their baseline values, their owners. If you cannot, replay Demo 1.</li>
+      <li>In the funnel-deep tree, find two different single-leaf edits that each cut GMV by exactly 10%. Notice they land on different owners.</li>
+      <li>Take your own store or product's top-line number and write it as a product of 3-5 levers. Name each lever's owner. An unowned lever is an unwatched lever.</li>
+      <li>Bookmark this page - the simulators are your scratch pad for every later session. Paste your own numbers in whenever you like.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources</span>
+      <h2>Sources this session draws on</h2>
+    </div>
+    <p class="lede">The tree is a craft pattern, not a certificate topic; the numbers inside it are the platform-defined metrics from b1-b2. This page draws on:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">DuPont decomposition heritage - top line as multiplied levers</span><span class="note">Part 1 · the century-old move ecommerce inherited</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Baymard Institute - 70.22% average cart abandonment (50-study average, updated Sep 2025)</span><span class="note">Demo 2 · why the funnel gates deserve their own leaves</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Littledata Shopify panel 2025 - checkout completion averages ~45%</span><span class="note">Demo 2 · Mango Lane's 60% read against a benchmark</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">learn-metric-decomposition-with-phoebe - the full driver-tree craft across six industries</span><span class="note">Self-study card · where to go deeper on trees themselves</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · Sessions fall 10%, everything else flat. In GMV = Sessions x CR x AOV, GMV falls...</p>
+      <button class="qopt" type="button">A · Less than 10% - the other drivers absorb it</button>
+      <button class="qopt" type="button">B · About 10% - a percentage change in one driver passes straight through a product</button>
+      <button class="qopt" type="button">C · 30% - it multiplies across three drivers</button>
+      <p class="qwhy">In a multiplicative tree, a single driver's percentage change flows to the top line at the same percentage. That pass-through is what makes the tree readable at a glance.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · Why replace the flat 2.7% session CR with the four funnel gates in tree two?</p>
+      <button class="qopt" type="button">A · Because 2.7% is too small to plot</button>
+      <button class="qopt" type="button">B · The gates multiply to a different, more accurate number</button>
+      <button class="qopt" type="button">C · Same number, more levers - a CR drop becomes a specific gate with a specific owner</button>
+      <p class="qwhy">0.40 x 0.25 x 0.45 x 0.60 = 2.7% exactly. The deep tree adds no new data - it adds addressability: a navigation problem and a payment bug stop looking identical.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · In the channel tree, Paid (30% of GMV) falls 50%. GMV falls...</p>
+      <button class="qopt" type="button">A · 15% - in an additive tree, impact = the branch's move x its share</button>
+      <button class="qopt" type="button">B · 50% - additive trees pass through like multiplicative ones</button>
+      <button class="qopt" type="button">C · 30% - the whole channel's share disappears</button>
+      <p class="qwhy">Additive branches are weighted by share: 50% x 30% = 15%. Multiplicative levers pass through in full; additive slices pass through by weight. Know which tree you are reading.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Analyst session 3 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The simple tree</b><span>GMV = Sessions x Session CR x AOV = 360,000 x 2.7% x $68 = $660,960. Three levers, three owners.</span></div>
+      <div class="cheat-item"><b>Pass-through</b><span>In a product, a % change in one driver ≈ the same % change in the top line. Small moves roughly add across drivers.</span></div>
+      <div class="cheat-item"><b>The funnel-deep tree</b><span>CR = PDP pen x ATC x checkout start x completion = 0.40 x 0.25 x 0.45 x 0.60 = 2.7%. Same fact, four owners deep.</span></div>
+      <div class="cheat-item"><b>The additive tree</b><span>GMV = organic + paid + CRM + social. Impact of a branch = its % move x its share of the total.</span></div>
+      <div class="cheat-item"><b>Percentages, not absolutes</b><span>Convert every driver move to % change before comparing. Absolute swings across different units mislead.</span></div>
+      <div class="cheat-item"><b>Lever then slice</b><span>Multiply tree answers "which lever". Additive tree answers "which slice". Diagnosis (b5) uses both in that order.</span></div>
+      <div class="cheat-item"><b>Owners</b><span>Sessions - marketing. Funnel gates - product/UX and payments. AOV - merchandising. A drop assigned to a lever is assigned to a team.</span></div>
+      <div class="cheat-item"><b>Running skill</b><span>Build the tree, break it, name the lever. Next: b4 measures the four funnel gates precisely.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Analyst session 3 of 8 · learn-ecommerce-metrics-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b2-core-four-by-hand.html">← Prev: The core four by hand</a> &nbsp;·&nbsp; <a href="b4-funnel-metrics.html">Next: Funnel metrics →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/tree-live.js?v=1"></script>
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

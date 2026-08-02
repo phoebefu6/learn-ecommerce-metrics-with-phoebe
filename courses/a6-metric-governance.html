@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leader session 6 · Metric governance - learn ecommerce metrics with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ecommerce-metrics-with-phoebe</a> / Leader session 6 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Ecommerce Metrics with Phoebe · Leader track · Session 6 of 6</div>
+    <h1>Metric <span class="accent">governance</span></h1>
+    <p class="sub">The final leader session is not about a new metric - it is about the meeting where two correct numbers fight. Marketing says conversion is 3.9%, product says 2.7%, both dashboards are right, and forty-five minutes vanish. Governance is the boring machinery that prevents that: one written definition per metric, a north star with guardrails so it cannot be gamed, and a named owner for every definition. This closes the leader track.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Leader track</span>
+      <span class="chip audience">C-level · category heads · managers</span>
+      <span class="chip audience">Reading mode - no computation</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · One definition per metric</span>
+      <span class="a3" style="flex:4">18-35 · North star &amp; guardrails</span>
+      <span class="a4" style="flex:3">35-45 · Owners &amp; drills</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where you are in the leader track</h2>
+    </div>
+    <p class="lede">You can read the GMV equation (a1), speak the metric dictionary (a2), read a funnel (a3), run a weekly review (a4), and judge benchmarks and seasons (a5). The last piece is making the numbers themselves trustworthy - because every skill above collapses if two dashboards disagree about what "conversion rate" means. That is governance, and it is a leadership job, not an analyst hobby.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill inkpill">Sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      The one-definition-per-metric rule with a declared denominator, a north-star-plus-guardrails pairing so your headline metric cannot be gamed quietly, and the five questions that expose a shaky metric in any meeting. Plus the handover: the analyst track ends by writing the spec sheet (b8) - your job is to demand it exists.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: ONE DEFINITION ============ -->
+  <section class="section" id="onedef">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · the Monday-meeting fight</span>
+      <h2>One definition per metric, written down <span class="tag concept">15 min live</span></h2>
+    </div>
+    <p class="lede">Here is the fight, verbatim from a thousand companies: marketing opens GA4 and reports conversion at <strong>3.9%</strong>. Product opens Shopify and reports <strong>2.7%</strong>. Voices rise. Someone questions the tracking. Someone questions the other team. Both numbers are correct - GA4's purchase journey counts <strong>users</strong>, Shopify's online store conversion rate counts <strong>sessions</strong>. Same store, same month, two denominators. The meeting was not wasted by a wrong number; it was wasted by an <em>unwritten definition</em>.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Before: two teams report two conversion rates and clash in a meeting. After: both point at one written spec sheet.">
+        <style>
+          .gvH { font: 700 13px Inter, sans-serif; fill: #1E1B4B; }
+          .gvV { font: 800 15px Inter, sans-serif; fill: #9A3412; }
+          .gvC { font: 400 11px Inter, sans-serif; fill: #575385; }
+          .gvW { font: 700 13px Inter, sans-serif; fill: #FFFFFF; }
+          .gvS { font: 600 12px Inter, sans-serif; fill: #FFFFFF; }
+          .gvK { font: 700 12px Inter, sans-serif; fill: #575385; letter-spacing: 1px; }
+          .gvN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .gvArr { stroke: #FB923C; stroke-width: 2.5; fill: none; marker-end: url(#gvHead); }
+        </style>
+        <defs>
+          <marker id="gvHead" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="#FB923C"/>
+          </marker>
+        </defs>
+
+        <text class="gvK" x="130" y="44" text-anchor="middle">BEFORE</text>
+        <text class="gvK" x="700" y="44" text-anchor="middle">AFTER</text>
+
+        <!-- before: two teams -->
+        <rect x="30" y="62" width="200" height="66" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="gvH" x="130" y="86" text-anchor="middle">Marketing (GA4)</text>
+        <text class="gvV" x="130" y="110" text-anchor="middle">CR 3.9% · visitors</text>
+
+        <rect x="30" y="172" width="200" height="66" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="gvH" x="130" y="196" text-anchor="middle">Product (Shopify)</text>
+        <text class="gvV" x="130" y="220" text-anchor="middle">CR 2.7% · sessions</text>
+
+        <!-- clash box -->
+        <path class="gvArr" d="M230,95 L292,132"/>
+        <path class="gvArr" d="M230,205 L292,168"/>
+        <rect x="296" y="116" width="180" height="70" rx="10" fill="#9A3412"/>
+        <text class="gvW" x="386" y="142" text-anchor="middle">Monday meeting</text>
+        <text class="gvS" x="386" y="162" text-anchor="middle">both right · 45 min lost</text>
+
+        <!-- big arrow to spec -->
+        <path class="gvArr" d="M476,151 L536,151"/>
+
+        <!-- after: spec sheet -->
+        <rect x="540" y="88" width="310" height="126" rx="12" fill="#EA580C"/>
+        <text class="gvW" x="695" y="114" text-anchor="middle">ONE spec sheet</text>
+        <text class="gvS" x="558" y="138">Metric: conversion rate (default)</text>
+        <text class="gvS" x="558" y="158">Definition: purchase sessions / sessions</text>
+        <text class="gvS" x="558" y="178">Owner: analytics lead · changelog: v1.2</text>
+        <text class="gvS" x="558" y="198">GA4 user-based CR reported separately</text>
+
+        <text class="gvC" x="695" y="234" text-anchor="middle">every dashboard cites this box</text>
+
+        <rect x="30" y="288" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="gvN" x="54" y="300">One written definition with a declared denominator turns a fight into a lookup.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - before and after: two honest numbers, one written spec</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The cure costs one page<span class="mini">6 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Governance sounds heavy; the minimum viable version is one page per metric with four lines:</p>
+        <ul>
+          <li><strong>Name</strong> - the exact phrase people say in meetings ("conversion rate").</li>
+          <li><strong>Definition with denominator</strong> - purchase sessions ÷ total sessions. The denominator is the line that ends fights.</li>
+          <li><strong>Source of truth</strong> - which system's number wins when tools disagree (here: Shopify for CR, with GA4's user-based CR reported as a separate, differently named metric).</li>
+          <li><strong>Owner</strong> - one person's name. Not a team. A name.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The Shopify-vs-GA4 split is the canonical example</strong> because it happens at essentially every store running both tools. Shopify's online store conversion rate divides purchase sessions by total sessions; GA4's purchase journey counts users through a closed funnel. At Mango Lane that is 2.7% vs ~3.9% - a 44% gap with zero business meaning. Companies that never write this down re-fight it monthly.</p>
+        </div>
+      </div>
+    </details>
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>What else belongs on the spec page<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Beyond the four core lines, the spec pages that actually end arguments also declare:</p>
+        <ul>
+          <li><strong>Exclusions and filters</strong> - does AOV exclude gift cards? Does CR exclude internal traffic and bots? Are cancelled orders in or out? (Recall a1: GMV vs revenue has no universal standard - always ask what is netted out.)</li>
+          <li><strong>Period and timezone</strong> - a "day" that ends at midnight UTC and a "day" that ends at local midnight produce different weeks. Pick one, write it down.</li>
+          <li><strong>Refresh cadence</strong> - if the dashboard lags the warehouse by a day, say so on the tile, or every Monday starts with "why is Sunday missing".</li>
+          <li><strong>Related-but-different metrics</strong> - the spec for session CR should name visitor CR as a separate metric, so nobody "corrects" one into the other.</li>
+        </ul>
+        <p>None of this is analytics sophistication. It is the same discipline as a contract: the clauses exist so nobody has to argue from memory.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: NORTH STAR + GUARDRAILS ============ -->
+  <section class="section" id="northstar">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · so the headline cannot be gamed</span>
+      <h2>North star + guardrails <span class="tag concept">12 min live</span></h2>
+    </div>
+    <p class="lede">A north star metric - for most stores GMV or orders - gives everyone one number to move. Useful, and dangerous: any single number can be moved in ways that hurt the business. Deep discounts push GMV up while margin bleeds. Aggressive upsells push GMV up while returns climb and customers do not come back. The fix is never to abandon the north star; it is to <strong>pair it with guardrail metrics</strong> that catch the cheap ways to move it.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two cheap tactics push the GMV north star up; each is caught by a paired guardrail metric">
+        <style>
+          .nsH { font: 700 13px Inter, sans-serif; fill: #1E1B4B; }
+          .nsC { font: 400 11px Inter, sans-serif; fill: #575385; }
+          .nsW { font: 700 13px Inter, sans-serif; fill: #FFFFFF; }
+          .nsS { font: 600 12px Inter, sans-serif; fill: #FFFFFF; }
+          .nsN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .nsArr { stroke: #FB923C; stroke-width: 2.5; fill: none; marker-end: url(#nsHead); }
+          .nsCatch { stroke: #9A3412; stroke-width: 2.5; fill: none; marker-end: url(#nsCatchHead); }
+        </style>
+        <defs>
+          <marker id="nsHead" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="#FB923C"/>
+          </marker>
+          <marker id="nsCatchHead" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="#9A3412"/>
+          </marker>
+        </defs>
+
+        <text class="nsH" x="440" y="34" text-anchor="middle">One north star, two cheap moves, two guardrails that catch them</text>
+
+        <!-- cheap moves (left) -->
+        <rect x="30" y="70" width="212" height="62" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="nsH" x="136" y="94" text-anchor="middle">Deep discounts</text>
+        <text class="nsC" x="136" y="114" text-anchor="middle">everything 30% off</text>
+
+        <rect x="30" y="176" width="212" height="62" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="nsH" x="136" y="200" text-anchor="middle">Aggressive upsells</text>
+        <text class="nsC" x="136" y="220" text-anchor="middle">bundles nobody asked for</text>
+
+        <!-- north star (center) -->
+        <path class="nsArr" d="M242,101 L312,138"/>
+        <path class="nsArr" d="M242,207 L312,170"/>
+        <rect x="316" y="116" width="220" height="76" rx="12" fill="#EA580C"/>
+        <text class="nsW" x="426" y="144" text-anchor="middle">North star: GMV ↑</text>
+        <text class="nsS" x="426" y="166" text-anchor="middle">target hit on paper</text>
+
+        <!-- guardrails (right) -->
+        <path class="nsCatch" d="M536,138 L606,101"/>
+        <path class="nsCatch" d="M536,170 L606,207"/>
+        <rect x="610" y="70" width="240" height="62" rx="10" fill="#9A3412"/>
+        <text class="nsW" x="730" y="94" text-anchor="middle">Gross margin ↓</text>
+        <text class="nsS" x="730" y="114" text-anchor="middle">+ discount rate ↑ · caught</text>
+
+        <rect x="610" y="176" width="240" height="62" rx="10" fill="#9A3412"/>
+        <text class="nsW" x="730" y="200" text-anchor="middle">Return rate ↑</text>
+        <text class="nsS" x="730" y="220" text-anchor="middle">+ repeat purchases ↓ · caught</text>
+
+        <rect x="30" y="268" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="nsN" x="54" y="280">Review the north star only on the same page as its guardrails - never alone.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - every cheap way to move the north star leaves a mark on a guardrail</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The pairing table<span class="mini">6 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Every north star gets two named guardrails, reviewed on the same page, at the same cadence:</p>
+        <table class="clean">
+          <thead><tr><th>North star</th><th>Cheap way to move it</th><th>Guardrails that catch it</th></tr></thead>
+          <tbody>
+            <tr><td><strong>GMV</strong></td><td>Deep discounts on everything</td><td><strong>Gross margin</strong> + discount rate</td></tr>
+            <tr><td><strong>GMV</strong></td><td>Aggressive upsells and bundles</td><td><strong>Return rate</strong> + repeat purchase rate</td></tr>
+            <tr><td><strong>Orders</strong></td><td>Push cheap add-on items</td><td><strong>AOV</strong> + gross margin</td></tr>
+            <tr><td><strong>Conversion rate</strong></td><td>Buy low-intent discount traffic out of the denominator's sight</td><td><strong>Traffic quality</strong> (new-visitor share) + AOV</td></tr>
+          </tbody>
+        </table>
+        <p>The point is symmetry: whoever proposes moving the north star also names the guardrail their tactic would strain. That one norm removes most of the gaming before it starts.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The Goodhart pattern, lightly<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>There is an old observation - usually summarized as Goodhart's law - that when a measure becomes a target, it stops being a good measure. You do not need the academic version; you need the working version: <strong>when a driver becomes a target, watch it start lying</strong>.</p>
+        <ul>
+          <li>Target the CR and someone will trim low-intent traffic out of the denominator - CR "improves", orders do not.</li>
+          <li>Target ATC rate and the button gets bigger while checkout completion quietly falls.</li>
+          <li>Target GMV alone and discounts do the rest.</li>
+        </ul>
+        <p>None of this requires bad actors - just smart people optimizing what you told them to optimize. Guardrails are how leadership says "move this number <em>honestly</em>".</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: OWNERS ============ -->
+  <section class="section" id="owners">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · definitions need a name on them</span>
+      <h2>Who owns the definitions <span class="tag concept">8 min live</span></h2>
+    </div>
+    <p class="lede">A definition nobody owns drifts. A tracking change ships, a filter gets added, a dashboard gets rebuilt - and six months later "conversion rate" quietly means something new, and every trend line that crosses the change date is fiction. Ownership is three small rules, enforced from the top.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Three rules, one demand<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>A named owner per metric.</strong> One person answers for the definition of CR, one for AOV, one for GMV. When two dashboards disagree, the owner adjudicates - not the loudest voice.</li>
+          <li><strong>Definitions change only with a changelog entry.</strong> Date, what changed, why, and which historical numbers are affected. A metric whose history cannot be trusted is worse than no metric.</li>
+          <li><strong>Dashboards cite the spec.</strong> Every tile links to (or names) the definition it implements. If a dashboard cannot say which spec it follows, it is an opinion with colors.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The leader's job in one sentence</strong>
+          You do not write the spec sheet - the analyst track ends with your analysts writing it (session b8). Your job is to <strong>demand that it exists</strong>, ask for it in reviews, and refuse to arbitrate metric fights that a written definition would have prevented.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Five questions that expose a shaky metric<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Ask these about any number that is about to drive a decision. A well-governed metric survives all five in under a minute; a shaky one dies on the second:</p>
+        <ul>
+          <li><strong>1 · Who owns this definition?</strong> If the answer is "the dashboard", nobody does.</li>
+          <li><strong>2 · What is the denominator?</strong> Sessions, visitors, orders, PDP sessions? The a2 reflex, forever.</li>
+          <li><strong>3 · When did it last change?</strong> If nobody knows, trend lines across unknown change dates are unreliable.</li>
+          <li><strong>4 · What would game it?</strong> If nobody can name a cheap way to move it, nobody has thought about it hard enough.</li>
+          <li><strong>5 · Which guardrail watches it?</strong> A target without a guardrail is an invitation.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO: GOVERNANCE DRILL ============ -->
+  <section class="section" id="demo">
+    <div class="section-kicker">
+      <span class="klabel">Demo · read along</span>
+      <h2>Governance drill: three incidents <span class="tag demo">★ 8 min · no computation</span></h2>
+    </div>
+    <p class="lede">Three incidents, described exactly as they surface in real reviews. For each: what governance catches, and which rule did the catching.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Run the drill<span class="mini">8 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <div class="steps">
+          <div class="step"><p><strong>1 · Two dashboards disagree on AOV.</strong> Finance's AOV runs a few dollars higher than the store dashboard's. Nobody changed anything. The spec-sheet answer: one of them excludes gift cards - Shopify's AOV does, by definition (revenue ÷ orders excluding gift cards and post-order adjustments). Both are computable; the spec says which one is <em>the</em> AOV. Rule that caught it: one definition, declared exclusions.</p></div>
+          <div class="step"><p><strong>2 · CR "improved" right after a tracking change.</strong> A new consent banner ships, and session CR jumps the same week. Nothing about shoppers changed - the tracking now records fewer low-intent sessions, shrinking the denominator. That is <strong>definition drift</strong>, not business improvement. Rule that caught it: changelog entry on the change date, flagged in the review before anyone took credit.</p></div>
+          <div class="step"><p><strong>3 · The team hits its GMV target - via discounting.</strong> GMV lands exactly on plan; celebration is scheduled. The guardrail page shows gross margin down and discount rate up: the target was reached by selling dollars for ninety cents. Rule that caught it: north star reviewed only alongside its guardrails, on the same page.</p></div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 15 min total</span></h2>
+    </div>
+    <ul>
+      <li>List your top 5 metrics - the ones that actually appear in your weekly review.</li>
+      <li>For each, write two things: a named owner, and the denominator (or declared exclusions, for value metrics like AOV).</li>
+      <li>Mark which metrics have neither. That short list is your governance backlog - and the first thing to hand your analysts.</li>
+      <li>Pick your north star and write its two guardrails next to it. If you cannot name a cheap way to game the north star, ask the team - they can.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources</span>
+      <h2>Sources this session draws on</h2>
+    </div>
+    <p class="lede">Governance is less about citations and more about craft - but the load-bearing facts on this page come from these, with honesty labels:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Shopify vs GA4 denominator split - session-based online store conversion rate vs GA4's user-counting purchase journey</span><span class="note">Part 1 · the canonical two-truths example (2.7% vs ~3.9%)</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Shopify AOV definition - revenue ÷ orders excluding gift cards and post-order adjustments</span><span class="note">Demo incident 1 · verify against current Shopify docs before quoting</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">The Goodhart pattern - "when a measure becomes a target, it stops being a good measure"</span><span class="note">Part 2 · craft knowledge, taught as a working heuristic, not a formal source</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The metric spec sheet - internal pointer to analyst session b8, where your team writes it</span><span class="note">Part 3 · the artifact this whole session demands</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · Marketing reports CR at 3.9% (GA4), product reports 2.7% (Shopify). Both are correct. What ends this fight permanently?</p>
+      <button class="qopt" type="button">A · Pick whichever tool is more expensive</button>
+      <button class="qopt" type="button">B · One written definition with a declared denominator, and a source of truth per metric</button>
+      <button class="qopt" type="button">C · Re-run the tracking audit every time it happens</button>
+      <p class="qwhy">The numbers differ because the denominators differ - users vs sessions. A written spec (definition + denominator + source of truth + owner) turns the monthly fight into a ten-second lookup.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · The team hits its GMV target through deep discounting. Which guardrail catches it?</p>
+      <button class="qopt" type="button">A · Sessions - traffic reveals everything</button>
+      <button class="qopt" type="button">B · PDP penetration - shoppers saw more products</button>
+      <button class="qopt" type="button">C · Gross margin - GMV rose while the store sold dollars for ninety cents</button>
+      <p class="qwhy">Deep discounts move GMV up and margin down. That is why a north star is only reviewed alongside its guardrails: margin and discount rate for discount-driven GMV; return rate and repeat purchase rate for upsell-driven GMV.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · CR "improves" the same week a tracking change ships. Best first read?</p>
+      <button class="qopt" type="button">A · Definition drift - the denominator changed, not the business; check the changelog</button>
+      <button class="qopt" type="button">B · The redesign worked - take the win</button>
+      <button class="qopt" type="button">C · Coincidence - metrics move all the time</button>
+      <p class="qwhy">A tracking or consent change alters which sessions get counted, shrinking or growing the denominator with zero shopper change. This is exactly what the changelog rule exists for: any metric change gets a dated entry before anyone takes credit for the "improvement".</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Leader session 6 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>One definition per metric</b><span>Written down, with a declared denominator, a source of truth, and a named owner. One page is enough.</span></div>
+      <div class="cheat-item"><b>The canonical split</b><span>Shopify CR counts sessions (2.7%), GA4's journey counts users (~3.9%). Both right - spec decides which is default.</span></div>
+      <div class="cheat-item"><b>North star + guardrails</b><span>GMV via discounts shows in margin; GMV via upsells shows in return rate + repeat purchase rate.</span></div>
+      <div class="cheat-item"><b>The Goodhart reflex</b><span>When a driver becomes a target, watch it start lying. Smart people optimize what you told them to.</span></div>
+      <div class="cheat-item"><b>Named owner</b><span>A person, not a team, answers for each definition. The owner adjudicates when dashboards disagree.</span></div>
+      <div class="cheat-item"><b>Changelog rule</b><span>Definitions change only with a dated entry. Trend lines across silent changes are fiction.</span></div>
+      <div class="cheat-item"><b>Five questions</b><span>Who owns it? What denominator? When did it change? What would game it? Which guardrail watches it?</span></div>
+      <div class="cheat-item"><b>Your one demand</b><span>The analysts write the spec sheet (b8). You demand it exists, cite it in reviews, and refuse spec-less fights.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Leader session 6 of 6 · learn-ecommerce-metrics-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="a5-benchmarks-and-seasonality.html">← Prev: Benchmarks and seasonality</a> &nbsp;·&nbsp; <a href="b1-meet-mango-lane.html">Ready to compute? The analyst track starts at b1 →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/tree-live.js?v=1"></script>
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

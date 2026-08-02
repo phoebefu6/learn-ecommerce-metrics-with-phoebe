@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyst session 5 · Diagnose the drop - learn ecommerce metrics with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ecommerce-metrics-with-phoebe</a> / Analyst session 5 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Ecommerce Metrics with Phoebe · Analyst track · Session 5 of 8</div>
+    <h1>Diagnose <span class="accent">the drop</span></h1>
+    <p class="sub">It is Monday morning. GMV is down 12% week over week, Slack is on fire, and three teams are already blaming each other's launch. Nobody actually knows why. This session gives you the five-step diagnosis workflow that turns that panic into a finding - and you practice it on the live tree until naming the guilty lever takes you minutes, not meetings.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Analyst track</span>
+      <span class="chip audience">Analysts · marketers · ops · founders</span>
+      <span class="chip audience">▶ Live tree simulator</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-15 · The five-step workflow</span>
+      <span class="a3" style="flex:6">15-42 · Live diagnosis drills</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where you are</h2>
+    </div>
+    <p class="lede">You can build the GMV tree (b3) and you know what each funnel gate measures (b4). Today those two skills earn their keep: a real-looking drop lands, and you walk it down the tree until it has a name, a size, an owner, and a fix date. This is the second live-simulator session - the same funnel-deep tree from b3 returns as your diagnosis scratch pad.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">▶ Live tree - editable &amp; runnable</span>
+      <span class="pill inkpill">Sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A five-step drop-diagnosis workflow you can run before the 10am standup, hands-on practice recreating single and compound drops in the live tree, and a one-paragraph finding template that ends the Slack argument instead of feeding it.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: THE SCENARIO + WORKFLOW ============ -->
+  <section class="section" id="workflow">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · the scenario and the workflow</span>
+      <h2>Monday, 9:04am: GMV is down 12% <span class="tag concept">12 min live</span></h2>
+    </div>
+    <p class="lede">The dashboard says Mango Lane's GMV fell 12% week over week. Marketing suspects the site redesign, product suspects the new ad audience, and the founder suspects everything. The worst response is to guess. The best response is a fixed walking order - the same five steps, every drop, every time - so the answer arrives before the opinions harden.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The five-step drop diagnosis workflow from confirming the drop to writing the finding">
+        <style>
+          .dxH { font: 700 13px Inter, sans-serif; fill: #1E1B4B; }
+          .dxS { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .dxC { font: 400 11px Inter, sans-serif; fill: #575385; }
+          .dxN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .dxArr { stroke: #FB923C; stroke-width: 2.5; fill: none; marker-end: url(#dxArrHead); }
+        </style>
+        <defs>
+          <marker id="dxArrHead" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="#FB923C"/>
+          </marker>
+        </defs>
+
+        <rect x="20" y="52" width="150" height="86" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <rect x="35" y="66" width="120" height="22" rx="6" fill="#EA580C"/>
+        <text class="dxS" x="95" y="81" text-anchor="middle">1 · Is it real?</text>
+        <text class="dxH" x="95" y="108" text-anchor="middle">Tracking? Season?</text>
+        <text class="dxC" x="95" y="126" text-anchor="middle">a5's YoY rule first</text>
+
+        <rect x="196" y="52" width="150" height="86" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <rect x="211" y="66" width="120" height="22" rx="6" fill="#EA580C"/>
+        <text class="dxS" x="271" y="81" text-anchor="middle">2 · Which lever?</text>
+        <text class="dxH" x="271" y="108" text-anchor="middle">Top tree</text>
+        <text class="dxC" x="271" y="126" text-anchor="middle">sessions / CR / AOV</text>
+
+        <rect x="372" y="52" width="150" height="86" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <rect x="387" y="66" width="120" height="22" rx="6" fill="#EA580C"/>
+        <text class="dxS" x="447" y="81" text-anchor="middle">3 · Which gate?</text>
+        <text class="dxH" x="447" y="108" text-anchor="middle">Deep tree</text>
+        <text class="dxC" x="447" y="126" text-anchor="middle">the four funnel gates</text>
+
+        <rect x="548" y="52" width="150" height="86" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <rect x="563" y="66" width="120" height="22" rx="6" fill="#EA580C"/>
+        <text class="dxS" x="623" y="81" text-anchor="middle">4 · Which slice?</text>
+        <text class="dxH" x="623" y="108" text-anchor="middle">Segments</text>
+        <text class="dxC" x="623" y="126" text-anchor="middle">channel · device (b6)</text>
+
+        <rect x="724" y="52" width="136" height="86" rx="10" fill="#9A3412"/>
+        <rect x="737" y="66" width="110" height="22" rx="6" fill="#EA580C"/>
+        <text class="dxS" x="792" y="81" text-anchor="middle">5 · Size + write</text>
+        <text class="dxH" x="792" y="108" text-anchor="middle" style="fill:#FFFFFF">The finding</text>
+        <text class="dxC" x="792" y="126" text-anchor="middle" style="fill:#FED7AA">owner + re-check</text>
+
+        <path class="dxArr" d="M170,95 L192,95"/>
+        <path class="dxArr" d="M346,95 L368,95"/>
+        <path class="dxArr" d="M522,95 L544,95"/>
+        <path class="dxArr" d="M698,95 L720,95"/>
+
+        <text class="dxC" x="95" y="168" text-anchor="middle">most drops die here</text>
+        <text class="dxC" x="271" y="168" text-anchor="middle">pass-through math</text>
+        <text class="dxC" x="447" y="168" text-anchor="middle">names the owner</text>
+        <text class="dxC" x="623" y="168" text-anchor="middle">locates the break</text>
+        <text class="dxC" x="792" y="168" text-anchor="middle">ends the argument</text>
+
+        <rect x="20" y="216" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="dxN" x="44" y="228">Fixed order, every time. Skipping step 1 is how teams spend a week fixing a drop that never happened.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the five-step diagnosis walk: real, lever, gate, slice, finding</figcaption>
+    </figure>
+
+    <table class="clean">
+      <thead><tr><th>Step</th><th>The question</th><th>The tool</th><th>What you get</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1 · Real?</strong></td><td>Tracking change? Seasonal gravity?</td><td>Deploy log + a5's YoY comparison</td><td>Permission to proceed - or to stand down</td></tr>
+        <tr><td><strong>2 · Lever</strong></td><td>Sessions, CR, or AOV?</td><td>Top tree + pass-through math</td><td>The guilty lever</td></tr>
+        <tr><td><strong>3 · Gate</strong></td><td>Which funnel gate?</td><td>Deep tree (the b3 simulator below)</td><td>The owning team</td></tr>
+        <tr><td><strong>4 · Slice</strong></td><td>Which channel / device / cohort?</td><td>Segment cuts (b6)</td><td>The location of the break</td></tr>
+        <tr><td><strong>5 · Write</strong></td><td>So what, who, by when?</td><td>The finding template (Demo 2)</td><td>One paragraph that ends the thread</td></tr>
+      </tbody>
+    </table>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Step 1 - confirm the drop is real<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Before touching the tree, rule out the two impostors:</p>
+        <ul>
+          <li><strong>Tracking changes.</strong> Did anything ship last week that touches the analytics tags - a site release, a consent-banner change, an app update? A drop that starts the exact hour of a deploy is a tracking suspect until proven otherwise.</li>
+          <li><strong>Seasonal gravity.</strong> a5's rule: compare year over year, not just week over week. If GMV falls 12% WoW every first week of the month (payday cycles, promo calendars), the drop is the calendar, not the business. Same week last year down a similar amount? Stand down.</li>
+        </ul>
+        <p>Only when the drop survives both checks do you open the tree. Most Monday panics do not survive them.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Steps 2-5 - walk the tree, then write<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <div class="steps">
+          <div class="step"><p><strong>Step 2 - top tree.</strong> GMV = sessions x session CR x AOV. Compute each driver's WoW percentage change. By b3's pass-through rule, the driver moves should roughly sum to the GMV move. One of the three will stick out.</p></div>
+          <div class="step"><p><strong>Step 3 - deep tree.</strong> If CR is the guilty lever, open it into the four gates: PDP penetration, add-to-cart, checkout start, checkout completion. The gate that moved is the gate that names the owning team.</p></div>
+          <div class="step"><p><strong>Step 4 - segments.</strong> Cut the guilty gate by channel, device, and new vs returning to find WHERE it broke. That is b6's whole session - today you just note the pointer.</p></div>
+          <div class="step"><p><strong>Step 5 - size it and write the finding.</strong> One paragraph: what fell, by how much, traced to what, suspected cause, owner, action, re-check date. Demo 2 gives you the template.</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Sizing: turn the percent into dollars<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>"GMV fell 12%" gets attention. "This costs us about $79,000 a month if it holds" gets a fix scheduled. Sizing is one multiplication: the percentage fall x the baseline. At Mango Lane, 12% x $660,960 = <strong>$79,315 per month</strong> of run-rate GMV at risk.</p>
+        <ul>
+          <li><strong>Sizing sets priority.</strong> A $79K/month leak justifies pulling an engineer off the roadmap tonight; a $2K/month leak joins the backlog. Without the dollar figure, urgency is decided by whoever shouts loudest.</li>
+          <li><strong>Size the fix window too.</strong> If the drop started Friday and gets fixed Thursday, the realized cost is roughly a week's slice, not the monthly figure. Say both numbers - "about $18K lost so far, $79K/month pace if unfixed".</li>
+          <li><strong>Round honestly.</strong> $79,315.20 pretends to a precision the estimate does not have. "About $79K" is the analyst's number.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1: LIVE TREE DRILLS ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 2</span>
+      <h2>Recreate the drop in the live tree <span class="tag demo">★ 15 min · everyone builds</span></h2>
+    </div>
+    <p class="lede">The funnel-deep tree from b3 returns, at Mango Lane's healthy baseline. Your job today is the reverse of b3: there you broke the tree to see what happens; here you are handed what happened and must find the break that produces it. That reversal is diagnosis.</p>
+
+    <div class="treebox" data-caption="Your diagnosis scratch pad: recreate any reported drop by editing leaves, and check the math passes through.">
+<pre class="tree-src">{
+  "unit": "$",
+  "root": {
+    "label": "GMV", "op": "x",
+    "children": [
+      { "label": "Orders", "op": "x", "unit": "orders", "children": [
+        { "label": "Sessions",          "value": 360000, "unit": "sessions" },
+        { "label": "PDP penetration",   "value": 0.40, "pct": true },
+        { "label": "Add-to-cart rate",  "value": 0.25, "pct": true },
+        { "label": "Checkout start",    "value": 0.45, "pct": true },
+        { "label": "Checkout completion","value": 0.60, "pct": true }
+      ] },
+      { "label": "AOV", "value": 68, "unit": "$" }
+    ]
+  }
+}</pre>
+    </div>
+
+    <div class="steps">
+      <div class="step"><p><strong>Drill 1 - the single-lever drop.</strong> Recreate Monday's report: cut Checkout completion from 60 to 52.8 (that is exactly -12%). Confirm GMV shows -12%. One lever, full pass-through - if the whole 12% traces to one gate, your diagnosis is already 80% written.</p></div>
+      <div class="step"><p><strong>Drill 2 - the compound drop.</strong> Reset. Now cut Sessions by 5% (360,000 to 342,000) AND Add-to-cart from 25 to 23.25 (that is -7%). Confirm GMV shows about -11.7%: 0.95 x 0.93 = 0.8835. Real drops are often two medium moves, not one big one - the pass-through math is how you check your explanation actually adds up.</p></div>
+      <div class="step"><p><strong>Drill 3 - the reflex builder.</strong> Reset, then press <strong>Simulate a drop</strong> repeatedly. Each time, race to name the guilty gate out loud before reading the note. Ten rounds of this and the walk from "GMV fell" to "checkout completion fell" stops being a procedure and becomes a reflex.</p></div>
+    </div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>Why checkout gets checked early:</strong> checkout is where the most machinery lives - payment providers, address validation, promo codes, 3-D Secure - and industry-wide about 70% of carts are already abandoned there in the best of times (Baymard Institute's running average is 70.22%). A gate that fragile plus a Friday-evening payment deploy is the single most common true answer to a Monday GMV drop.</p>
+    </div>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why compound drops fool smart people<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Drill 2's drop is sneakier than drill 1's, and it is worth naming why. A single -12% lever screams from the dashboard. Two levers at -5% and -7% each look like ordinary weekly wobble on their own charts - neither triggers an alert, neither gets a Slack thread - yet together they produce almost the same top-line damage.</p>
+        <ul>
+          <li><strong>Do not stop at the first suspect.</strong> Finding one lever down 5% does not explain a 12% drop. Run the pass-through check: do the falls you found multiply out to the fall you are explaining? 0.95 alone = -5%. Not enough. Keep walking.</li>
+          <li><strong>Compound drops often mean compound causes.</strong> Sessions -5% (a paused campaign) and add-to-cart -7% (a PDP image bug) can land the same week by pure coincidence. One finding per cause, two owners, two re-check dates.</li>
+          <li><strong>The tree keeps you honest both ways:</strong> it stops you blaming one lever for everything, and stops you declaring victory at half an explanation.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 2: WRITE THE FINDING ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 2</span>
+      <h2>Write the finding <span class="tag demo">★ 10 min · everyone writes</span></h2>
+    </div>
+    <p class="lede">A diagnosis that lives in your head ends nothing. The deliverable is one paragraph, posted where the argument is happening. Same skeleton every time - fill the brackets and hit send.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The one-paragraph finding template<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>"GMV fell [X]% WoW. The drop traces to [lever/gate], which fell [Y]% ([baseline] -&gt; [now]). [Slice detail if known]. Suspected cause: [hypothesis]. Owner: [team]. Action: [fix]. Re-check: [date]."</strong></p>
+        <p>Every bracket is a claim you can defend from the tree. No adjectives, no blame, no "it seems" - numbers, a name, and a date.</p>
+      </div>
+    </details>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The template filled in - Monday's drop<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>"GMV fell 12% WoW. The drop traces to checkout completion, which fell 12% (60% -&gt; 52.8%). Concentrated in mobile sessions paying by card. Suspected cause: payment provider latency spike after Friday's gateway update. Owner: payments team. Action: roll back the gateway config and re-test the card flow. Re-check: Thursday's numbers, posted here."</p>
+        <p>Notice what this paragraph did to the Slack thread: marketing's redesign and the new ad audience are both off the hook without anyone arguing, and there is exactly one next step with exactly one name on it.</p>
+        <div class="callout tip">
+          <strong>The bar for a finding</strong>
+          A finding names a lever, a size, an owner, and a re-check date - or it is just vibes. If any of the four is missing, you are not done diagnosing; you are contributing to the thread.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Keep a finding log<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Post the finding where the argument is happening, then copy it into one running document - a simple dated list of every finding you have written. Three payoffs arrive within a quarter:</p>
+        <ul>
+          <li><strong>Repeat offenders surface.</strong> If checkout completion stars in four findings in three months, the payment stack needs a project, not another rollback. The log turns incidents into a pattern.</li>
+          <li><strong>Re-check dates actually get checked.</strong> A finding with a date in a log is a finding someone follows up on. A finding in a scrolled-away Slack thread is a wish.</li>
+          <li><strong>Your hit rate becomes visible.</strong> When the Thursday re-check confirms the fix, say so in the log. A track record of confirmed findings is what makes the next one believed on sight - and it feeds directly into b7's weekly review pack.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 4: FALSE POSITIVES ============ -->
+  <section class="section" id="false-positives">
+    <div class="section-kicker">
+      <span class="klabel">Part 4 · the drops that are not drops</span>
+      <h2>False positives <span class="tag concept">self-study</span></h2>
+    </div>
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>When the tracking breaks, not the business<span class="mini">4 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The nastiest false positive: a tracking outage masquerading as a conversion drop. The purchase <em>events</em> stop arriving - a tag broken by a release, a consent change, an SDK update - but the <em>orders</em> keep landing in the payment and order systems just fine. Your dashboard shows checkout completion cratering; your warehouse is shipping at full speed.</p>
+        <ul>
+          <li><strong>The cross-check:</strong> before declaring a business problem, compare event-counted orders (from analytics) against order-system orders (from the platform's order admin or finance) for the same period. If the order system shows normal volume while analytics shows a cliff, you have a measurement problem, not a demand problem.</li>
+          <li><strong>The tell:</strong> tracking breaks tend to be sharp cliffs starting at a deploy timestamp, often on one platform (app vs web) only. Real demand problems usually slope.</li>
+          <li><strong>The payoff:</strong> this one check has saved more analyst credibility than any model ever built. Declaring a fake drop real burns trust in every future finding you write.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 20-30 min total</span></h2>
+    </div>
+    <ul>
+      <li>Open your own store's numbers and find last month's worst day. Run the five steps on it for real: real check, top tree, deep tree, one segment cut, sized finding.</li>
+      <li>Write the finding paragraph using the template - even if the honest answer is "seasonal gravity, no action". Practicing the write-up on a boring answer is still practicing the write-up.</li>
+      <li>In the live tree above, invent a compound drop of your own (two levers, different sizes), predict the GMV move with 0.9-something x 0.9-something arithmetic first, then check yourself against the simulator.</li>
+      <li>Find out where your company's order-system order count lives (Shopify admin, finance report, wherever). You want that cross-check bookmarked before you need it at 9am on a Monday.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources</span>
+      <h2>Sources this session draws on</h2>
+    </div>
+    <p class="lede">Diagnosis is a craft workflow built on the course's own earlier machinery plus one industry benchmark. This page draws on:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The pass-through rule (b3) - percentage moves in a multiplicative tree flow to the top line</span><span class="note">Steps 2-3 and both compound-drop drills</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Baymard Institute - 70.22% average cart abandonment (50-study average, updated Sep 2025)</span><span class="note">Demo 1 · why checkout is the usual first suspect</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The YoY seasonality rule (a5) - compare against last year before calling a WoW move real</span><span class="note">Step 1 · the seasonal-gravity check</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">The tracking-outage false-positive pattern - craft knowledge from practice, not a published standard</span><span class="note">Part 4 · the events-vs-orders cross-check</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · GMV is down 12% WoW. What is the very first thing you do?</p>
+      <button class="qopt" type="button">A · Open the deep tree and check the four funnel gates</button>
+      <button class="qopt" type="button">B · Cut by channel to find which traffic source broke</button>
+      <button class="qopt" type="button">C · Check whether the drop is real - tracking changes and the YoY seasonal comparison</button>
+      <p class="qwhy">Step 1 always comes first: rule out tracking changes and seasonal gravity (a5's YoY rule) before opening any tree. Most Monday panics die at step 1 - and diagnosing a drop that never happened costs a week.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · Sessions fall 5% and add-to-cart falls 7% in the same week. GMV falls about...</p>
+      <button class="qopt" type="button">A · 11.7% - because 0.95 x 0.93 = 0.8835</button>
+      <button class="qopt" type="button">B · 12% - percentage falls always add exactly</button>
+      <button class="qopt" type="button">C · 35% - 5 x 7</button>
+      <p class="qwhy">Multiply the survival rates: 0.95 x 0.93 = 0.8835, so GMV lands at 88.35% of baseline - a fall of about 11.7%. Small percentage moves roughly add (5 + 7 = 12 is close), but the multiplication is the exact check.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">3 · Which of these is a complete finding?</p>
+      <button class="qopt" type="button">A · "Conversion looks soft this week, probably the redesign - keeping an eye on it"</button>
+      <button class="qopt" type="button">B · "GMV fell 12%, traced to checkout completion (60% to 52.8%); suspected gateway latency; owner: payments; re-check Thursday"</button>
+      <button class="qopt" type="button">C · "GMV fell 12% and several metrics moved; investigation ongoing across teams"</button>
+      <p class="qwhy">A finding names a lever, a size, an owner, and a re-check date. Option B has all four. The others are vibes - no owner, no size, no date, no end to the Slack thread.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Analyst session 5 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The five steps</b><span>1 real? 2 which lever (top tree) 3 which gate (deep tree) 4 which slice (segments) 5 size it + write the finding.</span></div>
+      <div class="cheat-item"><b>Step 1 gate</b><span>Tracking change at a deploy timestamp? Seasonal gravity (a5's YoY rule)? Most reported drops die here.</span></div>
+      <div class="cheat-item"><b>Pass-through check</b><span>Driver percentage falls should multiply to the GMV fall: 0.95 x 0.93 = 0.8835 means about -11.7%. If they don't, keep looking.</span></div>
+      <div class="cheat-item"><b>Single vs compound</b><span>One lever at -12% and two levers at -5% and -7% look identical at the top line. Only the tree walk tells them apart.</span></div>
+      <div class="cheat-item"><b>Gate = owner</b><span>PDP penetration - navigation. Add-to-cart - PDP/merch. Checkout start - cart UX. Completion - payments. Name the gate, name the team.</span></div>
+      <div class="cheat-item"><b>The finding template</b><span>Fell X% -&gt; traces to [lever] -Y% (baseline -&gt; now) -&gt; suspected cause -&gt; owner -&gt; action -&gt; re-check date.</span></div>
+      <div class="cheat-item"><b>The finding bar</b><span>Lever + size + owner + re-check date, or it is just vibes. All four or keep working.</span></div>
+      <div class="cheat-item"><b>False-positive check</b><span>Compare event-counted orders vs order-system orders before declaring a business problem. Cliffs at deploy time = tracking.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Analyst session 5 of 8 · learn-ecommerce-metrics-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b4-funnel-metrics.html">← Prev: Funnel metrics</a> &nbsp;·&nbsp; <a href="b6-segment-cuts.html">Next: Segment cuts →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/tree-live.js?v=1"></script>
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

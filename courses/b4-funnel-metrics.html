@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyst session 4 · Funnel metrics - learn ecommerce metrics with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ecommerce-metrics-with-phoebe</a> / Analyst session 4 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Ecommerce Metrics with Phoebe · Analyst track · Session 4 of 8</div>
+    <h1>Funnel <span class="accent">metrics</span></h1>
+    <p class="sub">The 2.7% conversion rate you computed in b2 is really four gates multiplied together: reach a product, add to cart, start checkout, finish paying. Today you measure each gate precisely - starting with PDP penetration, the most underrated metric in ecommerce - learn the denominator trap that makes two tools report the "same" gate differently, and benchmark every gate against honest public numbers.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Analyst track</span>
+      <span class="chip audience">Analysts · marketers · ops · founders</span>
+      <span class="chip audience">Four gates, two denominators</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:4">0-16 · The four gates measured</span>
+      <span class="a2" style="flex:3">16-28 · The denominator trap</span>
+      <span class="a3" style="flex:3">28-38 · Benchmarks per gate</span>
+      <span class="a4" style="flex:2">38-45 · Gate audit drill</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ PART 1: THE FOUR GATES ============ -->
+  <section class="section" id="gates">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · the flagship measurement</span>
+      <h2>The four gates, measured precisely <span class="tag concept">16 min live</span></h2>
+    </div>
+    <p class="lede">In a3 the leader track learned to <em>read</em> the funnel's shape. You compute it. Each gate is a ratio: sessions that passed ÷ sessions that reached the gate. Four gates, four divisions, and their product is the session CR to the decimal - that multiplication is the whole reason funnel metrics exist.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mango Lane's four funnel gates with session counts above and gate rates with formulas below">
+        <style>
+          .gtH { font: 700 12px Inter, sans-serif; fill: #1E1B4B; }
+          .gtV { font: 800 16px Inter, sans-serif; fill: #9A3412; }
+          .gtW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .gtWv { font: 800 16px Inter, sans-serif; fill: #FFFFFF; }
+          .gtG { font: 700 12px Inter, sans-serif; fill: #1E1B4B; }
+          .gtR { font: 800 15px Inter, sans-serif; fill: #9A3412; }
+          .gtF { font: 400 11px Inter, sans-serif; fill: #575385; }
+          .gtN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .gtArr { stroke: #FB923C; stroke-width: 2.5; fill: none; marker-end: url(#gtArrHead); }
+          .gtDrop { stroke: #FED7AA; stroke-width: 2; fill: none; }
+        </style>
+        <defs>
+          <marker id="gtArrHead" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="#FB923C"/>
+          </marker>
+        </defs>
+
+        <rect x="20" y="46" width="110" height="64" rx="10" fill="#EA580C"/>
+        <text class="gtW" x="75" y="70" text-anchor="middle">All sessions</text>
+        <text class="gtWv" x="75" y="94" text-anchor="middle">360,000</text>
+
+        <rect x="203" y="46" width="110" height="64" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="gtH" x="258" y="70" text-anchor="middle">PDP sessions</text>
+        <text class="gtV" x="258" y="94" text-anchor="middle">144,000</text>
+
+        <rect x="386" y="46" width="110" height="64" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="gtH" x="441" y="70" text-anchor="middle">Cart sessions</text>
+        <text class="gtV" x="441" y="94" text-anchor="middle">36,000</text>
+
+        <rect x="569" y="46" width="110" height="64" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="gtH" x="624" y="70" text-anchor="middle">Checkout starts</text>
+        <text class="gtV" x="624" y="94" text-anchor="middle">16,200</text>
+
+        <rect x="752" y="46" width="110" height="64" rx="10" fill="#9A3412"/>
+        <text class="gtW" x="807" y="70" text-anchor="middle">Purchases</text>
+        <text class="gtWv" x="807" y="94" text-anchor="middle">9,720</text>
+
+        <path class="gtArr" d="M134,78 L199,78"/>
+        <path class="gtArr" d="M317,78 L382,78"/>
+        <path class="gtArr" d="M500,78 L565,78"/>
+        <path class="gtArr" d="M683,78 L748,78"/>
+
+        <path class="gtDrop" d="M166,88 L166,140"/>
+        <path class="gtDrop" d="M349,88 L349,140"/>
+        <path class="gtDrop" d="M532,88 L532,140"/>
+        <path class="gtDrop" d="M715,88 L715,140"/>
+
+        <text class="gtG" x="166" y="158" text-anchor="middle">Gate 1 · PDP penetration</text>
+        <text class="gtR" x="166" y="179" text-anchor="middle">40%</text>
+        <text class="gtF" x="166" y="196" text-anchor="middle">144,000 / 360,000</text>
+
+        <text class="gtG" x="349" y="158" text-anchor="middle">Gate 2 · add-to-cart</text>
+        <text class="gtR" x="349" y="179" text-anchor="middle">25%</text>
+        <text class="gtF" x="349" y="196" text-anchor="middle">36,000 / 144,000</text>
+
+        <text class="gtG" x="532" y="158" text-anchor="middle">Gate 3 · checkout start</text>
+        <text class="gtR" x="532" y="179" text-anchor="middle">45%</text>
+        <text class="gtF" x="532" y="196" text-anchor="middle">16,200 / 36,000</text>
+
+        <text class="gtG" x="715" y="158" text-anchor="middle">Gate 4 · completion</text>
+        <text class="gtR" x="715" y="179" text-anchor="middle">60%</text>
+        <text class="gtF" x="715" y="196" text-anchor="middle">9,720 / 16,200</text>
+
+        <rect x="20" y="222" width="842" height="34" rx="8" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text class="gtN" x="441" y="244" text-anchor="middle">0.40 x 0.25 x 0.45 x 0.60 = 0.027 = 2.7% session CR - the four gates multiply to b2's number exactly</text>
+
+        <rect x="20" y="278" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="gtN" x="44" y="290">Counts above, rates below: each gate divides a count by the count one step earlier. That is all a funnel metric is.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the four gates with counts, rates, and the formula behind each rate</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Gate 1 - PDP penetration, the underrated one<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Definition:</strong> sessions with at least one <code>view_item</code> ÷ all sessions. <strong>Mango Lane: 144,000 ÷ 360,000 = 40%.</strong> Six in ten sessions never see a single product page - they bounce off the homepage, wander category listings, or lose a fight with search. Nobody adds to cart from a listing thumbnail; the PDP is where conversion begins, so this gate caps everything downstream.</p>
+        <ul>
+          <li><strong>Owners:</strong> navigation, search, merchandising, landing-page relevance. Not the checkout team.</li>
+          <li><strong>Why it is underrated:</strong> most dashboards ship cart and checkout rates by default; PDP penetration you usually have to build. Which means most teams cannot see the gate that filters out 60% of their traffic.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Gates 2-4 - cart, checkout start, completion<span class="mini">7 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Gate 2 · add-to-cart rate:</strong> cart sessions ÷ PDP sessions = 36,000 ÷ 144,000 = <strong>25%</strong>. Of sessions that saw a product, a quarter put something in the cart. Owners: PDP content, price, reviews, size guides, imagery.</li>
+          <li><strong>Gate 3 · checkout start:</strong> checkout sessions ÷ cart sessions = 16,200 ÷ 36,000 = <strong>45%</strong>. More than half of carts never reach checkout - browsing carts, shipping-cost shock, "saving it for payday". Owners: cart UX, shipping transparency, cart reminders.</li>
+          <li><strong>Gate 4 · checkout completion:</strong> purchases ÷ checkout starts = 9,720 ÷ 16,200 = <strong>60%</strong>. Of shoppers who started paying, six in ten finished. Owners: checkout form length, payment methods, errors, trust signals.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The multiplication is the point</strong>
+          Each gate conditions on the previous one, so the product telescopes: 360,000 x 0.40 x 0.25 x 0.45 x 0.60 = 9,720 orders, and 0.40 x 0.25 x 0.45 x 0.60 = 2.7% exactly. If your measured gates do NOT multiply back to your session CR, your gate definitions overlap or your counts disagree - a b2-style cross-foot for funnels.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Who counts sessions, who counts users<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Today's gates are all session-based, matching Shopify's funnel report (sessions with cart additions → reached checkout → completed checkout). GA4's purchase journey report measures the same shape but counts <strong>users</strong> at each of its five steps (session_start → view_item → add_to_cart → begin_checkout → purchase), and it is a <strong>closed funnel</strong> by default - a shopper only counts at a step if they passed through the previous steps.</p>
+        <ul>
+          <li><strong>Consequence:</strong> GA4's step-to-step percentages will not match your session-based gates even with perfect tracking. Different unit (users vs sessions), different funnel rules (closed vs open).</li>
+          <li><strong>The move:</strong> pick one framing for your own review pack (this course: sessions), and translate before comparing anything across tools. b8's spec sheet has a column for exactly this.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: DENOMINATOR TRAP ============ -->
+  <section class="section" id="trap">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · the trap, gate edition</span>
+      <h2>The denominator trap at every gate <span class="tag concept">12 min live</span></h2>
+    </div>
+    <p class="lede">b1 warned you conversion rate has two denominators. Every gate has the same problem. Take add-to-cart: is Mango Lane's ATC rate 25% or 10%? Both - and if you quote one against a benchmark built on the other, you will diagnose a healthy store as sick, or a sick one as healthy.</p>
+
+    <table class="clean">
+      <thead><tr><th>Framing</th><th>Formula</th><th>Mango Lane</th><th>When to use it</th></tr></thead>
+      <tbody>
+        <tr><td><strong>ATC of PDP sessions</strong> (gate framing)</td><td>cart sessions ÷ PDP sessions</td><td>36,000 ÷ 144,000 = <strong>25%</strong></td><td>Diagnosing the PDP itself: content, price, reviews. Isolates gate 2 from gate 1.</td></tr>
+        <tr><td><strong>ATC of ALL sessions</strong> (Littledata / Shopify framing)</td><td>cart sessions ÷ all sessions</td><td>36,000 ÷ 360,000 = <strong>10%</strong></td><td>Comparing against session-based benchmarks (Littledata's Shopify average is 4.6%) and tracking overall shopping intent.</td></tr>
+      </tbody>
+    </table>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Same trap, checkout edition<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Checkout completion is 60% <em>of checkout starts</em> (9,720 ÷ 16,200). But 9,720 purchases ÷ 360,000 sessions is 2.7% <em>of all sessions</em> - the same purchases, a 22x difference in the headline number, purely from the denominator. Neither is wrong; they answer different questions ("how leaky is checkout?" vs "how much traffic becomes orders?").</p>
+        <ul>
+          <li><strong>Mango Lane's session-based ATC of 10%</strong> is genuinely strong - more than double Littledata's 4.6% Shopify average. The 25% gate framing cannot be compared to that 4.6% at all.</li>
+          <li><strong>The habit:</strong> every funnel number you write down gets its denominator written next to it. Every benchmark you cite, find the source's denominator first. The homework makes you do exactly this for your own tools.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>How this bites:</strong> a team reads "average add-to-cart rate is 4.6%" in a Shopify benchmark report, checks their own gate-framed ATC of 25%, and concludes they are 5x above average - champagne. The benchmark was session-based; their true session-based figure was 8%. Still good, but the celebration was built on a denominator mismatch, and next quarter someone reverses the error in the other direction and declares a crisis.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: BENCHMARKS ============ -->
+  <section class="section" id="benchmarks">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · honest yardsticks</span>
+      <h2>Benchmarks per gate, honestly cited <span class="tag concept">10 min live</span></h2>
+    </div>
+    <p class="lede">Gate rates without yardsticks are just numbers. Here is each gate against the strongest public benchmark available - with the source and its denominator named, as promised.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Mango Lane vs the published numbers<span class="mini">6 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Gate</th><th>Mango Lane</th><th>Benchmark</th><th>Verdict</th></tr></thead>
+          <tbody>
+            <tr><td>Add-to-cart (session-based)</td><td>10%</td><td>Dynamic Yield: ~1.7% (luxury) to ~10% (food/beauty) by vertical; Littledata Shopify benchmark, 2025: 4.6% avg</td><td>Strong - top of the published range</td></tr>
+            <tr><td>Cart → purchase</td><td>9,720 ÷ 36,000 = 27% (73% abandonment)</td><td>Baymard Institute: 70.22% average cart abandonment (average of 50 studies, updated Sep 2025)</td><td>Right at benchmark - normal, not a crisis</td></tr>
+            <tr><td>Checkout completion</td><td>60%</td><td>Littledata Shopify benchmark, 2025: avg 45%, top 20% 59%, top 10% 66%</td><td>Strong - around the top decile boundary</td></tr>
+            <tr><td>PDP penetration</td><td>40%</td><td>No solid public benchmark exists - track your own trend instead</td><td>Watch the trend, not a yardstick</td></tr>
+          </tbody>
+        </table>
+        <p>Honesty note: Mango Lane is written as a deliberately <strong>healthy</strong> fashion store - its 2.7% session CR sits above IRP Commerce's fashion average of 1.70%, and its 60% completion beats Littledata's 45% average. Real stores you audit will usually sit below these numbers, and that is exactly what the gate audit is for.</p>
+        <div class="callout tip">
+          <strong>73% of carts abandoned is Tuesday, not a fire</strong>
+          Baymard's 70.22% is the average across 50 studies - abandonment near seventy percent is the industry's resting state, driven by comparison shopping and window carts, not just UX failure. Panic is only warranted when YOUR abandonment moves against its own baseline.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Seeing WHERE checkout leaks - GA4's checkout journey<span class="mini">4 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Gate 4 says checkout loses 40% of starters, but not where. GA4's <strong>checkout journey report</strong> zooms into the gate itself with four steps: <code>begin_checkout</code> → <code>add_shipping_info</code> → <code>add_payment_info</code> → <code>purchase</code>, showing an abandonment percentage at each step. A spike between shipping and payment points at shipping-cost shock; a spike after payment info points at payment errors or a scary final screen. It is the same funnel logic, one level down - gates inside a gate.</p>
+        <ul>
+          <li>Pair it with GA4's purchase journey report (the five-step user funnel from b1) for the full picture: journey report for the funnel, checkout report for the microscope.</li>
+          <li>b5 uses exactly this drill-down move when you diagnose a real drop.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO: GATE AUDIT DRILL ============ -->
+  <section class="section" id="demo-audit">
+    <div class="section-kicker">
+      <span class="klabel">Demo · everyone computes</span>
+      <h2>The gate audit drill <span class="tag demo">★ 7 min · pens out</span></h2>
+    </div>
+    <p class="lede">A bad month lands on your desk: <strong>PDP penetration fell from 40% to 34%; all other gates held flat</strong>. Before anyone opens a dashboard, you can compute exactly what that cost and who owns the fix. This is the drill.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Compute the damage, name the owner<span class="mini">6 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <div class="steps">
+          <div class="step"><p><strong>New PDP sessions:</strong> 360,000 x 0.34 = <strong>122,400</strong> (was 144,000 - the gate now filters out 21,600 more sessions).</p></div>
+          <div class="step"><p><strong>Walk the flat gates:</strong> carts = 122,400 x 0.25 = <strong>30,600</strong>; checkout starts = 30,600 x 0.45 = <strong>13,770</strong>; orders = 13,770 x 0.60 = <strong>8,262</strong>.</p></div>
+          <div class="step"><p><strong>New GMV:</strong> 8,262 x $68 = <strong>$561,816</strong>. Versus baseline: 9,720 - 8,262 = <strong>1,458 orders lost</strong>, $660,960 - $561,816 = <strong>$99,144 GMV lost</strong> - a 15% revenue hit from a six-point slip in one gate.</p></div>
+          <div class="step"><p><strong>Name the owner:</strong> the leak is upstream of the PDP, so it belongs to navigation, search, and merchandising - homepage modules, search relevance, category pages, landing-page match. The checkout team is innocent this month; do not spend their sprint on it.</p></div>
+        </div>
+        <div class="callout win">
+          <strong>★ Why this drill matters</strong>
+          You just quantified a business problem and routed it to the right team using four multiplications - no dashboard, no meeting. That chain (gate change → order change → GMV change → owner) is the core move of b5, where you will diagnose a drop without being told which gate moved.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Run the drill on the other gates<span class="mini">4 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The same arithmetic works for any gate, and running it on all four builds your intuition for which slips hurt most. Try these on paper (baseline: 360,000 sessions, gates 0.40 / 0.25 / 0.45 / 0.60, AOV $68):</p>
+        <ul>
+          <li><strong>Add-to-cart slips 25% → 21%:</strong> orders = 360,000 x 0.40 x 0.21 x 0.45 x 0.60 = 8,165. Lost: 1,555 orders, ~$105,740 GMV. Owner: PDP content, price, reviews.</li>
+          <li><strong>Completion slips 60% → 52%:</strong> orders = 16,200 x 0.52 = 8,424. Lost: 1,296 orders, ~$88,128 GMV. Owner: checkout and payments - and the GA4 checkout journey report tells you which step.</li>
+          <li><strong>The pattern:</strong> a proportional slip in ANY gate costs the same share of orders (the gates multiply, so a 10% relative drop anywhere is a 10% order drop). What differs is who owns the fix and how fast it can ship - which is why naming the gate matters more than sizing the loss.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 25-35 min total</span></h2>
+    </div>
+    <ul>
+      <li>Compute your store's four gates for last month: PDP penetration, add-to-cart, checkout start, checkout completion. Multiply them - do they reproduce your session CR?</li>
+      <li>For each tool you use (GA4, Shopify, anything else), mark which denominator its version of each gate uses - of-all-sessions or of-the-previous-gate. Write it next to the number.</li>
+      <li>Circle the gate furthest below its benchmark (use Part 3's table; for PDP penetration compare against your own previous months). That circle is your store's cheapest improvement.</li>
+      <li>If you have GA4, open the checkout journey report and note which of the three checkout steps leaks most. You will want that answer in b5.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources</span>
+      <h2>Sources this session draws on</h2>
+    </div>
+    <p class="lede">Gate definitions come from the platforms; yardsticks come from published benchmark panels of very different rigor - each is labeled with what it actually measures. This page draws on:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">GA4 purchase journey report - the five-step closed user funnel from session_start to purchase</span><span class="note">Part 1 · the gates as a measurable chain</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">GA4 checkout journey report - begin_checkout → add_shipping_info → add_payment_info → purchase, abandonment per step</span><span class="note">Part 3 self-study · the microscope inside gate 4</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Baymard Institute - 70.22% average cart abandonment (average of 50 studies, updated Sep 2025)</span><span class="note">Part 3 · the strongest abandonment citation there is</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Dynamic Yield benchmarks - add-to-cart ~1.7% to ~10% by vertical, 200M+ uniques rolling panel</span><span class="note">Part 3 · ATC yardstick by vertical</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Shopify funnel stages - sessions with cart additions → reached checkout → completed checkout, each over total sessions</span><span class="note">Part 2 · the session-based framing in the wild</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Littledata Shopify benchmark, 2025 - ATC 4.6%, checkout completion avg 45% / top 10% 66% (one vendor's Shopify panel, not an industry standard)</span><span class="note">Parts 2-3 · useful yardstick, labeled honestly</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · Which of these is Mango Lane's PDP penetration?</p>
+      <button class="qopt" type="button">A · view_item events ÷ pageviews = how much product content gets loaded</button>
+      <button class="qopt" type="button">B · Sessions with at least one view_item ÷ all sessions = 144,000 ÷ 360,000 = 40%</button>
+      <button class="qopt" type="button">C · Product pages ÷ total pages on the site</button>
+      <p class="qwhy">PDP penetration counts SESSIONS that reached at least one product page, over all sessions. Counting raw view_item events would let one shopper browsing 30 dresses inflate the number; counting sessions asks the real question - did this visit ever reach a product at all?</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · One report says Mango Lane's add-to-cart rate is 25%, another says 10%. What is going on?</p>
+      <button class="qopt" type="button">A · One report has a tracking bug - the numbers must match</button>
+      <button class="qopt" type="button">B · The 10% report is excluding mobile sessions</button>
+      <button class="qopt" type="button">C · Different denominators - 36,000 carts over 144,000 PDP sessions (25%) vs over all 360,000 sessions (10%); both are correct</button>
+      <p class="qwhy">Same numerator, two honest denominators. The gate framing (25%) isolates PDP performance; the session framing (10%) is what benchmarks like Littledata's 4.6% use. Quote a gate-framed number against a session-based benchmark and you will be wrong by 2.5x while every input is correct.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · A payment provider has an outage for a week. Which gate takes the hit, and what stays flat?</p>
+      <button class="qopt" type="button">A · Checkout completion drops; PDP penetration, add-to-cart, and checkout start stay flat</button>
+      <button class="qopt" type="button">B · All four gates drop together</button>
+      <button class="qopt" type="button">C · Add-to-cart drops first, then the rest follow</button>
+      <p class="qwhy">Shoppers still reach products, add to cart, and start checkout - the failure happens when they try to PAY, which is gate 4 (purchases ÷ checkout starts). One gate moving while the others hold is the classic signature that tells you where to look - GA4's checkout journey report would show the leak at the add_payment_info → purchase step.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Analyst session 4 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The four gates</b><span>PDP penetration 40% → add-to-cart 25% → checkout start 45% → completion 60%. Product = 2.7% session CR, exactly.</span></div>
+      <div class="cheat-item"><b>PDP penetration</b><span>Sessions with ≥1 view_item ÷ all sessions = 144,000 ÷ 360,000 = 40%. Owners: nav, search, merchandising.</span></div>
+      <div class="cheat-item"><b>The denominator trap</b><span>ATC is 25% of PDP sessions AND 10% of all sessions. Write the denominator next to every rate; check every benchmark's.</span></div>
+      <div class="cheat-item"><b>Checkout, both framings</b><span>Completion = 60% of checkout starts, but 2.7% of all sessions. Same purchases, 22x apart on paper.</span></div>
+      <div class="cheat-item"><b>Baymard 70.22%</b><span>Average cart abandonment across 50 studies. Mango Lane's 73% is right at benchmark - normal, not a fire.</span></div>
+      <div class="cheat-item"><b>Littledata yardsticks</b><span>Shopify panel, 2025: ATC 4.6% (session-based), completion avg 45%, top 10% 66%. ML's 10% and 60% are strong.</span></div>
+      <div class="cheat-item"><b>GA4 checkout journey</b><span>begin_checkout → add_shipping_info → add_payment_info → purchase, abandonment per step. The microscope inside gate 4.</span></div>
+      <div class="cheat-item"><b>The audit drill</b><span>Gate slips → multiply the chain → orders lost → x AOV = GMV lost → name the owner. 34% PDP month: -1,458 orders, -$99,144.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Analyst session 4 of 8 · learn-ecommerce-metrics-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b3-build-the-gmv-tree.html">← Build the GMV driver tree</a> &nbsp;·&nbsp; <a href="b5-diagnose-the-drop.html">Next: Diagnose the drop →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/tree-live.js?v=1"></script>
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

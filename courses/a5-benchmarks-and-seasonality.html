@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leader session 5 · Benchmarks and seasonality - learn ecommerce metrics with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ecommerce-metrics-with-phoebe</a> / Leader session 5 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Ecommerce Metrics with Phoebe · Leader track · Session 5 of 6</div>
+    <h1>Benchmarks and <span class="accent">seasonality</span></h1>
+    <p class="sub">Sooner or later someone slides a chart across the table and says "industry average is 2%, we are behind". This session gives you the two reflexes that keep that moment honest: know what good actually looks like for your vertical, and know when a comparison is even legitimate. No computation today - just the judgment layer: whose benchmark, what denominator, and which season you are standing in.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Leader track</span>
+      <span class="chip audience">C-level · category heads · managers</span>
+      <span class="chip audience">Reading mode - no computation</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · What good looks like</span>
+      <span class="a3" style="flex:4">18-35 · Hygiene &amp; seasonality</span>
+      <span class="a4" style="flex:3">35-45 · Judgment calls</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where you are in the leader track</h2>
+    </div>
+    <p class="lede">You can read the GMV equation (a1), you own a metric dictionary (a2), you can read a funnel (a3), and you run a weekly review (a4). Today adds the outside world: external benchmarks and the calendar. Next session (a6) closes the track with governance - who owns the definitions all of this depends on.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill inkpill">Sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      Your vertical's actual conversion bar (fashion is 1.70%, not "2%"), the two questions that expose a bad benchmark before it wastes a meeting, and the one seasonality rule - compare YoY during peaks, WoW/MoM in business-as-usual - that stops post-sale "drops" from triggering false alarms.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: WHAT GOOD LOOKS LIKE ============ -->
+  <section class="section" id="benchmarks">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers IRP Commerce, Dynamic Yield, Littledata</span>
+      <h2>What good looks like <span class="tag concept">15 min live</span></h2>
+    </div>
+    <p class="lede">"Average ecommerce conversion rate" is a nearly useless number because verticals differ by a factor of ten. IRP Commerce's June 2026 panel puts the overall session CR at <strong>2.03%</strong> - but look at the spread underneath it. A craft-supplies store at 3% is underperforming; a baby-goods store at 1% is a star.</p>
+
+    <table class="clean">
+      <thead><tr><th>Vertical (IRP Commerce, June 2026)</th><th>Session CR</th></tr></thead>
+      <tbody>
+        <tr><td>Arts &amp; crafts</td><td><strong>5.53%</strong></td></tr>
+        <tr><td>Kitchen &amp; home appliances</td><td>2.84%</td></tr>
+        <tr><td>Pet care</td><td>2.70%</td></tr>
+        <tr><td>Health &amp; wellbeing</td><td>2.58%</td></tr>
+        <tr><td><strong>All verticals overall</strong></td><td><strong>2.03%</strong></td></tr>
+        <tr><td>Sports &amp; recreation</td><td>1.95%</td></tr>
+        <tr><td><strong>Fashion, clothing &amp; accessories</strong></td><td><strong>1.70%</strong></td></tr>
+        <tr><td>Toys, games &amp; collectibles</td><td>1.63%</td></tr>
+        <tr><td>Food &amp; drink</td><td>1.31%</td></tr>
+        <tr><td>Baby &amp; child</td><td>0.51%</td></tr>
+      </tbody>
+    </table>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Benchmark ladder: session conversion rates by vertical with Mango Lane's 2.7% highlighted">
+        <style>
+          .blH { font: 700 13px Inter, sans-serif; fill: #1E1B4B; }
+          .blL { font: 600 12px Inter, sans-serif; fill: #1E1B4B; }
+          .blM { font: 400 11px Inter, sans-serif; fill: #575385; }
+          .blW { font: 700 13px Inter, sans-serif; fill: #FFFFFF; }
+          .blN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .blAxis { stroke: #FED7AA; stroke-width: 3; fill: none; }
+          .blRung { stroke: #FB923C; stroke-width: 2; fill: none; }
+        </style>
+        <text class="blH" x="440" y="34" text-anchor="middle">The conversion ladder - one scale, very different bars</text>
+
+        <line class="blAxis" x1="440" y1="52" x2="440" y2="310"/>
+        <text class="blM" x="440" y="326" text-anchor="middle">lower CR ↓</text>
+
+        <!-- left rungs -->
+        <line class="blRung" x1="424" y1="70" x2="440" y2="70"/>
+        <text class="blL" x="416" y="74" text-anchor="end">Arts &amp; crafts 5.53% · IRP</text>
+        <line class="blRung" x1="424" y1="187" x2="440" y2="187"/>
+        <text class="blL" x="416" y="191" text-anchor="end">Kitchen &amp; home 2.84% · IRP</text>
+        <line class="blRung" x1="424" y1="222" x2="440" y2="222"/>
+        <text class="blL" x="416" y="226" text-anchor="end">Overall 2.03% · IRP</text>
+        <line class="blRung" x1="424" y1="249" x2="440" y2="249"/>
+        <text class="blL" x="416" y="253" text-anchor="end">Shopify average 1.4% · Littledata</text>
+        <line class="blRung" x1="424" y1="288" x2="440" y2="288"/>
+        <text class="blL" x="416" y="292" text-anchor="end">Baby &amp; child 0.51% · IRP</text>
+
+        <!-- right rungs -->
+        <line class="blRung" x1="440" y1="77" x2="456" y2="77"/>
+        <text class="blL" x="464" y="81">Beauty 5.37% · Dynamic Yield</text>
+        <line class="blRung" x1="440" y1="236" x2="456" y2="236"/>
+        <text class="blL" x="464" y="240">Fashion 1.70% · IRP</text>
+        <line class="blRung" x1="440" y1="279" x2="456" y2="279"/>
+        <text class="blL" x="464" y="283">Luxury &amp; jewelry 0.71% · Dynamic Yield</text>
+
+        <!-- Mango Lane highlight -->
+        <line class="blRung" x1="440" y1="193" x2="458" y2="193"/>
+        <rect x="458" y="180" width="236" height="26" rx="7" fill="#9A3412"/>
+        <text class="blW" x="576" y="198" text-anchor="middle">Mango Lane 2.7% session CR</text>
+
+        <circle cx="440" cy="70" r="4" fill="#EA580C"/>
+        <circle cx="440" cy="77" r="4" fill="#EA580C"/>
+        <circle cx="440" cy="187" r="4" fill="#EA580C"/>
+        <circle cx="440" cy="193" r="5" fill="#9A3412"/>
+        <circle cx="440" cy="222" r="4" fill="#EA580C"/>
+        <circle cx="440" cy="236" r="4" fill="#EA580C"/>
+        <circle cx="440" cy="249" r="4" fill="#EA580C"/>
+        <circle cx="440" cy="279" r="4" fill="#EA580C"/>
+        <circle cx="440" cy="288" r="4" fill="#EA580C"/>
+
+        <rect x="30" y="336" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="blN" x="54" y="348">Mango Lane sits a full point above its fashion peers - it is a deliberately healthy store.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - session CR benchmarks on one ladder, Mango Lane highlighted</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Three panels, three flavors of "good"<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Three widely quoted benchmark sources, each seeing a different slice of the world:</p>
+        <ul>
+          <li><strong>IRP Commerce (June 2026)</strong> - overall 2.03% (up from 1.85% a year earlier); the vertical table above. Its base is IRP's own merchant panel.</li>
+          <li><strong>Dynamic Yield (rolling, 200M+ unique shoppers)</strong> - the extremes: beauty converts at <strong>5.37%</strong> over 12 months while luxury &amp; jewelry sits at <strong>0.71%</strong>. Same internet, 7x apart - vertical is destiny.</li>
+          <li><strong>Littledata Shopify benchmark, 2025</strong> - average Shopify store CR <strong>1.4%</strong>, and you need <strong>above 4.7%</strong> to be in the top 10%. Down-funnel: average checkout completion is <strong>45%</strong>, top 10% reach <strong>66%</strong>.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>Honesty note about our running store</strong>
+          Mango Lane (2.7% session CR, 60% checkout completion) is a deliberately healthy fashion store - above IRP's fashion 1.70% and well above Littledata's 45% average completion. It was built that way so the course math stays clean. Do not read it as "typical"; read it as "achievable".
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why the bars differ so much by vertical<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The spread is not noise - it is purchase behavior. Craft supplies and pet food are <strong>repeat, low-consideration buys</strong>: the shopper knows exactly what she wants and reorders. Fashion involves browsing, fit anxiety, and comparison across stores. Luxury involves weeks of consideration for one purchase. Baby &amp; child skews to heavy research across many sessions before one big cart.</p>
+        <ul>
+          <li><strong>High CR verticals</strong> - repeat purchases, known SKUs, low ticket. Conversion is the default outcome of a visit.</li>
+          <li><strong>Low CR verticals</strong> - high consideration, high ticket, long journeys. Most sessions are legitimate research, not failures.</li>
+        </ul>
+        <p>Consequence for you as a leader: a target imported from another vertical is not ambitious, it is innumerate.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: BENCHMARK HYGIENE ============ -->
+  <section class="section" id="hygiene">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · panels and denominators</span>
+      <h2>Benchmark hygiene: whose number is that? <span class="tag concept">8 min live</span></h2>
+    </div>
+    <p class="lede">Every benchmark is an average over <em>somebody's</em> stores. IRP averages its own merchant base. Dynamic Yield sees large enterprise brands. Littledata sees Shopify stores - which skew smaller. That is why "average CR" can be 2.03% in one report and 1.4% in another and <strong>both are right</strong>. And underneath the panel question sits the a2 question you already know: is the denominator sessions or visitors?</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Never mix panels in one comparison<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The classic broken slide: "We are at 2.7% (Shopify, sessions), industry is at 3.5% (some enterprise panel, possibly visitors) - we lag." Three ways that comparison can be fiction:</p>
+        <ul>
+          <li><strong>Different store base</strong> - enterprise brands vs Shopify long tail are different planets. Compare against the panel that looks like you.</li>
+          <li><strong>Different denominator</strong> - session-based and visitor-based CR differ by ~40% at Mango Lane (2.7% vs ~3.9%) with zero business difference. Mixing them makes gaps appear and vanish at will.</li>
+          <li><strong>Different period</strong> - a November benchmark vs your March number bakes seasonality into the "gap".</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The best benchmark is in your own warehouse</strong>
+          Your store, same month last year, same definitions, same tracking. It controls for vertical, panel, and denominator all at once. External benchmarks set the ambition level; your own last year sets the trend line. Trust the second more.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The two questions before trusting any benchmark<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Before any external number is allowed into your review, someone answers these out loud:</p>
+        <ul>
+          <li><strong>1 · Whose stores?</strong> What panel produced this - enterprise brands, Shopify long tail, one platform's merchants, one country? Does that base resemble us?</li>
+          <li><strong>2 · What denominator?</strong> Sessions or visitors (or orders, for value metrics)? Does it match how <em>we</em> compute the same metric?</li>
+        </ul>
+        <p>If nobody in the room can answer both, the benchmark is decoration, not evidence. Park it and move on - a meeting that argues against an unverified bar is a meeting wasted twice.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: SEASONALITY ============ -->
+  <section class="section" id="seasonality">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · the calendar is a confounder</span>
+      <h2>Seasonality: compare like with like <span class="tag concept">9 min live</span></h2>
+    </div>
+    <p class="lede">Fashion breathes with the calendar: holiday gifting, season changeovers (spring and autumn drops), and sale events each pull demand forward or push it back. So a raw week-over-week move mixes two stories - what the business did and what the calendar did. The cure is choosing the right comparison window, not staring harder at the chart.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Twelve months of GMV with a summer sale and holiday peak, showing WoW comparison in quiet months and YoY comparison at the peak">
+        <style>
+          .szM { font: 600 11px Inter, sans-serif; fill: #575385; }
+          .szL { font: 600 12px Inter, sans-serif; fill: #1E1B4B; }
+          .szA { font: 700 12px Inter, sans-serif; fill: #9A3412; }
+          .szN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .szNow { stroke: #EA580C; stroke-width: 3; fill: none; }
+          .szPast { stroke: #FED7AA; stroke-width: 2.5; fill: none; stroke-dasharray: 6 5; }
+          .szArr { stroke: #FB923C; stroke-width: 2.5; fill: none; marker-end: url(#szHead); }
+          .szAxis { stroke: #FED7AA; stroke-width: 2; fill: none; }
+        </style>
+        <defs>
+          <marker id="szHead" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0,0 L9,4.5 L0,9 z" fill="#FB923C"/>
+          </marker>
+        </defs>
+
+        <!-- legend -->
+        <line class="szNow" x1="40" y1="36" x2="80" y2="36"/>
+        <text class="szL" x="88" y="40">this year</text>
+        <line class="szPast" x1="180" y1="36" x2="220" y2="36"/>
+        <text class="szL" x="228" y="40">last year</text>
+
+        <!-- last year dashed -->
+        <polyline class="szPast" points="60,230 130,225 200,222 270,220 340,212 410,155 480,218 550,220 620,212 690,196 760,110 830,122"/>
+        <!-- this year solid -->
+        <polyline class="szNow" points="60,215 130,210 200,205 270,205 340,195 410,130 480,200 550,205 620,195 690,175 760,80 830,95"/>
+
+        <!-- peak annotations -->
+        <text class="szA" x="410" y="112" text-anchor="middle">Summer sale</text>
+        <text class="szA" x="770" y="62" text-anchor="middle">Holiday peak</text>
+
+        <!-- WoW arrow in BAU -->
+        <path class="szArr" d="M200,242 L266,242"/>
+        <text class="szL" x="233" y="260" text-anchor="middle">WoW · quiet months</text>
+
+        <!-- YoY arrow at the peak -->
+        <path class="szArr" d="M760,108 L760,88"/>
+        <text class="szL" x="748" y="103" text-anchor="end">YoY</text>
+
+        <!-- axis -->
+        <line class="szAxis" x1="40" y1="264" x2="850" y2="264"/>
+        <text class="szM" x="60" y="280" text-anchor="middle">Jan</text>
+        <text class="szM" x="130" y="280" text-anchor="middle">Feb</text>
+        <text class="szM" x="200" y="280" text-anchor="middle">Mar</text>
+        <text class="szM" x="270" y="280" text-anchor="middle">Apr</text>
+        <text class="szM" x="340" y="280" text-anchor="middle">May</text>
+        <text class="szM" x="410" y="280" text-anchor="middle">Jun</text>
+        <text class="szM" x="480" y="280" text-anchor="middle">Jul</text>
+        <text class="szM" x="550" y="280" text-anchor="middle">Aug</text>
+        <text class="szM" x="620" y="280" text-anchor="middle">Sep</text>
+        <text class="szM" x="690" y="280" text-anchor="middle">Oct</text>
+        <text class="szM" x="760" y="280" text-anchor="middle">Nov</text>
+        <text class="szM" x="830" y="280" text-anchor="middle">Dec</text>
+
+        <rect x="40" y="290" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="szN" x="64" y="302">During a peak compare YoY; in quiet months compare WoW/MoM; after a sale, expect gravity.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - two years of GMV: short arrows for quiet months, the tall arrow for peaks</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The one rule: YoY at peaks, WoW/MoM in BAU<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Keep two baselines and know which one you are standing on:</p>
+        <ul>
+          <li><strong>Business-as-usual (BAU) weeks</strong> - no campaign, no season change. Here WoW and MoM are meaningful: the calendar is roughly constant, so a move is probably the business.</li>
+          <li><strong>Peak or campaign weeks</strong> - holiday, a sale event, a season drop. Here WoW is meaningless (of course sale week beats the week before it). Compare against <strong>the same peak last year</strong>: this Black-Friday week vs last Black-Friday week.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The post-sale "collapse".</strong> The week after a big sale, GMV drops hard and someone calls an emergency meeting. But a sale pulls demand forward - shoppers who would have bought next week bought this week at a discount. The drop after is usually <strong>gravity, not disease</strong>. The tell: compare the post-sale week to the post-sale week last year. If it is in line, nothing is wrong.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Fashion's calendar in one list<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The peaks a fashion store like Mango Lane lives around - worth writing into the review calendar so nobody is surprised twice a year:</p>
+        <ul>
+          <li><strong>Holiday gifting</strong> - the November-December wave; the biggest YoY-only zone of the year.</li>
+          <li><strong>Season changeovers</strong> - spring and autumn collection drops lift traffic and PDP views; markdowns on outgoing stock lift CR but compress AOV.</li>
+          <li><strong>Sale events</strong> - planned promotions pull demand forward. Expect the trough after; budget for it in the forecast so it never reads as a surprise.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO: JUDGMENT CALLS ============ -->
+  <section class="section" id="demo">
+    <div class="section-kicker">
+      <span class="klabel">Demo · read along</span>
+      <h2>Three judgment calls <span class="tag demo">★ 8 min · no computation</span></h2>
+    </div>
+    <p class="lede">Three moments that actually happen in reviews. For each: the reflex a benchmark-literate leader applies before reacting.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Call it: bad number or bad comparison?<span class="mini">8 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <div class="steps">
+          <div class="step"><p><strong>1 · "Our CR is 1.9% - that is terrible."</strong> Terrible against what? This is a fashion store: IRP's fashion bar is <strong>1.70%</strong>, so 1.9% is <em>above</em> vertical peers. Against the all-vertical 2.03% it looks weak - but that average is mostly other people's categories. Verdict: context first, judgment second.</p></div>
+          <div class="step"><p><strong>2 · "GMV is down 30% in the first week of January - panic?"</strong> The first week of January follows the biggest peak of the year. That is post-peak gravity. The check: same week last year. If January week 1 is down 30% vs December every year, the business is behaving normally. Verdict: YoY before alarm bells.</p></div>
+          <div class="step"><p><strong>3 · "Industry average is 2.03%, so our target is 2.03%."</strong> Wrong panel (IRP's merchant base, not yours), wrong vertical (that average is dominated by non-fashion categories), and unstated denominator. A fashion store beating 1.70% is doing fine; importing 2.03% as a target punishes the team for the category they work in. Verdict: targets come from your vertical's bar and your own last year.</p></div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 15 min total</span></h2>
+    </div>
+    <ul>
+      <li>Pull your vertical's row from any benchmark source you trust (IRP, Dynamic Yield, Littledata, or your platform's own report). Write the number down.</li>
+      <li>Next to it, write the two hygiene answers <em>before</em> you ever quote it: whose stores is this panel, and what denominator does it use?</li>
+      <li>Mark your business's two or three peaks on a 12-month calendar. For each, note the comparison you will accept in reviews: YoY at the peak, WoW/MoM elsewhere.</li>
+      <li>Optional: find last year's post-peak trough in your numbers. Knowing its usual depth is the cheapest panic-prevention you will ever buy.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources</span>
+      <h2>Sources this session draws on</h2>
+    </div>
+    <p class="lede">Benchmarks age and panels differ - that is half the lesson. These are the sources behind today's numbers, with honesty labels:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">IRP Commerce market data, June 2026 - overall 2.03% and the per-vertical table</span><span class="note">Part 1 · the vertical spread</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Dynamic Yield benchmarks (rolling, 200M+ uniques) - beauty 5.37% high, luxury &amp; jewelry 0.71% low</span><span class="note">Part 1 · the extremes of the ladder</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Littledata Shopify benchmark, 2025 - avg CR 1.4%, top 10% above 4.7%; checkout completion avg 45%, top 10% 66%</span><span class="note">Secondary-relayed figures - labeled as such, verify before quoting externally</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Baymard Institute - 70.22% average cart abandonment (average of 50 studies, updated Sep 2025)</span><span class="note">Context from a3/a4 · the strongest citation in this course</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · A fashion store reports 1.9% session CR. Your best first read?</p>
+      <button class="qopt" type="button">A · Bad - the industry average is 2.03%</button>
+      <button class="qopt" type="button">B · Meaningless - conversion rates cannot be compared at all</button>
+      <button class="qopt" type="button">C · Healthy - it is above IRP's fashion vertical at 1.70%</button>
+      <p class="qwhy">Vertical first. The 2.03% overall average is dominated by other categories; fashion's bar is 1.70%, so 1.9% is above peers. Comparisons are fine - they just have to be against the right panel and vertical.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">2 · GMV falls 30% in the week after your biggest sale of the year. What is the right check before reacting?</p>
+      <button class="qopt" type="button">A · Compare to last week - a 30% drop is a 30% drop</button>
+      <button class="qopt" type="button">B · Compare to the same post-sale week last year - sales pull demand forward</button>
+      <button class="qopt" type="button">C · Cut the marketing budget immediately</button>
+      <p class="qwhy">A sale pulls next week's demand into sale week, so the trough after is gravity, not disease. During and around peaks the honest comparison is YoY; WoW only works in business-as-usual weeks.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · Before any external benchmark is allowed into your review, which two questions must be answered?</p>
+      <button class="qopt" type="button">A · Whose stores are in the panel, and what denominator does it use?</button>
+      <button class="qopt" type="button">B · How old is the report, and how pretty is the chart?</button>
+      <button class="qopt" type="button">C · Which consultancy published it, and how big is the sample?</button>
+      <p class="qwhy">Panel and denominator are the two silent assumptions that make benchmark gaps appear or vanish. Recency and sample size matter too - but a fresh, huge panel of stores unlike yours, measured on a different denominator, is still fiction.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Leader session 5 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The vertical spread</b><span>IRP June 2026: overall 2.03%, arts &amp; crafts 5.53%, fashion 1.70%, baby &amp; child 0.51%. Vertical is destiny.</span></div>
+      <div class="cheat-item"><b>The extremes</b><span>Dynamic Yield: beauty 5.37% vs luxury &amp; jewelry 0.71%. Same internet, 7x apart.</span></div>
+      <div class="cheat-item"><b>Shopify reality</b><span>Littledata 2025: avg CR 1.4%, top 10% above 4.7%; checkout completion avg 45%, top 10% 66%.</span></div>
+      <div class="cheat-item"><b>Mango Lane honesty</b><span>2.7% CR and 60% completion is a deliberately healthy fashion store - above these bars, by design.</span></div>
+      <div class="cheat-item"><b>Two questions first</b><span>Whose stores (panel)? What denominator (sessions vs visitors)? No answers, no benchmark.</span></div>
+      <div class="cheat-item"><b>Never mix panels</b><span>IRP = its merchants, Dynamic Yield = enterprise brands, Littledata = Shopify stores. One comparison, one panel.</span></div>
+      <div class="cheat-item"><b>The seasonality rule</b><span>During a peak compare YoY; in BAU weeks compare WoW/MoM. Post-sale drops are usually gravity.</span></div>
+      <div class="cheat-item"><b>Best benchmark</b><span>Your own store, same period last year, same definitions. External bars set ambition; your history sets the trend.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Leader session 5 of 6 · learn-ecommerce-metrics-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="a4-weekly-business-review.html">← Prev: Weekly business review</a> &nbsp;·&nbsp; <a href="a6-metric-governance.html">Next: Metric governance →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/tree-live.js?v=1"></script>
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyst session 6 · Segment cuts - learn ecommerce metrics with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ecommerce-metrics-with-phoebe</a> / Analyst session 6 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Ecommerce Metrics with Phoebe · Analyst track · Session 6 of 8</div>
+    <h1>Segment <span class="accent">cuts</span></h1>
+    <p class="sub">The tree told you WHICH lever moved (b5). Segments tell you WHERE. Cut the same metric by channel, device, and new vs returning and a fuzzy store-wide drop becomes "mobile paid traffic after Tuesday's app release". But segments carry the sneakiest trap in all of ecommerce analytics - the mix effect - and today you compute your way through it so it never fools you again.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Analyst track</span>
+      <span class="chip audience">Analysts · marketers · ops · founders</span>
+      <span class="chip audience">Arithmetic by hand - bring a calculator</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-15 · The three standard cuts</span>
+      <span class="a3" style="flex:6">15-42 · Mix effect + cut discipline</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where you are</h2>
+    </div>
+    <p class="lede">b5's workflow ended at step 4 with a pointer: "cut by segments - see b6". This is b6. You learn the three standard cuts every analyst runs, the mix effect that makes blended numbers lie while every segment tells the truth, and the discipline of cutting in a fixed order and stopping. Next session (b7) packages all of it into the weekly review pack.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill peach">▶ Live tree - editable &amp; runnable</span>
+      <span class="pill inkpill">Sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      The three standard cuts (channel, device, new vs returning), the mix-effect arithmetic worked by hand until you can spot a fake CR move on sight, and a fixed cut order that finds the broken slice without drowning in dashboards.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: THE THREE CUTS ============ -->
+  <section class="section" id="cuts">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · the three standard cuts</span>
+      <h2>The tree says which lever - segments say where <span class="tag concept">12 min live</span></h2>
+    </div>
+    <p class="lede">"Session CR fell 8%" is a lever. But Mango Lane's CR is not one number - it is a blend of many populations converting at different rates. Three cuts cover most diagnoses: <strong>channel</strong> (organic, paid, CRM, social), <strong>device</strong> (mobile, desktop), and <strong>new vs returning</strong>.</p>
+
+    <table class="clean">
+      <thead><tr><th>Cut</th><th>The question it answers</th><th>What typically breaks it</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Channel</strong></td><td>Did one traffic source break?</td><td>Paused campaigns, search algorithm updates, broken email links</td></tr>
+        <tr><td><strong>Device</strong></td><td>Did one platform break?</td><td>App releases, mobile checkout changes, responsive-layout bugs</td></tr>
+        <tr><td><strong>New vs returning</strong></td><td>Did acquisition quality shift?</td><td>New audiences, discount-hunting promo traffic, an aging customer base</td></tr>
+      </tbody>
+    </table>
+
+    <p class="lede">Here is the device cut at Mango Lane's baseline - the same month you already know.</p>
+
+    <table class="clean">
+      <thead><tr><th>Device</th><th>Sessions</th><th>Session CR</th><th>Orders</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Mobile</strong></td><td>252,000</td><td>2.4%</td><td>6,048</td></tr>
+        <tr><td><strong>Desktop</strong></td><td>108,000</td><td>3.4%</td><td>3,672</td></tr>
+        <tr><td><strong>Total</strong></td><td>360,000</td><td><strong>2.7% blended</strong></td><td>9,720</td></tr>
+      </tbody>
+    </table>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Read the device table like an analyst<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Three things to notice before we break it:</p>
+        <ul>
+          <li><strong>The cut reconciles exactly.</strong> 6,048 + 3,672 = 9,720 orders; 252,000 + 108,000 = 360,000 sessions; and 9,720 / 360,000 = 2.7% blended. If your segments do not sum back to the total, you have a tracking gap, not a diagnosis.</li>
+          <li><strong>Mobile converts lower - everywhere, not just here.</strong> Littledata's 2025 Shopify benchmark puts mobile CR at 1.2% vs desktop 1.9%. Smaller screens, more window-shopping, more checkout friction. Mango Lane's 2.4% vs 3.4% follows the same pattern from a healthier baseline.</li>
+          <li><strong>The blended 2.7% sits between the segments, weighted by traffic.</strong> Mobile is 70% of sessions, so the blend leans toward mobile's 2.4%. Hold that thought - it is about to matter a lot.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>Reconciliation is the entry ticket</strong>
+          Before trusting any cut, add the segments back up. Sessions, orders, and GMV must each sum to the store total. A cut that does not reconcile means some traffic is unlabeled - and the unlabeled bucket is where broken tracking hides.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why exactly these three cuts<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>You can slice by dozens of properties - category, price band, region, browser, hour of day. The three standard cuts earn their place because each maps to a distinct <em>cause family</em> with a distinct owner:</p>
+        <ul>
+          <li><strong>Channel = acquisition machinery.</strong> Campaigns, budgets, algorithms, email sends. Breaks are frequent, sharp, and owned by marketing.</li>
+          <li><strong>Device = the product surface.</strong> Code ships per-platform, so bugs land per-device. Owned by engineering and product.</li>
+          <li><strong>New vs returning = audience quality.</strong> Shifts are slow and compositional. Owned by acquisition strategy and CRM together.</li>
+          <li><strong>Everything else is situational.</strong> Cut by category when merchandising changed, by region when logistics changed. Add a cut when you have a hypothesis, not because the dropdown offers it.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 1: THE MIX EFFECT ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 of 2</span>
+      <h2>The mix effect: the trap of the session <span class="tag demo">★ 15 min · everyone computes</span></h2>
+    </div>
+    <p class="lede">Next month, paid marketing pushes app installs hard and the traffic mix shifts: <strong>280,000 mobile / 80,000 desktop</strong> sessions. Here is the trap: <strong>both segment CRs hold exactly</strong> - mobile still 2.4%, desktop still 3.4%. Not a single shopper behaves differently. Now compute the blend by hand.</p>
+
+    <div class="steps">
+      <div class="step"><p>Mobile orders: 280,000 x 0.024 = <strong>6,720</strong>. Desktop orders: 80,000 x 0.034 = <strong>2,720</strong>.</p></div>
+      <div class="step"><p>Total orders: 6,720 + 2,720 = <strong>9,440</strong> across the same 360,000 sessions.</p></div>
+      <div class="step"><p>Blended CR: 9,440 / 360,000 = <strong>2.62%</strong>. Last month it was 2.70%.</p></div>
+      <div class="step"><p>Read the result out loud: blended CR "fell" 3% with <strong>zero behavior change</strong>. More traffic simply moved to the lower-converting device. That is the mix effect - pure composition, no conversion problem anywhere.</p></div>
+    </div>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Before and after panels showing segment conversion rates flat while blended conversion rate falls due to mix shift">
+        <style>
+          .mxT { font: 800 14px Inter, sans-serif; fill: #FFFFFF; }
+          .mxH { font: 700 12px Inter, sans-serif; fill: #1E1B4B; }
+          .mxV { font: 800 13px Inter, sans-serif; fill: #9A3412; }
+          .mxC { font: 400 11px Inter, sans-serif; fill: #575385; }
+          .mxN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .mxBar { fill: #FB923C; }
+          .mxBlend { fill: #9A3412; }
+        </style>
+
+        <rect x="20" y="20" width="410" height="34" rx="8" fill="#EA580C"/>
+        <text class="mxT" x="225" y="42" text-anchor="middle">Before · mix 70% mobile / 30% desktop</text>
+        <rect x="450" y="20" width="410" height="34" rx="8" fill="#EA580C"/>
+        <text class="mxT" x="655" y="42" text-anchor="middle">After · mix 78% mobile / 22% desktop</text>
+
+        <rect x="20" y="54" width="410" height="186" rx="8" fill="#FFF7ED" stroke="#FED7AA"/>
+        <rect x="450" y="54" width="410" height="186" rx="8" fill="#FFF7ED" stroke="#FED7AA"/>
+
+        <text class="mxH" x="40" y="88">Mobile CR</text>
+        <rect class="mxBar" x="150" y="76" width="144" height="16" rx="4"/>
+        <text class="mxV" x="304" y="89">2.4%</text>
+        <text class="mxH" x="40" y="128">Desktop CR</text>
+        <rect class="mxBar" x="150" y="116" width="204" height="16" rx="4"/>
+        <text class="mxV" x="364" y="129">3.4%</text>
+        <text class="mxH" x="40" y="168">Blended CR</text>
+        <rect class="mxBlend" x="150" y="156" width="162" height="16" rx="4"/>
+        <text class="mxV" x="322" y="169">2.70%</text>
+        <text class="mxC" x="40" y="212">252,000 mobile · 108,000 desktop · 9,720 orders</text>
+
+        <text class="mxH" x="470" y="88">Mobile CR</text>
+        <rect class="mxBar" x="580" y="76" width="144" height="16" rx="4"/>
+        <text class="mxV" x="734" y="89">2.4%</text>
+        <text class="mxH" x="470" y="128">Desktop CR</text>
+        <rect class="mxBar" x="580" y="116" width="204" height="16" rx="4"/>
+        <text class="mxV" x="794" y="129">3.4%</text>
+        <text class="mxH" x="470" y="168">Blended CR</text>
+        <rect class="mxBlend" x="580" y="156" width="157" height="16" rx="4"/>
+        <text class="mxV" x="747" y="169">2.62%</text>
+        <text class="mxC" x="470" y="212">280,000 mobile · 80,000 desktop · 9,440 orders</text>
+
+        <rect x="20" y="264" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="mxN" x="44" y="276">Both segment CRs identical in both panels. Only the mix moved - and the blended number fell anyway.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - segment CRs flat, blended CR down: the mix effect in one picture</figcaption>
+    </figure>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>This pattern has a famous name.</strong> It is a Simpson's-paradox-style reversal: every part can hold steady (or even improve) while the blend moves the other way, purely because the weights shifted. It runs in reverse too - a store whose blended CR is "improving" may just be acquiring less low-intent traffic. Either direction, the fix is the same: look at segment rates AND segment mix before crediting behavior.</p>
+    </div>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Split any blended move into rate and mix<span class="mini">4 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The general two-step decomposition, usable on any blended metric:</p>
+        <div class="steps">
+          <div class="step"><p><strong>Counterfactual blend:</strong> apply this period's mix to LAST period's segment rates. For our shift: (280,000 x 0.024 + 80,000 x 0.034) / 360,000 = 2.62%. This is what the blend "should" be if only the mix moved.</p></div>
+          <div class="step"><p><strong>Mix piece:</strong> counterfactual minus last period's actual. 2.62% - 2.70% = <strong>-0.08 points from mix</strong>.</p></div>
+          <div class="step"><p><strong>Rate piece:</strong> this period's actual minus the counterfactual. Here 2.62% - 2.62% = <strong>0.00 points from behavior</strong>. The entire move was composition - and now you can say so with arithmetic, not intuition.</p></div>
+        </div>
+        <p>When both pieces are nonzero (the usual real-world case), the split tells you how much of the story belongs to acquisition (mix) and how much to the site experience (rate) - which is exactly the line between the marketing team's problem and the product team's problem.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: NEW VS RETURNING + CHANNEL ============ -->
+  <section class="section" id="new-returning">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · the third cut</span>
+      <h2>New vs returning - mix in disguise <span class="tag concept">8 min live</span></h2>
+    </div>
+    <p class="lede">Shopify's <strong>returning customer rate</strong> = returning customers / (returning + first-time customers) in the period. Returning customers convert better and spend more - they already trust the store, know their size, have a saved card. Which sets up the same trap at a slower speed.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The store that "improved" by aging<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A store two years into its life sees CR climb quarter after quarter and credits its UX roadmap. Cut by new vs returning and both segment CRs are flat - the store is simply aging into a returning-heavy base, and returning customers convert better. Mix again, on a quarterly clock instead of a weekly one.</p>
+        <p>A quick illustration with made-up round numbers (not Mango Lane's): say new visitors convert at 2.0% and returning at 4.5%, both flat all year. Returning share grows from 20% to 35% of sessions as the base matures. Blended CR moves from 2.0 x 0.80 + 4.5 x 0.20 = <strong>2.5%</strong> to 2.0 x 0.65 + 4.5 x 0.35 = <strong>2.875%</strong> - a 15% "improvement" in which not one visitor behaved differently.</p>
+        <ul>
+          <li><strong>Why it matters:</strong> if the CR gain is mix, then acquisition is quietly stalling while the dashboard celebrates. The blend hides exactly the problem you most need to see.</li>
+          <li><strong>The check is always the same:</strong> segment rates flat + mix shifted = composition story. Segment rates moved = behavior story. Run the check before writing the narrative.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Channel cuts and the additive rule<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The channel cut uses the additive tree from b3: Mango Lane's GMV splits Organic 40% / Paid 30% / CRM 20% / Social 10%. The rule from b3 applies directly: <strong>additive impact = the branch's move x its share</strong>.</p>
+        <ul>
+          <li>Paid falls 20%? Top-line impact = 20% x 30% share = 6% of GMV.</li>
+          <li>Social falls 20%? Impact = 20% x 10% = 2%. Same percentage fall, a third of the damage - share is what converts a channel move into a GMV move.</li>
+          <li>This is why the channel cut comes first in the discipline below: one broken source with a big share explains a big drop fast.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO 2: THE CUT DISCIPLINE ============ -->
+  <section class="section" id="demo-2">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 of 2</span>
+      <h2>The cut discipline <span class="tag demo">★ 8 min · everyone works</span></h2>
+    </div>
+    <p class="lede">Segments are powerful and bottomless - you can cut by channel x device x cohort x category until every cell has three sessions in it and everything looks broken. The discipline: a fixed order, and a stopping rule.</p>
+
+    <div class="steps">
+      <div class="step"><p><strong>Cut 1 - channel first.</strong> Did one traffic source break? A paused campaign, a Google update, a broken email link. Channels break independently and often explain the whole move in one look.</p></div>
+      <div class="step"><p><strong>Cut 2 - device second.</strong> Did an app release or a mobile checkout change break one platform? Releases ship per-platform, so damage shows up per-device.</p></div>
+      <div class="step"><p><strong>Cut 3 - new vs returning third.</strong> Did acquisition quality shift? New-heavy traffic converts lower - a mix story wearing a behavior costume.</p></div>
+      <div class="step"><p><strong>Stop at the first cut that isolates the fall.</strong> If the entire drop sits in paid mobile traffic, you are done cutting - write the finding (b5's template). Deeper cuts on thin data are noise-chasing, not thoroughness.</p></div>
+    </div>
+
+    <div class="callout tip">
+      <strong>The reflex to build</strong>
+      Always check the mix before crediting behavior. Segment rates flat + weights shifted = composition. Only when a segment's own rate moved do you get to say shoppers changed.
+    </div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>What noise-chasing looks like from the inside:</strong> a team spends three days investigating why "CRM desktop tablet-landscape sessions" converted 40% worse last week - a cell with nine orders in it. Meanwhile the actual answer to the store-wide drop was sitting one level up: the whole paid channel fell 20% when a campaign hit its budget cap. Fixed cut order plus the stopping rule would have found it in the first ten minutes. Depth feels like diligence; usually it is procrastination with a pivot table.</p>
+    </div>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The thin-slice rule<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A segment with a handful of daily orders swings wildly for free. Social desktop traffic at Mango Lane might convert 12 orders one day and 21 the next - a "75% surge" that is pure small-number noise. The working rule:</p>
+        <ul>
+          <li><strong>Do not diagnose weekly moves on slices under roughly 100 conversions.</strong> Below that, week-to-week swings of 20-30% are what randomness looks like, not what problems look like.</li>
+          <li><strong>Widen before you conclude:</strong> a thin slice that looks broken this week deserves a 4-8 week window before it deserves a finding.</li>
+          <li><strong>This is the stopping rule's twin:</strong> the cut order stops you going too deep; the thin-slice rule stops you trusting what you find when you do.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 20-30 min total</span></h2>
+    </div>
+    <ul>
+      <li>Compute your store's blended CR two ways: once overall (orders / sessions), and once as the mix-weighted sum of device CRs (mobile sessions x mobile CR + desktop sessions x desktop CR, divided by total sessions). If the two disagree, you have found a tracking gap - go find which sessions or orders are missing a device label.</li>
+      <li>Pull last quarter's new vs returning split. Is your returning share growing? If so, how much of your CR trend is mix?</li>
+      <li>Rerun Demo 1's arithmetic with your own device numbers: hold both CRs fixed, shift 10% of sessions from desktop to mobile, and see how much your blended CR "falls" with zero behavior change.</li>
+      <li>List your thin slices: which segments in your store are under 100 weekly conversions? Write them down so future-you does not diagnose them on a Tuesday.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources</span>
+      <h2>Sources this session draws on</h2>
+    </div>
+    <p class="lede">The mix arithmetic is fully shown on this page - you verified it by hand. The benchmark context comes from platform docs and panel data. This page draws on:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The mix-effect / Simpson's-style pattern - segment rates flat, blend moves on weights alone</span><span class="note">Demo 1 · full arithmetic worked live on the page</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Shopify analytics - returning customer rate = returning / (returning + first-time) customers</span><span class="note">Part 3 · the new vs returning cut</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Littledata Shopify benchmark, 2025 - mobile CR 1.2% vs desktop 1.9%</span><span class="note">Part 1 · mobile converts lower everywhere</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The additive share rule (b3) - channel impact = move x share</span><span class="note">Part 3 card · channel cuts</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · Mobile CR holds at 2.4% and desktop at 3.4%, but mix shifts from 252K/108K to 280K/80K. Blended CR...</p>
+      <button class="qopt" type="button">A · Holds at 2.70% - segment rates did not move</button>
+      <button class="qopt" type="button">B · Falls to about 2.62% - more weight on the lower-converting segment</button>
+      <button class="qopt" type="button">C · Rises - more mobile traffic means more orders</button>
+      <p class="qwhy">(280,000 x 0.024 + 80,000 x 0.034) / 360,000 = 9,440 / 360,000 = 2.62%. The blend fell about 3% with zero behavior change - pure mix. Check the mix before crediting behavior.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · A lever fell and you are cutting to find where. The disciplined order is...</p>
+      <button class="qopt" type="button">A · Every cut at once - a big pivot table finds it fastest</button>
+      <button class="qopt" type="button">B · New vs returning, then device, then channel</button>
+      <button class="qopt" type="button">C · Channel, then device, then new vs returning - stopping at the first cut that isolates the fall</button>
+      <p class="qwhy">Channel first (sources break independently and often explain everything), device second (releases ship per-platform), new/returning third (acquisition quality). Stop at the first cut that isolates the drop - deeper cuts on thin data chase noise.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · A segment with 40 weekly conversions shows a 25% CR jump this week. You should...</p>
+      <button class="qopt" type="button">A · Hold off - slices under about 100 conversions swing that much on randomness alone</button>
+      <button class="qopt" type="button">B · Write the finding - 25% is a big move</button>
+      <button class="qopt" type="button">C · Cut it deeper to find which sub-slice jumped</button>
+      <p class="qwhy">The thin-slice rule: do not diagnose weekly moves on slices under roughly 100 conversions. Small-number segments swing 20-30% for free. Widen the window to 4-8 weeks before concluding anything - and never cut a thin slice thinner.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Analyst session 6 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Tree then segments</b><span>The tree names WHICH lever (b5). Segments name WHERE: channel, device, new vs returning - the three standard cuts.</span></div>
+      <div class="cheat-item"><b>Device baseline</b><span>Mobile 252K sessions at 2.4% = 6,048 orders; desktop 108K at 3.4% = 3,672. Total 9,720; blended 2.7% exactly.</span></div>
+      <div class="cheat-item"><b>The mix effect</b><span>Segment rates flat + weights shifted = blended number moves anyway. 280K/80K mix at the same CRs blends to 2.62%, not 2.70%.</span></div>
+      <div class="cheat-item"><b>Blended CR, two ways</b><span>Orders / sessions must equal the mix-weighted sum of segment CRs. If they disagree, hunt the tracking gap.</span></div>
+      <div class="cheat-item"><b>Cut order</b><span>Channel first, device second, new vs returning third. Stop at the first cut that isolates the fall.</span></div>
+      <div class="cheat-item"><b>Mix before behavior</b><span>Always check the mix before crediting behavior. Only a moved segment rate proves shoppers changed.</span></div>
+      <div class="cheat-item"><b>Thin-slice rule</b><span>Under ~100 conversions a week, swings of 20-30% are randomness. Widen the window before writing a finding.</span></div>
+      <div class="cheat-item"><b>Returning rate</b><span>Shopify: returning / (returning + first-time) customers. Returning converts and spends more - an aging base "improves" CR by mix.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Analyst session 6 of 8 · learn-ecommerce-metrics-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b5-diagnose-the-drop.html">← Prev: Diagnose the drop</a> &nbsp;·&nbsp; <a href="b7-the-review-pack.html">Next: The review pack →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/tree-live.js?v=1"></script>
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

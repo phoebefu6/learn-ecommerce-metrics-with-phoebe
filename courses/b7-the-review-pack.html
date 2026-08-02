@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyst session 7 · The review pack - learn ecommerce metrics with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ecommerce-metrics-with-phoebe</a> / Analyst session 7 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Ecommerce Metrics with Phoebe · Analyst track · Session 7 of 8</div>
+    <h1>The <span class="accent">review pack</span></h1>
+    <p class="sub">You can compute every Mango Lane number by hand (b2), walk the tree (b3), read the gates (b4), diagnose a drop (b5), and cut by segment (b6). Now you package it. The weekly review pack is four fixed pages that turn your arithmetic into the document a leadership room actually reads - the same document the leader track (a4) teaches leaders to expect. Today you assemble a full pack for a real week, cross-foot it, and write the one paragraph that answers the room's questions before they ask.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Analyst track</span>
+      <span class="chip audience">Analysts · marketers · ops · founders</span>
+      <span class="chip audience">Numbers to narrative</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-4 · Recap</span>
+      <span class="a2" style="flex:3">4-15 · The four pages</span>
+      <span class="a3" style="flex:5">15-38 · Build this week's pack</span>
+      <span class="a4" style="flex:2">38-45 · Narrative + monthly</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where this session sits</h2>
+    </div>
+    <p class="lede">Sessions b2-b6 built your computing muscles. This session and the next build your <strong>shipping</strong> muscles: b7 turns the numbers into the weekly pack, b8 writes the spec sheet that keeps the numbers honest. On the leader side, a4 teaches the weekly business review ritual from the reader's chair - this session is the writer's chair for the exact same meeting.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill inkpill">Sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      The fixed four-page pack format (scorecard, gates, channels, narrative), one fully assembled and cross-footed pack for a week where Mango Lane's GMV fell 2%, and a narrative template that answers "what moved, why, what are we doing, when will we know" in one paragraph.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: THE FOUR PAGES ============ -->
+  <section class="section" id="pages">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · the format a4's leaders expect</span>
+      <h2>Four pages, same order, every week <span class="tag concept">11 min live</span></h2>
+    </div>
+    <p class="lede">A weekly pack works because it is boring in the right way: <strong>the same four pages in the same order every single week</strong>. Readers stop hunting for numbers and start noticing changes - which is the whole point. Page 1 is the scorecard (core four, WoW and YoY). Page 2 is the funnel gates (four gates, WoW). Page 3 is channels (GMV by channel, share, WoW). Page 4 is the narrative - one paragraph plus an actions table. Nothing else.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The four fixed pages of the weekly review pack with mini contents">
+        <style>
+          .pkT { font: 800 13px Inter, sans-serif; fill: #FFFFFF; }
+          .pkH { font: 700 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .pkL { font: 600 11px Inter, sans-serif; fill: #9A3412; }
+          .pkC { font: 400 10.5px Inter, sans-serif; fill: #575385; }
+          .pkN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+        </style>
+        <rect x="20" y="20" width="200" height="230" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <rect x="20" y="20" width="200" height="34" rx="10" fill="#EA580C"/>
+        <text class="pkT" x="120" y="42" text-anchor="middle">Page 1 · Scorecard</text>
+        <text class="pkH" x="120" y="80" text-anchor="middle">The core four</text>
+        <text class="pkL" x="36" y="106">GMV · sessions</text>
+        <text class="pkL" x="36" y="126">CR · AOV</text>
+        <text class="pkC" x="36" y="152">each with WoW %</text>
+        <text class="pkC" x="36" y="170">and YoY %</text>
+        <text class="pkC" x="36" y="196">cross-foots to the</text>
+        <text class="pkC" x="36" y="212">GMV equation (a1)</text>
+
+        <rect x="240" y="20" width="200" height="230" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <rect x="240" y="20" width="200" height="34" rx="10" fill="#EA580C"/>
+        <text class="pkT" x="340" y="42" text-anchor="middle">Page 2 · Funnel gates</text>
+        <text class="pkH" x="340" y="80" text-anchor="middle">The four gates</text>
+        <text class="pkL" x="256" y="106">PDP penetration</text>
+        <text class="pkL" x="256" y="126">add-to-cart</text>
+        <text class="pkL" x="256" y="146">checkout start</text>
+        <text class="pkL" x="256" y="166">completion</text>
+        <text class="pkC" x="256" y="196">each with WoW %</text>
+        <text class="pkC" x="256" y="212">gates multiply to CR</text>
+
+        <rect x="460" y="20" width="200" height="230" rx="10" fill="#FFF7ED" stroke="#FED7AA"/>
+        <rect x="460" y="20" width="200" height="34" rx="10" fill="#EA580C"/>
+        <text class="pkT" x="560" y="42" text-anchor="middle">Page 3 · Channels</text>
+        <text class="pkH" x="560" y="80" text-anchor="middle">GMV by channel</text>
+        <text class="pkL" x="476" y="106">organic · paid</text>
+        <text class="pkL" x="476" y="126">CRM · social</text>
+        <text class="pkC" x="476" y="152">GMV + share of total</text>
+        <text class="pkC" x="476" y="170">+ WoW % per channel</text>
+        <text class="pkC" x="476" y="196">channel rows sum</text>
+        <text class="pkC" x="476" y="212">to page 1 GMV</text>
+
+        <rect x="680" y="20" width="180" height="230" rx="10" fill="#9A3412"/>
+        <text class="pkT" x="770" y="42" text-anchor="middle">Page 4 · Narrative</text>
+        <text class="pkT" x="770" y="86" text-anchor="middle" style="font-size:12px">One paragraph:</text>
+        <text class="pkT" x="770" y="112" text-anchor="middle" style="font-size:11px">what moved · why</text>
+        <text class="pkT" x="770" y="130" text-anchor="middle" style="font-size:11px">what we are doing</text>
+        <text class="pkT" x="770" y="148" text-anchor="middle" style="font-size:11px">when we will know</text>
+        <text class="pkT" x="770" y="186" text-anchor="middle" style="font-size:12px">+ actions table</text>
+        <text class="pkT" x="770" y="208" text-anchor="middle" style="font-size:11px">action · owner · date</text>
+
+        <rect x="20" y="288" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="pkN" x="44" y="300">Same four pages, same order, every week. Readers stop hunting for numbers and start noticing changes.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the weekly pack: scorecard, gates, channels, narrative</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Why the order is fixed<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The order is a funnel of questions. Page 1 answers "how did we do" (the outcome). Page 2 answers "where in the journey did it happen" (the gates). Page 3 answers "which traffic did it come from" (the channels). Page 4 answers "so what" (the story and the actions). A reader who trusts pages 1-3 can skim straight to page 4; a reader who doubts page 4 can trace every claim back through 3, 2, 1. That two-way traceability is what makes a pack more than a screenshot dump.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>Amazon's weekly business review</strong> runs on the same discipline: a fixed deck of metrics reviewed in the same order every week, so anomalies pop out by familiarity rather than by highlighting. You are building the small-store version - four pages instead of seventy, but the same principle: format stability is what makes change visible.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Who reads which page<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Each page has a natural first reader, and knowing who that is tells you how to write it:</p>
+        <ul>
+          <li><strong>Page 1 (scorecard)</strong> - the CEO and finance. They read the WoW and YoY columns first and the levels second. Round consistently; never change decimal places between weeks.</li>
+          <li><strong>Page 2 (gates)</strong> - product and engineering. A gate that moved is their to-do list; a gate that held is their alibi.</li>
+          <li><strong>Page 3 (channels)</strong> - marketing. Share tells them the mix, WoW tells them this week's fires.</li>
+          <li><strong>Page 4 (narrative)</strong> - everyone, first. In practice the room reads page 4, then flips back to whichever page backs the claim they doubt. Write page 4 knowing it will be audited.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2 / DEMO 1: BUILD THE PACK ============ -->
+  <section class="section" id="build">
+    <div class="section-kicker">
+      <span class="klabel">Demo 1 · everyone builds</span>
+      <h2>Assemble this week's pack <span class="tag demo">★ 15 min · everyone works</span></h2>
+    </div>
+    <p class="lede">The setup: Mango Lane just closed a soft week. To keep every number checkable, we use the canonical baseline you memorized in b1 as "last week" and these actuals as "this week": sessions <strong>356,400</strong> (-1.0%), session CR <strong>2.673%</strong> (-1.0%), AOV flat at <strong>$68</strong>, so GMV lands at <strong>$647,741</strong> (-2.0%). Build pages 1-3 now; page 4 (the narrative) is Demo 2.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Page 1 - the scorecard, cross-footed<span class="mini">6 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Metric</th><th>Last week</th><th>This week</th><th>WoW</th><th>YoY</th></tr></thead>
+          <tbody>
+            <tr><td><strong>GMV</strong></td><td>$660,960</td><td><strong>$647,741</strong></td><td>-2.0%</td><td>+9.9%</td></tr>
+            <tr><td>Sessions</td><td>360,000</td><td>356,400</td><td>-1.0%</td><td>+7.0%</td></tr>
+            <tr><td>Session CR</td><td>2.700%</td><td>2.673%</td><td>-1.0%</td><td>+1.5%</td></tr>
+            <tr><td>AOV</td><td>$68.00</td><td>$68.00</td><td>0.0%</td><td>+1.2%</td></tr>
+            <tr><td>Orders (check row)</td><td>9,720</td><td>9,526</td><td>-2.0%</td><td>+8.6%</td></tr>
+          </tbody>
+        </table>
+        <div class="steps">
+          <div class="step"><p>Orders = sessions x CR: 356,400 x 2.673% = <strong>9,527</strong> (9,526.6 - the pennies are rounding). Orders fell the same -2.0% as GMV because AOV held still.</p></div>
+          <div class="step"><p>GMV = orders x AOV: 9,526.6 x $68 = <strong>$647,741</strong>. Matches the headline. Page 1 agrees with itself.</p></div>
+          <div class="step"><p><strong>Cross-foot the WoW:</strong> 0.99 (sessions) x 0.99 (CR) x 1.00 (AOV) = 0.9801, i.e. <strong>-2.0% GMV</strong>. Two small -1% dips multiply into the -2% headline. If your factor changes do not multiply back to the GMV change, a number on the page is wrong - find it before the room does.</p></div>
+          <div class="step"><p>YoY cross-foots too: 1.070 x 1.015 x 1.012 = 1.099, matching the +9.9% GMV YoY. Soft week, healthy year.</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Page 2 - the funnel gates<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Gate (b4 definitions)</th><th>Last week</th><th>This week</th><th>WoW</th></tr></thead>
+          <tbody>
+            <tr><td>PDP penetration (of all sessions)</td><td>40.00%</td><td>40.00%</td><td>flat</td></tr>
+            <tr><td>Add-to-cart (of PDP sessions)</td><td>25.00%</td><td>24.75%</td><td>-1.0%</td></tr>
+            <tr><td>Checkout start (of cart sessions)</td><td>45.00%</td><td>45.00%</td><td>flat</td></tr>
+            <tr><td>Checkout completion (of checkout sessions)</td><td>60.00%</td><td>60.00%</td><td>flat</td></tr>
+          </tbody>
+        </table>
+        <div class="steps">
+          <div class="step"><p>Gates multiply to CR: 0.40 x 0.2475 x 0.45 x 0.60 = <strong>0.02673 = 2.673%</strong> - exactly page 1's CR. The -1% CR dip lives entirely in one gate: add-to-cart.</p></div>
+          <div class="step"><p>Session counts confirm it: 356,400 x 40% = 142,560 PDP sessions; x 24.75% = 35,284 cart sessions; x 45% = 15,878 checkout sessions; x 60% = <strong>9,527 orders</strong>. Same orders as page 1.</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Page 3 - channels<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Channel</th><th>Last week GMV</th><th>This week GMV</th><th>Share</th><th>WoW</th></tr></thead>
+          <tbody>
+            <tr><td>Organic</td><td>$264,384</td><td>$263,797</td><td>40.7%</td><td>-0.2%</td></tr>
+            <tr><td>Paid</td><td>$198,288</td><td>$197,892</td><td>30.6%</td><td>-0.2%</td></tr>
+            <tr><td>CRM</td><td>$132,192</td><td>$131,853</td><td>20.4%</td><td>-0.3%</td></tr>
+            <tr><td><strong>Social</strong></td><td>$66,096</td><td><strong>$54,199</strong></td><td>8.4%</td><td><strong>-18.0%</strong></td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>$660,960</strong></td><td><strong>$647,741</strong></td><td>100%</td><td><strong>-2.0%</strong></td></tr>
+          </tbody>
+        </table>
+        <div class="steps">
+          <div class="step"><p>Channel rows sum to the page 1 total: 263,797 + 197,892 + 131,853 + 54,199 = <strong>$647,741</strong>. Never ship a channel page that does not sum to the scorecard.</p></div>
+          <div class="step"><p>The story jumps off the page: three channels roughly flat, <strong>social down $11,897 (-18%)</strong> - which is nearly all of the $13,219 total GMV drop. b6's segment-cut instinct did its job: the average hid it, the cut found it.</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The pre-ship checklist - three reconciliations<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Before any pack leaves your hands, run the same three checks in the same order. They take two minutes and they catch almost everything:</p>
+        <div class="steps">
+          <div class="step"><p><strong>Cross-foot the scorecard.</strong> Sessions change x CR change x AOV change must reproduce the GMV change (0.99 x 0.99 x 1.00 = -2.0% this week). Rounding pennies are fine; a tenth of a percent is not.</p></div>
+          <div class="step"><p><strong>Multiply the gates.</strong> The four gate rates on page 2 must multiply to page 1's CR (0.40 x 0.2475 x 0.45 x 0.60 = 2.673%). If they do not, one gate is stale or one denominator drifted (b8 territory).</p></div>
+          <div class="step"><p><strong>Sum the channels.</strong> Page 3's rows must total page 1's GMV to the dollar. A gap means untagged traffic is hiding somewhere - find it or footnote it, never silently absorb it.</p></div>
+        </div>
+        <p>A pack that fails a reconciliation and ships anyway teaches the room to double-check you forever. A pack that reconciles for ten straight weeks earns the most valuable thing an analyst owns: numbers nobody re-derives.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3 / DEMO 2: THE NARRATIVE ============ -->
+  <section class="section" id="narrative">
+    <div class="section-kicker">
+      <span class="klabel">Demo 2 · everyone writes</span>
+      <h2>Page 4 - the narrative <span class="tag demo">★ 8 min · everyone works</span></h2>
+    </div>
+    <p class="lede">The narrative is one paragraph in a fixed template: <strong>"What moved: [metric, size]. Why: [lever + slice + hypothesis]. What we are doing: [action + owner]. When we will know: [re-check date]."</strong> No adjectives, no throat-clearing, every claim traceable to pages 1-3.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The filled narrative for this week<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>What moved:</strong> GMV fell 2.0% WoW to $647,741 (-$13.2k). <strong>Why:</strong> the drop is concentrated in the social channel, down 18% (-$11.9k) while other channels held roughly flat; the add-to-cart gate dipped 1% with it. Working hypothesis: a platform algorithm change cut our social reach - impressions on our top posts fell midweek. <strong>What we are doing:</strong> social lead is rebalancing creative toward formats the feed currently favors and shifting this week's boost budget to the two best-performing posts. <strong>When we will know:</strong> re-check social GMV and add-to-cart in next Friday's pack.</p>
+        </div>
+        <table class="clean">
+          <thead><tr><th>Action</th><th>Owner</th><th>Check date</th></tr></thead>
+          <tbody>
+            <tr><td>Rebalance social creative to favored formats</td><td>Social lead</td><td>Next Friday's pack</td></tr>
+            <tr><td>Shift boost budget to top 2 posts</td><td>Social lead</td><td>Next Friday's pack</td></tr>
+            <tr><td>Confirm ATC dip is social-only (b6 cut by channel)</td><td>Analytics</td><td>Wednesday</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <strong>The whole trick</strong>
+          The narrative answers the four questions <strong>before the room asks them</strong>. A leader reading page 4 should have nothing left to ask except "is the hypothesis right" - and the check date tells them when they will find out. If your paragraph invites the question "but why?", it is not done.
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Narrative anti-patterns - four ways page 4 goes wrong<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>The weather report.</strong> "GMV was down slightly this week amid softer traffic." Describes, explains nothing, commits to nothing. If a sentence could have been written without opening pages 2-3, delete it.</li>
+          <li><strong>The victory lap with no denominator.</strong> "Social engagement was strong!" Strong against what? The narrative only speaks in the pack's specced metrics - engagement is not one of them.</li>
+          <li><strong>The hypothesis stated as fact.</strong> Write "working hypothesis: platform algorithm change", not "the platform changed its algorithm". The re-check date is what upgrades a hypothesis to a finding.</li>
+          <li><strong>The orphan action.</strong> An action with no owner or no check date is a wish. The actions table has three columns for a reason; a row missing any of them does not ship.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 4: WEEKLY VS MONTHLY ============ -->
+  <section class="section" id="monthly">
+    <div class="section-kicker">
+      <span class="klabel">Part 4</span>
+      <h2>Weekly vs monthly - what the bigger pack adds <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">The weekly pack manages the run-rate; the monthly pack manages the direction. A monthly pack keeps the same four pages and adds four things: <strong>benchmarks</strong> (a5's tables - where does our CR sit against IRP and Littledata this month), the <strong>returning-customer trend</strong> (Shopify's returning customer rate over the last 6 months), the <strong>guardrail metrics</strong> (margin and return rate - the numbers that stop you celebrating GMV bought with discounts), and <strong>one deep dive</strong> (a single question worked properly, b5-style). And where the weekly compares WoW first, <strong>the monthly compares YoY primarily</strong> - month-over-month is too seasonal to trust (a5).</p>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Pack hygiene - three rules that keep it alive<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Freeze the format for a quarter.</strong> The pack's power is familiarity; a page that moves around resets everyone's pattern-matching to zero. Change format at quarter boundaries, announced.</li>
+          <li><strong>Footnote any definition change.</strong> If a metric's definition changes mid-quarter (a6 governance), the pack carries a dated footnote on every affected page until the comparison periods are clean.</li>
+          <li><strong>Never add a page without removing one.</strong> Packs die by accretion - every stakeholder wants their pet chart added and nobody ever asks to remove one. Four pages weekly is the budget. A new page must evict an old one.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 20-30 min total</span></h2>
+    </div>
+    <ul>
+      <li>Build <strong>page 1 (the scorecard) for your own store, this week</strong>: GMV, sessions, session CR, AOV - each with WoW and YoY.</li>
+      <li>Cross-foot it: multiply your sessions, CR, and AOV changes and confirm they reproduce your GMV change. If they do not, find the leak before you show anyone.</li>
+      <li>Bonus: write the four-sentence narrative for your week using the template, even if the answer is "nothing moved, no action". That sentence is also information.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources</span>
+      <h2>Sources this session draws on</h2>
+    </div>
+    <p class="lede">The weekly pack is a craft pattern, not a certified standard - it is this course's small-store distillation of how disciplined ecommerce teams review their numbers. This page draws on:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Amazon-style weekly business review pattern - fixed metric deck, same order weekly, anomalies surface by familiarity (honest paraphrase of a widely described practice, not an official Amazon document)</span><span class="note">Part 1 · why the format is frozen</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">a4 - the weekly business review, the leader-track ritual this pack is written for</span><span class="note">Internal · reader's chair for this session</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">a5 - benchmarks and seasonality, the tables the monthly pack adds</span><span class="note">Internal · Part 4</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">a6 / b8 - metric governance: definition-change footnotes and the spec sheet behind every pack row</span><span class="note">Internal · pack hygiene + next session</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · What is the weekly pack's page order, and why is it frozen?</p>
+      <button class="qopt" type="button">A · Narrative first so busy readers get the story - order can vary by week</button>
+      <button class="qopt" type="button">B · Whatever moved most goes first, so attention lands on the anomaly</button>
+      <button class="qopt" type="button">C · Scorecard, gates, channels, narrative - fixed, so readers pattern-match changes instead of hunting for numbers</button>
+      <p class="qwhy">Outcome, then where in the journey, then which traffic, then the story. Frozen format is the feature: familiarity is what makes an anomaly pop. A reshuffled pack resets everyone to hunting.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · Sessions fell 1%, CR fell 1%, AOV was flat. What GMV change should the scorecard show, and why?</p>
+      <button class="qopt" type="button">A · About -2.0%, because factor changes multiply: 0.99 x 0.99 x 1.00 = 0.9801</button>
+      <button class="qopt" type="button">B · Exactly -1.0%, the average of the two dips</button>
+      <button class="qopt" type="button">C · It cannot be predicted from the factors</button>
+      <p class="qwhy">GMV = sessions x CR x AOV, so changes multiply: 0.99 x 0.99 = 0.9801, about -2.0%. That is the cross-foot: if the scorecard's GMV change does not equal the product of its factor changes, a number is wrong.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">3 · What must the page 4 narrative contain?</p>
+      <button class="qopt" type="button">A · A full recap of every number on pages 1-3</button>
+      <button class="qopt" type="button">B · What moved, why (lever + slice + hypothesis), what we are doing (with owner), and when we will know</button>
+      <button class="qopt" type="button">C · The team's overall sentiment about the quarter</button>
+      <p class="qwhy">Four sentences, fixed template. It answers the room's four questions before they are asked; the pages behind it carry the numbers, the paragraph carries the meaning and the commitment to re-check.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Analyst session 7 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The four pages</b><span>1 scorecard (core four, WoW + YoY) · 2 funnel gates · 3 channels · 4 narrative + actions. Same order, every week.</span></div>
+      <div class="cheat-item"><b>Why frozen</b><span>Familiarity makes anomalies pop. Change format only at quarter boundaries, announced.</span></div>
+      <div class="cheat-item"><b>Cross-foot rule</b><span>Factor changes multiply to the GMV change: 0.99 x 0.99 x 1.00 = -2.0%. If it does not multiply back, find the leak.</span></div>
+      <div class="cheat-item"><b>Sum rule</b><span>Channel rows sum to the scorecard GMV to the dollar. Gates multiply to the scorecard CR. Pages must agree.</span></div>
+      <div class="cheat-item"><b>Narrative template</b><span>What moved · why (lever + slice + hypothesis) · what we are doing (+ owner) · when we will know (re-check date).</span></div>
+      <div class="cheat-item"><b>This week's story</b><span>GMV -2.0%; social -18% (-$11.9k of the -$13.2k); hypothesis platform algorithm change; re-check Friday.</span></div>
+      <div class="cheat-item"><b>Monthly adds</b><span>Benchmarks (a5), returning-customer trend, guardrails (margin, return rate), one deep dive. Compares YoY primarily.</span></div>
+      <div class="cheat-item"><b>Pack hygiene</b><span>Freeze format a quarter · footnote definition changes (a6) · never add a page without removing one.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Analyst session 7 of 8 · learn-ecommerce-metrics-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b6-segment-cuts.html">← Prev: Segment cuts</a> &nbsp;·&nbsp; <a href="b8-metric-spec-sheet.html">Next: The metric spec sheet →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/tree-live.js?v=1"></script>
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leader session 3 · Reading the funnel - learn ecommerce metrics with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ecommerce-metrics-with-phoebe</a> / Leader session 3 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Ecommerce Metrics with Phoebe · Leader track · Session 3 of 6</div>
+    <h1>Reading the <span class="accent">funnel</span></h1>
+    <p class="sub">Sessions a1 and a2 gave you the GMV equation and the dictionary. Today you learn to read the shape between them: the five-step trail every shopper walks and the four gates where most of them leave. No computation - your analysts bring the numbers. Your job is to look at a funnel and know, within a minute, which gate is leaking, which team owns it, and what question to ask next.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Leader track</span>
+      <span class="chip audience">C-level · category heads · managers</span>
+      <span class="chip audience">Reading mode - no computation</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-20 · The five-step trail</span>
+      <span class="a3" style="flex:5">20-42 · What losses mean + reading drill</span>
+      <span class="a4" style="flex:1">42-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Why leaders read funnels</h2>
+    </div>
+    <p class="lede">A funnel report is where most executive meetings go wrong: someone sees that 97% of sessions do not buy and declares an emergency. The truth is that every store on earth loses most of its shoppers at every gate - the skill is knowing which losses are normal and which one gate is leaking worse than its benchmark. This session gives you that reading skill on Mango Lane's real trail, then drills it on three snapshots. You never touch a spreadsheet.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill inkpill">Sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      The five-step trail read as a story of narrowing, the benchmark that makes 70% cart abandonment normal, and a three-snapshot reading drill: name the leak, name the team, name the question. Plus the one leader question that replaces "why do we lose anyone": which gate leaks worse than benchmark?
+    </div>
+  </section>
+
+  <!-- ============ PART 1: THE FIVE-STEP TRAIL ============ -->
+  <section class="section" id="trail">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · the shape of every store</span>
+      <h2>The five-step trail: a story of narrowing <span class="tag concept">17 min live</span></h2>
+    </div>
+    <p class="lede">Every shopper walks the same trail, and analytics records each step as an event: <strong>session_start</strong> (they arrive), <strong>view_item</strong> (they open a product page), <strong>add_to_cart</strong>, <strong>begin_checkout</strong>, <strong>purchase</strong>. These are Google Analytics 4's exact event names - the industry vocabulary. At Mango Lane, one typical month narrows like this: <strong>360,000 sessions</strong> arrive, <strong>144,000</strong> view a product, <strong>36,000</strong> add to cart, <strong>16,200</strong> start checkout, and <strong>9,720</strong> pay. Read left to right, it is a story: attention, interest, intent, commitment, money.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mango Lane's five-stage funnel: 360,000 sessions narrowing to 9,720 purchases, with loss percentages between stages">
+        <style>
+          .rfH { font: 700 12.5px Inter, sans-serif; fill: #1E1B4B; }
+          .rfV { font: 800 16px Inter, sans-serif; fill: #FFFFFF; }
+          .rfE { font: 600 10.5px 'SF Mono', Menlo, monospace; fill: #FFFFFF; }
+          .rfL { font: 800 12px Inter, sans-serif; fill: #9A3412; }
+          .rfC { font: 400 11px Inter, sans-serif; fill: #575385; }
+          .rfN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+        </style>
+
+        <text class="rfH" x="94" y="36" text-anchor="middle">Arrive</text>
+        <rect x="20" y="50" width="148" height="200" rx="10" fill="#EA580C"/>
+        <text class="rfV" x="94" y="145" text-anchor="middle">360,000</text>
+        <text class="rfE" x="94" y="163" text-anchor="middle">session_start</text>
+
+        <text class="rfH" x="274" y="36" text-anchor="middle">View a product</text>
+        <rect x="200" y="75" width="148" height="150" rx="10" fill="#EA580C"/>
+        <text class="rfV" x="274" y="145" text-anchor="middle">144,000</text>
+        <text class="rfE" x="274" y="163" text-anchor="middle">view_item</text>
+
+        <text class="rfH" x="454" y="36" text-anchor="middle">Add to cart</text>
+        <rect x="380" y="95" width="148" height="110" rx="10" fill="#EA580C"/>
+        <text class="rfV" x="454" y="145" text-anchor="middle">36,000</text>
+        <text class="rfE" x="454" y="163" text-anchor="middle">add_to_cart</text>
+
+        <text class="rfH" x="634" y="36" text-anchor="middle">Start checkout</text>
+        <rect x="560" y="109" width="148" height="82" rx="10" fill="#EA580C"/>
+        <text class="rfV" x="634" y="145" text-anchor="middle">16,200</text>
+        <text class="rfE" x="634" y="163" text-anchor="middle">begin_checkout</text>
+
+        <text class="rfH" x="800" y="36" text-anchor="middle">Pay</text>
+        <rect x="740" y="120" width="120" height="60" rx="10" fill="#9A3412"/>
+        <text class="rfV" x="800" y="145" text-anchor="middle">9,720</text>
+        <text class="rfE" x="800" y="161" text-anchor="middle">purchase</text>
+
+        <text class="rfL" x="184" y="140" text-anchor="middle">-60%</text>
+        <text class="rfL" x="364" y="140" text-anchor="middle">-75%</text>
+        <text class="rfL" x="544" y="140" text-anchor="middle">-55%</text>
+        <text class="rfL" x="724" y="140" text-anchor="middle">-40%</text>
+
+        <text class="rfC" x="94" y="270" text-anchor="middle">the month's traffic</text>
+        <text class="rfC" x="274" y="270" text-anchor="middle">PDP penetration 40%</text>
+        <text class="rfC" x="454" y="270" text-anchor="middle">25% of PDP sessions</text>
+        <text class="rfC" x="634" y="270" text-anchor="middle">45% of cart sessions</text>
+        <text class="rfC" x="800" y="270" text-anchor="middle">60% completion</text>
+
+        <rect x="20" y="296" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="rfN" x="44" y="308">Losing people at every gate is normal. The leader question: which gate leaks worse than its benchmark?</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - Mango Lane's month narrowing through the five stages, with the loss between each</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Reading the narrowing as a story<span class="mini">6 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Each gap between bars belongs to a different part of the business, which is exactly what makes the funnel useful in a leadership meeting - it is an org chart in disguise:</p>
+        <ul>
+          <li><strong>Arrive → view a product (-60%):</strong> discovery. Can shoppers find products? Owned by site merchandising, search, and navigation.</li>
+          <li><strong>View → add to cart (-75%):</strong> desire. Does the product page sell? Owned by the category and product-content teams. Note this is the steepest loss - and the most normal one. Browsing without wanting is what shoppers do.</li>
+          <li><strong>Cart → start checkout (-55%):</strong> commitment. Carts are wish lists; checkout is a decision. Owned by pricing, shipping messaging, and CRM (cart reminders).</li>
+          <li><strong>Checkout → pay (-40%):</strong> friction. They decided to buy and something got in the way. Owned by the checkout and payments teams - the most fixable gate on the page.</li>
+        </ul>
+        <p>One honesty note: GA4's built-in purchase journey report counts <strong>users</strong> at each step, while Mango Lane's scorecard reads the same trail in <strong>sessions</strong>. Same shape, different denominator - a2's lesson applies to funnels too. Your only job is to ask which one a chart uses.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The same gate is "healthy" at wildly different levels by vertical.</strong> Dynamic Yield's cross-industry panel (200M+ shoppers) shows add-to-cart rates running from roughly 1.7% in luxury to around 10% in food and beauty. A luxury store reading a beauty benchmark would fire a perfectly good team. Verticals matter - a5 goes deep on this.</p>
+        </div>
+        <div class="callout tip">
+          <strong>What to ask when Part 1 comes up in a meeting</strong>
+          "Show me the five counts side by side, not just the conversion rate" - the single 2.7% hides four different stories. And: "is this funnel counting sessions or users?"
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2: WHAT THE LOSSES MEAN ============ -->
+  <section class="section" id="losses">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · benchmarks make losses readable</span>
+      <h2>What the losses mean <span class="tag concept">10 min live</span></h2>
+    </div>
+    <p class="lede">The Baymard Institute, which has studied checkout usability for over a decade, puts average cart abandonment at <strong>70.22%</strong> - the average of 50 separate studies, updated September 2025. Read that again: the best-researched number in ecommerce says <em>seven in ten carts die, everywhere, always</em>. So when your dashboard shows most carts abandoned, that is not a crisis - it is Tuesday. The leader question is never "why do we lose anyone?" It is <strong>"which gate leaks worse than benchmark?"</strong> - because a gate at benchmark is physics, and a gate below benchmark is a fixable problem with an owner.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Inside checkout: the second funnel<span class="mini">6 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The last gate - checkout start to payment - has its own funnel inside it, and GA4 ships a dedicated report for it: the <strong>checkout journey</strong>. It breaks the final stretch into <strong>begin_checkout → add_shipping_info → add_payment_info → purchase</strong>, with an abandonment percentage at each step. This matters because "checkout is leaking" is not yet an actionable sentence. "Shoppers quit at the shipping step" is - it points at shipping costs shown too late. "They quit at payment" points at failed cards, missing wallets, or a clunky form.</p>
+        <p>For calibration: the Littledata Shopify benchmark (2025) puts average checkout completion at <strong>45%</strong>, with the top 10% of stores above 66%. Mango Lane completes at 60% - a deliberately healthy store, comfortably above that average. If your store shows 40%, you now know that is below the pack, and the checkout journey report tells you which of the three steps to interrogate.</p>
+        <table class="clean">
+          <thead><tr><th>Gate</th><th>Mango Lane</th><th>Benchmark</th><th>Reading</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Cart abandonment</strong></td><td>~73% (9,720 of 36,000 carts pay)</td><td>70.22% average - Baymard, 50 studies</td><td>Right at the pack. Normal, not a fire.</td></tr>
+            <tr><td><strong>Checkout completion</strong></td><td>60%</td><td>45% Shopify average, top 10% above 66% - Littledata 2025</td><td>Comfortably healthy - Mango Lane is a deliberately good store.</td></tr>
+          </tbody>
+        </table>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>Baymard's most-cited finding</strong> is that a large share of abandonment comes from costs revealed too late - shipping, taxes, and fees appearing at the last step. That is why "where inside checkout do they quit?" is such a high-yield question: the answer usually names its own fix.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>One rate, two denominators - the add-to-cart edition<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>a2's denominator lesson bites hardest at the add-to-cart gate, because two honest framings coexist. Mango Lane's 36,000 cart sessions are <strong>25% of PDP sessions</strong> (36,000 of 144,000) - the gate rate on the funnel chart above. They are also <strong>10% of all sessions</strong> (36,000 of 360,000) - the session-based add-to-cart rate, which is how most published benchmarks count.</p>
+        <ul>
+          <li>The Littledata Shopify benchmark puts session-based add-to-cart at <strong>4.6% average</strong> - so Mango Lane's 10% looks excellent against it, but only because both use the same denominator.</li>
+          <li>Compare a 25%-of-PDP number to a session-based benchmark and you will conclude your store is a miracle. It is not - it is a mismatched denominator.</li>
+        </ul>
+        <p>The leader ask here is one word away from a2's: not just "which denominator does our number use?" but "which denominator does the <em>benchmark</em> use?"</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Open vs closed funnels - one setting that changes every number<span class="mini">4 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Funnels come in two flavors. A <strong>closed funnel</strong> only counts shoppers who entered at step one and moved through in order - someone who lands directly on a product page from an ad never appears. An <strong>open funnel</strong> lets shoppers join at any step. GA4's purchase journey report is <strong>closed by default</strong>, which means its step counts can look smaller than the raw event counts your analyst pulls - not a bug, a definition.</p>
+        <ul>
+          <li><strong>Closed funnels</strong> answer "how does the full journey perform for people who walk all of it?"</li>
+          <li><strong>Open funnels</strong> answer "how many people did each stage, however they got there?"</li>
+          <li>When two funnel charts disagree, this setting is suspect number one - ask before anyone rebuilds a dashboard.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>What to ask when Part 2 comes up in a meeting</strong>
+          "How does each gate compare to its benchmark?" - not "why did we lose 70% of carts". And when checkout leaks: "which step inside the checkout journey - shipping, payment, or the final confirm?"
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO: READING DRILL ============ -->
+  <section class="section" id="drill">
+    <div class="section-kicker">
+      <span class="klabel">Demo · read along, no computing</span>
+      <h2>The reading drill: three snapshots <span class="tag demo">★ 12 min · everyone reads</span></h2>
+    </div>
+    <p class="lede">Your analyst puts a funnel on the screen. You have one minute before the room looks at you. The drill is always the same three sentences: <strong>name the leak</strong> (which gate is off), <strong>name the team</strong> (who owns that gate), <strong>name the question</strong> (what you ask them). Walk these three snapshots - each is Mango Lane in a different imaginary month.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Snapshot 1 - the discovery problem<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Traffic is normal at 360,000 sessions, but only 90,000 view a product - PDP penetration has sunk from 40% to 25%. Downstream, the of-PDP rates all look normal: the shoppers who do reach a product behave exactly as usual. Orders are down anyway, because fewer shoppers ever saw one.</p>
+        <div class="steps">
+          <div class="step"><p><strong>Name the leak:</strong> the first gate - arrive to view_item. Everything after it is healthy; the funnel is starving at the top of the store, not the bottom.</p></div>
+          <div class="step"><p><strong>Name the team:</strong> site merchandising, navigation, and search - plus whoever changed the homepage or landing pages recently.</p></div>
+          <div class="step"><p><strong>Name the question:</strong> "What changed in how shoppers reach product pages - navigation, search, landing pages, or a campaign sending traffic to the wrong place?"</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Snapshot 2 - the checkout problem<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The top of the funnel is textbook: 360,000 sessions, 144,000 product viewers, 36,000 carts, 16,200 checkouts started. But only about 6,500 pay - completion has dropped from 60% to roughly 40%, now below the Littledata 45% average. Shoppers decided to buy and then didn't.</p>
+        <div class="steps">
+          <div class="step"><p><strong>Name the leak:</strong> the last gate - checkout start to purchase. Intent arrived intact; friction ate it.</p></div>
+          <div class="step"><p><strong>Name the team:</strong> checkout and payments engineering, plus whoever last shipped a release or changed shipping fees.</p></div>
+          <div class="step"><p><strong>Name the question:</strong> "Pull the checkout journey - do they quit at shipping, at payment, or at the final step? And did anything deploy the week this started?"</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Snapshot 3 - healthy but seasonal<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Every count is down about 15% - sessions, viewers, carts, checkouts, orders, all of it. But every <em>gate</em> is exactly at its usual rate: 40%, 25%, 45%, 60%. The funnel kept its shape and simply shrank. It is February, the month after the January sale.</p>
+        <div class="steps">
+          <div class="step"><p><strong>Name the leak:</strong> none. A funnel that shrinks uniformly has a traffic story, not a conversion story - the gates are innocent.</p></div>
+          <div class="step"><p><strong>Name the team:</strong> marketing and planning - and possibly nobody, if the calendar explains it.</p></div>
+          <div class="step"><p><strong>Name the question:</strong> "What did the same weeks look like last year?" If last February shrank the same way, this is seasonality - a5 gives it the full treatment.</p></div>
+        </div>
+        <div class="callout tip">
+          <strong>The drill in one line</strong>
+          Rates broken → find the gate, find the owner. Rates fine but counts down → it is a traffic or calendar story. Never react to a count without checking the gates first.
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 15-20 min total</span></h2>
+    </div>
+    <ul>
+      <li>Ask your analyst (or your dashboard) for your store's five counts for last month: sessions, sessions viewing a product, sessions adding to cart, sessions starting checkout, purchases. Write them left to right on one line.</li>
+      <li>Turn them into four gate rates, or ask for them ready-made - reading mode means you may delegate the division.</li>
+      <li><strong>Circle the gate furthest below its benchmark</strong> - use ~70% cart abandonment as normal (Baymard) and ~45% checkout completion as the Shopify average (Littledata). That circle is your first agenda item for the next review.</li>
+      <li>Ask one clarifying question about the report itself: sessions or users? Open or closed funnel? Practice hearing the answer without nodding it away.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources</span>
+      <h2>Sources this session draws on</h2>
+    </div>
+    <p class="lede">Funnel definitions live in the analytics platforms' documentation, and the benchmarks come from long-running independent studies. This page draws on:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">GA4 purchase journey report - five steps from session_start to purchase, closed funnel by default, counts users</span><span class="note">Part 1 · the trail + the self-study card</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">GA4 checkout journey report - begin_checkout → add_shipping_info → add_payment_info → purchase, abandonment per step</span><span class="note">Part 2 · the second funnel</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Baymard Institute - 70.22% average cart abandonment (average of 50 studies, updated Sep 2025)</span><span class="note">Part 2 · why losing most carts is normal</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Littledata Shopify benchmark, 2025 - checkout completion averages 45%, top 10% above 66%</span><span class="note">Part 2 calibration · full benchmark treatment in a5</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · Your dashboard shows 70% of carts abandoned last month. What is the leader move?</p>
+      <button class="qopt" type="button">A · Declare an emergency - most of your carts are dying</button>
+      <button class="qopt" type="button">B · Set the team a target of zero abandonment</button>
+      <button class="qopt" type="button">C · Compare it to the ~70.22% Baymard average and ask which gate leaks worse than its benchmark</button>
+      <p class="qwhy">Seven in ten carts die everywhere - that is the average of 50 studies, not a crisis. A gate at benchmark is physics; a gate below benchmark is a fixable problem with an owner. Benchmarks turn panic into a question.</p>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">2 · Checkout completion fell from 60% to 42%, but PDP penetration, add-to-cart, and checkout start are all flat. Where do you point the question?</p>
+      <button class="qopt" type="button">A · Marketing - buy more traffic to compensate</button>
+      <button class="qopt" type="button">B · The checkout owner - pull the checkout journey and ask which step (shipping, payment, confirm) started leaking, and what deployed that week</button>
+      <button class="qopt" type="button">C · The category team - the products must be less appealing</button>
+      <p class="qwhy">Intent arrived intact - shoppers viewed, carted, and started checkout at normal rates, then vanished at the last gate. That is friction, owned by checkout and payments. The checkout journey report names the exact step.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · GA4's purchase journey is a closed funnel by default. What does that mean?</p>
+      <button class="qopt" type="button">A · Only shoppers who entered at step one and moved through in order are counted - someone landing straight on a product page never appears</button>
+      <button class="qopt" type="button">B · The report is locked and cannot be edited</button>
+      <button class="qopt" type="button">C · It only counts completed purchases</button>
+      <p class="qwhy">Closed means in-order from step one; a shopper who joins mid-funnel (say, from an ad straight to a PDP) is excluded. That is why its counts can differ from raw event counts - a definition, not a bug, and suspect number one when two funnel charts disagree.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Leader session 3 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The five-step trail</b><span>session_start → view_item → add_to_cart → begin_checkout → purchase. GA4's exact vocabulary; every tool has an equivalent.</span></div>
+      <div class="cheat-item"><b>Mango Lane's narrowing</b><span>360,000 → 144,000 → 36,000 → 16,200 → 9,720. Attention, interest, intent, commitment, money.</span></div>
+      <div class="cheat-item"><b>The four gates</b><span>PDP penetration 40% · add-to-cart 25% (of PDP) · checkout start 45% (of carts) · completion 60%. Each gate has an owning team.</span></div>
+      <div class="cheat-item"><b>Losing carts is normal</b><span>Baymard: 70.22% average cart abandonment (50 studies, Sep 2025). The question is "worse than benchmark?", not "why do we lose anyone?"</span></div>
+      <div class="cheat-item"><b>The second funnel</b><span>GA4 checkout journey: begin_checkout → shipping → payment → purchase. It names which step inside checkout leaks.</span></div>
+      <div class="cheat-item"><b>Open vs closed</b><span>GA4's purchase journey is closed by default - only in-order walkers count. When two funnels disagree, check this setting first.</span></div>
+      <div class="cheat-item"><b>The reading drill</b><span>Name the leak (which gate), name the team (who owns it), name the question (what you ask). One minute, three sentences.</span></div>
+      <div class="cheat-item"><b>Shape vs size</b><span>Gates broken → find the owner. Gates fine, counts down → traffic or calendar story. Check the gates before reacting to any count.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Leader session 3 of 6 · learn-ecommerce-metrics-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="../index.html">← All sessions</a> &nbsp;·&nbsp; <a href="a2-the-metric-dictionary.html">← Prev: The metric dictionary</a> &nbsp;·&nbsp; <a href="a4-weekly-business-review.html">Next: The weekly business review →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/tree-live.js?v=1"></script>
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

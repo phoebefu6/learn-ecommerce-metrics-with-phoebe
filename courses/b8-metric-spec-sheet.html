@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyst session 8 · The metric spec sheet - learn ecommerce metrics with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ecommerce-metrics-with-phoebe</a> / Analyst session 8 of 8</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Ecommerce Metrics with Phoebe · Analyst track · Session 8 of 8</div>
+    <h1>The <span class="accent">metric spec sheet</span></h1>
+    <p class="sub">Every number you computed this course had a definition you could check. Real companies rarely have that - which is how two teams walk into Monday with two conversion rates, both "right" (a6). The cure is unglamorous and total: a written spec per metric. In this finale you write the full spec sheet for every metric the course taught, learn the alerting basics that make thresholds useful, and close the track with a store you have decomposed completely.</p>
+    <div class="chip-row">
+      <span class="chip level">🟠 Analyst track</span>
+      <span class="chip audience">Analysts · marketers · ops · founders</span>
+      <span class="chip audience">Hands-on finale</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:2">0-10 · Why specs</span>
+      <span class="a2" style="flex:5">10-30 · Write the spec sheet</span>
+      <span class="a3" style="flex:3">30-40 · Alerting + changelog</span>
+      <span class="a4" style="flex:2">40-45 · Course close</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>The last link in the chain</h2>
+    </div>
+    <p class="lede">b7 taught you to ship the numbers; b8 teaches you to protect them. A pack is only as trustworthy as the definitions under it, and definitions only hold when they are written, owned, and change-controlled. This is the governance session of the analyst track - the computing-side twin of the leader track's a6, where leaders learn to ask "whose definition is this?" and you learn to be the person with the answer.</p>
+    <div class="legend">
+      <span class="pill solid">Live - presented in session</span>
+      <span class="pill light">Self-study - read after class</span>
+      <span class="pill inkpill">Sources covered</span>
+    </div>
+    <div class="callout win">
+      <strong>★ What you walk out with today</strong>
+      A filled seven-field spec card for Session CR, the complete eight-row spec sheet for every metric this course taught (with GA4/Shopify source events, owners, and alert bands), the three alerting rules that make thresholds useful, and the changelog discipline that keeps definitions honest across quarters.
+    </div>
+  </section>
+
+  <!-- ============ PART 1: WHY SPECS ============ -->
+  <section class="section" id="why">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · the cure for the Monday fight</span>
+      <h2>Seven fields that end metric arguments <span class="tag concept">10 min live</span></h2>
+    </div>
+    <p class="lede">Recall a6's Monday fight: marketing reports CR 3.9%, the trading team reports 2.7%, both are honest, and the meeting burns twenty minutes discovering they divided by different things. A <strong>metric spec</strong> makes that fight impossible, because everything arguable is written down. Seven fields per metric: <strong>name</strong>, <strong>definition</strong> (one sentence), <strong>formula</strong>, <strong>denominator</strong> (declared!), <strong>source event(s)</strong>, <strong>owner</strong>, and <strong>alert threshold</strong>. Here is one filled in - the course's own default metric.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A filled metric spec card for Session CR showing all seven fields">
+        <style>
+          .spT { font: 800 14px Inter, sans-serif; fill: #FFFFFF; }
+          .spF { font: 700 11.5px Inter, sans-serif; fill: #9A3412; }
+          .spV { font: 600 12px Inter, sans-serif; fill: #1E1B4B; }
+          .spM { font: 600 11.5px 'SF Mono', Menlo, monospace; fill: #1E1B4B; }
+          .spN { font: 600 12.5px Inter, sans-serif; fill: #1E1B4B; }
+        </style>
+        <rect x="140" y="20" width="600" height="270" rx="12" fill="#FFF7ED" stroke="#FED7AA" stroke-width="2"/>
+        <rect x="140" y="20" width="600" height="40" rx="12" fill="#EA580C"/>
+        <text class="spT" x="440" y="45" text-anchor="middle">Metric spec · Session CR</text>
+
+        <text class="spF" x="164" y="86">DEFINITION</text>
+        <text class="spV" x="300" y="86">Share of sessions that end in a purchase (Shopify's "online store conversion rate")</text>
+
+        <text class="spF" x="164" y="116">FORMULA</text>
+        <text class="spM" x="300" y="116">purchase sessions / total sessions = 9,720 / 360,000 = 2.7%</text>
+
+        <text class="spF" x="164" y="146">DENOMINATOR</text>
+        <text class="spV" x="300" y="146">Sessions - declared. Not visitors (that is visitor CR, a different number)</text>
+
+        <text class="spF" x="164" y="176">SOURCE EVENTS</text>
+        <text class="spM" x="300" y="176">session_start + purchase</text>
+
+        <text class="spF" x="164" y="206">OWNER</text>
+        <text class="spV" x="300" y="206">Analytics - one named team answers for this number</text>
+
+        <text class="spF" x="164" y="236">ALERT THRESHOLD</text>
+        <text class="spV" x="300" y="236">Moves more than +/-10% WoW - owner investigates before Friday's pack</text>
+
+        <rect x="164" y="254" width="552" height="2" fill="#FED7AA"/>
+        <text class="spV" x="164" y="276" style="fill:#575385">One card like this per metric = no more "which CR do you mean" meetings.</text>
+
+        <rect x="20" y="308" width="14" height="14" rx="3" fill="#4F46E5"/>
+        <text class="spN" x="44" y="320">The denominator field is the one that ends fights: a metric without a declared denominator is a rumor (b1).</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - one filled spec card: Session CR, all seven fields</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Why each field earns its place<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Name + one-sentence definition</strong> - so the metric can be said out loud without a formula.</li>
+          <li><strong>Formula + denominator</strong> - the denominator gets its own field because it is where every metric fight actually lives: sessions vs visitors (CR), of-PDP vs of-all-sessions (add-to-cart), gross vs net (GMV).</li>
+          <li><strong>Source events</strong> - ties the number to the b1 event trail, so anyone can re-derive it from raw data.</li>
+          <li><strong>Owner</strong> - a metric nobody answers for drifts. One name, not a committee.</li>
+          <li><strong>Alert threshold</strong> - turns "someone should watch this" into a number with a promise attached (Part 3).</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The one-sentence test:</strong> hand a spec row to a colleague who has never seen the metric and ask them to compute it from raw events. If they come back with your number, the spec is done. If they come back with a question, that question is a missing field - most often the denominator or a quiet exclusion (bots, gift cards, test orders) living only in someone's head.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Where the spec sheet lives<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A spec sheet in a forgotten folder governs nothing. Three placement rules:</p>
+        <ul>
+          <li><strong>One canonical copy</strong> - a wiki page or repo file, never a spreadsheet attachment that forks every time it is emailed.</li>
+          <li><strong>Linked from every dashboard</strong> - the metric's name on the dashboard links to its spec row. The moment of confusion is the moment of reading.</li>
+          <li><strong>Referenced by the weekly pack</strong> - b7's pages footnote "definitions per the metric spec sheet, v-dated". The pack and the sheet vouch for each other.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2 / DEMO: THE FULL SPEC SHEET ============ -->
+  <section class="section" id="specsheet">
+    <div class="section-kicker">
+      <span class="klabel">Demo · everyone writes</span>
+      <h2>The course's full spec sheet <span class="tag demo">★ 18 min · everyone works</span></h2>
+    </div>
+    <p class="lede">Eight rows - every metric this course taught, specced with the canonical definitions, the GA4/Shopify source events, a sensible owner, and a simple percentage alert band. Write it once and every dashboard, pack page, and Monday meeting inherits it.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Eight metrics, seven fields each<span class="mini">14 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th>Metric</th><th>Definition + formula</th><th>Denominator</th><th>Source event(s)</th><th>Owner</th><th>Alert</th></tr></thead>
+          <tbody>
+            <tr><td><strong>UV (unique visitors)</strong></td><td>Distinct people who visited in the period. Count of users. Mango Lane: 240,000/mo</td><td>None - a count</td><td>GA4 users (Active users by default) · any event</td><td>Analytics</td><td>+/-20% WoW</td></tr>
+            <tr><td><strong>Sessions</strong></td><td>Visits; a session ends after 30 min inactivity. Count of sessions. 360,000/mo</td><td>None - a count</td><td>GA4 session_start · Shopify sessions</td><td>Analytics</td><td>+/-20% WoW</td></tr>
+            <tr><td><strong>Session CR</strong></td><td>Share of sessions ending in purchase. purchase sessions / sessions = 2.7%</td><td>Sessions (not visitors)</td><td>session_start + purchase</td><td>Analytics</td><td>+/-10% WoW</td></tr>
+            <tr><td><strong>AOV</strong></td><td>Average order value. GMV / orders = $68. Shopify excludes gift cards + post-order adjustments</td><td>Orders</td><td>purchase (revenue + order id)</td><td>Merchandising</td><td>+/-8% WoW</td></tr>
+            <tr><td><strong>GMV</strong></td><td>Order value before costs. orders x AOV = $660,960. Spec MUST state what is netted out (a2's ladder)</td><td>None - a total</td><td>purchase (item-level revenue)</td><td>Ecommerce lead</td><td>+/-10% WoW</td></tr>
+            <tr><td><strong>PDP penetration</strong></td><td>Share of sessions viewing at least one product. PDP sessions / sessions = 40%</td><td>All sessions</td><td>session_start + view_item</td><td>Product / UX</td><td>+/-10% WoW</td></tr>
+            <tr><td><strong>Add-to-cart rate</strong></td><td>Two honest framings - declare which: of PDP sessions (36,000 / 144,000 = 25%, course default) or of all sessions (36,000 / 360,000 = 10%, how Shopify and Littledata report it)</td><td>PDP sessions OR all sessions - say which</td><td>view_item + add_to_cart</td><td>Product / UX</td><td>+/-10% WoW</td></tr>
+            <tr><td><strong>Checkout completion</strong></td><td>Share of started checkouts that finish. purchase sessions / checkout sessions = 60%</td><td>Checkout-start sessions</td><td>begin_checkout + purchase</td><td>Checkout eng</td><td>+/-10% WoW</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <strong>About those bands</strong>
+          Simple percentage bands are deliberately crude: wide for volatile counts (traffic +/-20%), tighter for stable rates (CR +/-10%, AOV +/-8%, gates +/-10%). They catch big breaks and stay explainable in one sentence. Fancier statistical thresholds - seasonally adjusted bands, z-scores, residual methods - are a real craft, and they belong to this course's sibling: learn-anomaly-detection-with-phoebe.
+        </div>
+      </div>
+    </details>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The two rows people always get wrong<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Add-to-cart rate</strong> is the sheet's only row with two denominators in the definition on purpose. Both framings are honest and both are in the wild, so the spec documents both and names a default:</p>
+        <table class="clean">
+          <thead><tr><th>Framing</th><th>Formula (Mango Lane)</th><th>Value</th><th>Who reports it this way</th></tr></thead>
+          <tbody>
+            <tr><td>Of PDP sessions (course default)</td><td>36,000 / 144,000</td><td><strong>25%</strong></td><td>This course's gate math (b4) - gates multiply to CR</td></tr>
+            <tr><td>Of all sessions</td><td>36,000 / 360,000</td><td><strong>10%</strong></td><td>Shopify's funnel report; Littledata's 4.6% benchmark</td></tr>
+          </tbody>
+        </table>
+        <p><strong>GMV</strong> is the other trap: there is no universal standard for what it nets out. Shopify's own ladder runs gross sales, minus discounts and returns to net sales, plus tax and shipping to total sales. The spec row does not settle the industry debate - it settles <em>your</em> definition, in writing, so "GMV" means one thing in your building. Always ask what is netted out (a2).</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Reading the sheet as a system<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Notice three things about the finished sheet. First, <strong>every rate names two events</strong> - a numerator event and a denominator event - which is b1's "every metric is a count or a ratio" made official. Second, <strong>the two-denominator metrics (CR, add-to-cart) carry the warning inside the definition</strong>, so the trap is documented where the next analyst will actually read it. Third, <strong>owners follow the funnel</strong>: analytics owns the counting, product owns the browsing gates, checkout engineering owns the paying gate, merchandising owns basket value. When a threshold fires, the sheet already knows who picks up.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Spec sheet vs data dictionary vs semantic layer<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Three names you will meet for overlapping ideas - worth keeping straight:</p>
+        <ul>
+          <li><strong>Data dictionary</strong> - documents the <em>raw material</em>: tables, columns, event properties. "The purchase event carries order_id, items, and value." It describes data, not metrics.</li>
+          <li><strong>Metric spec sheet (today)</strong> - documents the <em>numbers people argue about</em>: definition, formula, denominator, owner, threshold. It sits on top of the dictionary and points at its events.</li>
+          <li><strong>Semantic layer</strong> - the spec sheet turned into <em>code</em>: metric definitions written once in a tool so every dashboard computes them identically instead of each analyst re-implementing the formula.</li>
+        </ul>
+        <p>The order matters: teams that jump straight to tooling encode their ambiguities at scale. Write the eight rows by hand first - the arguments you settle on paper are the ones the tool then enforces for free.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3: ALERTING + CHANGELOG ============ -->
+  <section class="section" id="alerting">
+    <div class="section-kicker">
+      <span class="klabel">Part 3</span>
+      <h2>Alerting basics - a threshold is a promise <span class="tag concept">8 min live</span></h2>
+    </div>
+    <p class="lede">Three rules make thresholds useful instead of noisy. <strong>One: a threshold is a promise to look, not a diagnosis.</strong> "CR moved 12% WoW" means the owner investigates - it does not mean anything is broken; the b5 playbook decides that. <strong>Two: page the owner, not the channel.</strong> An alert into a group chat is an alert to nobody; the spec sheet's owner field exists so the alert has a name on it. <strong>Three: every alert names its spec row.</strong> The message says "Session CR (spec row 3, sessions denominator) moved -12% WoW" - so the first ten minutes are not spent re-litigating the definition.</p>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The changelog discipline<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Definitions will change - a replatform, a new gift-card policy, a fix to bot filtering. The rule that keeps trust: <strong>definitions change only with a dated changelog entry</strong>, and every dashboard showing the affected metric carries a footnote for <strong>one quarter</strong> - long enough for every WoW and YoY comparison that straddles the change to be read correctly.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p><strong>The classic failure:</strong> a team quietly starts excluding app-only sessions from the CR denominator in March. CR "improves" 8%. In June someone builds a YoY chart, sees a March step-change, and spends two days hunting a growth miracle that was actually a definition edit. A one-line dated changelog entry would have cost thirty seconds.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Anatomy of a good alert message<span class="mini">3 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <thead><tr><th></th><th>Bad alert</th><th>Good alert</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Recipient</strong></td><td>#analytics-alerts channel (74 members, 0 readers)</td><td>Checkout eng lead, by name</td></tr>
+            <tr><td><strong>Message</strong></td><td>"Conversion looks off??"</td><td>"Checkout completion (spec row 8: purchase sessions / checkout sessions) 60% to 52%, -13% WoW, crossed +/-10% band"</td></tr>
+            <tr><td><strong>Next step</strong></td><td>Implied: someone should probably look</td><td>Stated: owner runs the b5 drop playbook, findings in Friday's pack</td></tr>
+          </tbody>
+        </table>
+        <p>The good alert is longer to write and ten times faster to act on: the definition is settled (spec row named), the size is quantified, the owner is a person, and the deadline already exists because b7's pack ships Friday whether or not the mystery is solved.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Tuning the bands - too noisy vs too quiet<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A band that fires weekly gets muted; a band that never fires protects nothing. The working rule: a well-tuned threshold fires <strong>roughly once or twice a quarter per metric</strong>. Firing more often means the band is inside the metric's normal weekly wobble - widen it, or the metric genuinely is unstable and belongs in the pack's narrative, not in alerts. Never firing across two quarters means it is decorative - tighten it. And review the bands at the same quarterly boundary where b7 allows format changes: seasonality (a5) moves what "normal wobble" means, which is exactly the craft the anomaly-detection sibling course takes further.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 4: COURSE CLOSE ============ -->
+  <section class="section" id="close">
+    <div class="section-kicker">
+      <span class="klabel">Part 4 · course close</span>
+      <h2>What you can now do <span class="tag concept">5 min live</span></h2>
+    </div>
+    <p class="lede">Eight sessions ago Mango Lane was a stranger. Here is the skill chain you built, one session per link:</p>
+    <div class="steps">
+      <div class="step"><p><strong>b1 · Know the store</strong> - the five-event trail, visitor vs session vs pageview, the baseline scorecard.</p></div>
+      <div class="step"><p><strong>b2 · Compute</strong> - the core four (sessions, CR, AOV, GMV) by hand, denominators declared.</p></div>
+      <div class="step"><p><strong>b3 · Tree</strong> - GMV decomposed into its drivers in the live simulator; changes multiply.</p></div>
+      <div class="step"><p><strong>b4 · Gates</strong> - PDP penetration, add-to-cart, checkout start, completion; gates multiply to CR.</p></div>
+      <div class="step"><p><strong>b5 · Diagnose</strong> - a real drop traced to its gate and its slice with the drop playbook.</p></div>
+      <div class="step"><p><strong>b6 · Cut</strong> - every metric by channel, device, cohort; averages hide, cuts reveal.</p></div>
+      <div class="step"><p><strong>b7 · Narrate</strong> - four fixed pages and one paragraph that answers the room's questions first.</p></div>
+      <div class="step"><p><strong>b8 · Govern</strong> - the spec sheet, alert thresholds, and the changelog that keep it all honest.</p></div>
+    </div>
+    <div class="callout win">
+      <strong>★ The real win</strong>
+      You decomposed one store completely - every number in this course cross-foots: gates multiply to CR, channels sum to GMV, orders x AOV equals the headline. That habit of refusing numbers that do not reconcile is the skill; Mango Lane was just the gym.
+    </div>
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Where the series goes next<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Course 2 of this series maps the in-app user journey step by step</strong> - what shoppers actually do between the events you have been counting - coming to the same hub. And three siblings deepen individual muscles from this track:</p>
+        <ul>
+          <li><a href="https://phoebefu6.github.io/learn-metric-decomposition-with-phoebe/">learn-metric-decomposition-with-phoebe ↗</a> - the driver-tree craft from b3, across six industries.</li>
+          <li><a href="https://phoebefu6.github.io/learn-sql-with-phoebe/">learn-sql-with-phoebe ↗</a> - compute all of this from raw tables instead of dashboards.</li>
+          <li><a href="https://phoebefu6.github.io/learn-marketing-attribution-with-phoebe/">learn-marketing-attribution-with-phoebe ↗</a> - who really gets credit for b7's channel page.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Keeping the habit after the course<span class="mini">2 min read</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The track's skills decay in a predictable order if unused: narration first, then diagnosis, then the arithmetic instincts. Three small rituals keep them alive:</p>
+        <ul>
+          <li><strong>Cross-foot one real report a week.</strong> Any report - yours or someone else's. Multiply the factors, sum the segments. Thirty seconds, and it keeps b2-b3 sharp.</li>
+          <li><strong>Ask for the denominator once a meeting.</strong> Whenever a rate is quoted, ask "divided by what?" out loud. It keeps b1 sharp and quietly trains the room.</li>
+          <li><strong>Re-derive one Mango Lane number from memory each month.</strong> If you can still get from 360,000 sessions to 9,720 orders through the four gates, the whole chain is intact.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Try it yourself - this week <span class="tag exercise">◐ 30-40 min total</span></h2>
+    </div>
+    <ul>
+      <li>Write spec rows for <strong>your top 5 metrics</strong> - all seven fields, denominator declared, using today's sheet as the template.</li>
+      <li>Get the owner named in each row to <strong>agree in writing</strong> - a one-line reply is enough. An owner who never said yes is not an owner.</li>
+      <li>Ship the sheet to <strong>wherever your team will actually read it</strong> - the wiki page linked from every dashboard beats the beautiful doc nobody opens.</li>
+    </ul>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources</span>
+      <h2>Sources this session draws on</h2>
+    </div>
+    <p class="lede">The spec sheet's definitions are the platforms' own; the sheet format and the alert bands are this course's working craft. This page draws on:</p>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">GA4 event definitions - session_start, view_item, add_to_cart, begin_checkout, purchase; sessions and users counting rules</span><span class="note">Source-events column of the spec sheet</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Shopify definitions - session-based conversion rate, AOV exclusions (gift cards, post-order adjustments), funnel framings</span><span class="note">CR, AOV, and add-to-cart spec rows</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">a6 - metric governance: the Monday fight, ownership, and the changelog rule</span><span class="note">Internal · Parts 1 and 3</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Threshold craft - the +/-% bands here are deliberately simple; statistical thresholds (seasonal bands, z-scores, residuals) are taught properly in <a href="https://phoebefu6.github.io/learn-anomaly-detection-with-phoebe/">learn-anomaly-detection-with-phoebe ↗</a></span><span class="note">Alert column · honest scope note</span></div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions before you go 🎯 <span class="tag exercise">◐ 90 seconds</span></h2>
+    </div>
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · Marketing says CR is 3.9%, trading says 2.7%, both are honest. Which spec field cures this fight?</p>
+      <button class="qopt" type="button">A · The owner - one team should decide whose number wins</button>
+      <button class="qopt" type="button">B · The denominator - one divides by visitors, the other by sessions; the spec declares which the metric uses</button>
+      <button class="qopt" type="button">C · The alert threshold - a 44% gap should have paged someone</button>
+      <p class="qwhy">Both numbers are correct answers to different questions: buying visitors / visitors vs purchase sessions / sessions. The declared-denominator field makes the difference visible in writing, so the meeting never has to rediscover it.</p>
+    </div>
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · Session CR moves -12% WoW and crosses its +/-10% alert band. What does that mean?</p>
+      <button class="qopt" type="button">A · The store is broken - escalate immediately</button>
+      <button class="qopt" type="button">B · Nothing - percentage bands are too crude to act on</button>
+      <button class="qopt" type="button">C · The owner is now obliged to investigate (b5 playbook) - a threshold is a promise to look, not a diagnosis</button>
+      <p class="qwhy">A threshold firing means one thing: the named owner looks, before Friday's pack, starting from the spec row the alert names. Whether it is a platform change, a tracking bug, or real trouble is what the investigation decides.</p>
+    </div>
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · The team wants to exclude bot sessions from the CR denominator starting next month. What does the changelog rule require?</p>
+      <button class="qopt" type="button">A · A dated changelog entry, plus a footnote on every affected dashboard for one quarter</button>
+      <button class="qopt" type="button">B · Nothing - improvements to accuracy do not need documenting</button>
+      <button class="qopt" type="button">C · Renaming the metric so old and new can never be confused</button>
+      <p class="qwhy">Definitions change only with a dated entry, and affected dashboards carry a footnote for a quarter - long enough that every WoW and YoY comparison straddling the change gets read correctly instead of being mistaken for a step-change in the business.</p>
+    </div>
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Analyst session 8 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The seven fields</b><span>Name · definition (one sentence) · formula · denominator (declared!) · source event(s) · owner · alert threshold.</span></div>
+      <div class="cheat-item"><b>Denominator field</b><span>Where every metric fight lives: sessions vs visitors, of-PDP vs of-all-sessions, gross vs net. Write it down.</span></div>
+      <div class="cheat-item"><b>Session CR spec</b><span>purchase sessions / sessions = 2.7% · events session_start + purchase · owner analytics · alert +/-10% WoW.</span></div>
+      <div class="cheat-item"><b>Simple alert bands</b><span>Traffic +/-20%, CR +/-10%, AOV +/-8%, gates +/-10% WoW. Crude on purpose; stat thresholds live in the anomaly-detection course.</span></div>
+      <div class="cheat-item"><b>Threshold = promise</b><span>A promise to look, not a diagnosis. Page the owner, not the channel. Every alert names its spec row.</span></div>
+      <div class="cheat-item"><b>Changelog rule</b><span>Definitions change only with a dated entry + a footnote on affected dashboards for one quarter.</span></div>
+      <div class="cheat-item"><b>The chain</b><span>Know the store → compute → tree → gates → diagnose → cut → narrate → govern. b1 through b8, one skill per link.</span></div>
+      <div class="cheat-item"><b>The habit</b><span>Refuse numbers that do not reconcile. Gates multiply to CR, channels sum to GMV, orders x AOV = headline. Always cross-foot.</span></div>
+    </div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>Analyst session 8 of 8 · learn-ecommerce-metrics-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="b7-the-review-pack.html">← Prev: The review pack</a> &nbsp;·&nbsp; <a href="../index.html">Course complete - back to all sessions →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/tree-live.js?v=1"></script>
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>
