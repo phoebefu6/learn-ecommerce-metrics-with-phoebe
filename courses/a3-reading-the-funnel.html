@@ -153,7 +153,40 @@
       <div class="body">
         <p>The last gate - checkout start to payment - has its own funnel inside it, and GA4 ships a dedicated report for it: the <strong>checkout journey</strong>. It breaks the final stretch into <strong>begin_checkout → add_shipping_info → add_payment_info → purchase</strong>, with an abandonment percentage at each step. This matters because "checkout is leaking" is not yet an actionable sentence. "Shoppers quit at the shipping step" is - it points at shipping costs shown too late. "They quit at payment" points at failed cards, missing wallets, or a clunky form.</p>
         <p>For calibration: the Littledata Shopify benchmark (2025) puts average checkout completion at <strong>45%</strong>, with the top 10% of stores above 66%. Mango Lane completes at 60% - a deliberately healthy store, comfortably above that average. If your store shows 40%, you now know that is below the pack, and the checkout journey report tells you which of the three steps to interrogate.</p>
-        <table class="clean">
+        
+<figure class="zoomable">
+  <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart comparing Mango Lane's cart abandonment and checkout completion rates against their published benchmarks: cart abandonment 73% versus Baymard's 70.22% average, and checkout completion 60% versus Littledata's 45% Shopify average, with Mango Lane meeting or beating both.">
+    <style>
+      .a3gT{font:700 13px Inter,sans-serif;fill:#1E1B4B;}
+      .a3gL{font:600 12px Inter,sans-serif;fill:#1E1B4B;}
+      .a3gVw{font:700 12px Inter,sans-serif;fill:#FFFFFF;}
+      .a3gVi{font:700 12px Inter,sans-serif;fill:#1E1B4B;}
+      .a3gN{font:400 12px Inter,sans-serif;fill:#575385;}
+    </style>
+    <rect x="0" y="0" width="880" height="300" fill="#FFFBF7"/>
+    <text class="a3gT" x="40" y="28">Two gates already sitting at or above their published benchmark</text>
+
+    <text class="a3gL" x="240" y="74" text-anchor="end">Mango Lane cart abandon</text>
+    <rect x="260" y="55" width="438" height="30" rx="6" fill="#EA580C"/>
+    <text class="a3gVw" x="272" y="75">73%</text>
+
+    <text class="a3gL" x="240" y="126" text-anchor="end">Baymard benchmark</text>
+    <rect x="260" y="107" width="421" height="30" rx="6" fill="#FED7AA" stroke="#9A3412" stroke-width="1.5"/>
+    <text class="a3gVi" x="272" y="127">70.22%</text>
+
+    <text class="a3gL" x="240" y="178" text-anchor="end">Mango Lane checkout</text>
+    <rect x="260" y="159" width="360" height="30" rx="6" fill="#EA580C"/>
+    <text class="a3gVw" x="272" y="179">60%</text>
+
+    <text class="a3gL" x="240" y="230" text-anchor="end">Littledata benchmark</text>
+    <rect x="260" y="211" width="270" height="30" rx="6" fill="#FED7AA" stroke="#9A3412" stroke-width="1.5"/>
+    <text class="a3gVi" x="282" y="231">45%</text>
+
+    <text class="a3gN" x="40" y="276">Cart abandonment and checkout completion both meet or beat their published benchmark - not a fire.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - Mango Lane already sits at or above its published benchmarks</figcaption>
+</figure>
+<table class="clean">
           <thead><tr><th>Gate</th><th>Mango Lane</th><th>Benchmark</th><th>Reading</th></tr></thead>
           <tbody>
             <tr><td><strong>Cart abandonment</strong></td><td>~73% (9,720 of 36,000 carts pay)</td><td>70.22% average - Baymard, 50 studies</td><td>Right at the pack. Normal, not a fire.</td></tr>
@@ -203,6 +236,52 @@
       <h2>The reading drill: three snapshots <span class="tag demo">★ 12 min · everyone reads</span></h2>
     </div>
     <p class="lede">Your analyst puts a funnel on the screen. You have one minute before the room looks at you. The drill is always the same three sentences: <strong>name the leak</strong> (which gate is off), <strong>name the team</strong> (who owns that gate), <strong>name the question</strong> (what you ask them). Walk these three snapshots - each is Mango Lane in a different imaginary month.</p>
+<figure class="zoomable">
+  <svg viewBox="0 0 880 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A decision tree for reading a funnel drop: if no gate rate moved, the cause is traffic or seasonality and the fix is to check the same weeks last year; if a gate did move, the first gate points to navigation and search while the last gate points to checkout and payments.">
+    <style>
+      .a3dT{font:700 12.5px Inter,sans-serif;fill:#1E1B4B;}
+      .a3dO{font:700 11.5px Inter,sans-serif;fill:#1E1B4B;}
+      .a3dE{font:700 11px Inter,sans-serif;fill:#575385;}
+      .a3dN{font:400 12px Inter,sans-serif;fill:#575385;}
+    </style>
+    <rect x="0" y="0" width="880" height="340" fill="#FFFBF7"/>
+
+    <rect x="40" y="40" width="240" height="56" rx="10" fill="#FFF7ED" stroke="#9A3412" stroke-width="2"/>
+    <text class="a3dT" x="160" y="73" text-anchor="middle">Did any gate rate move?</text>
+
+    <rect x="640" y="40" width="200" height="60" rx="10" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.5"/>
+    <text class="a3dO" x="660" y="64">No gate moved: traffic</text>
+    <text class="a3dO" x="660" y="82">Check YoY (Snapshot 3)</text>
+
+    <rect x="340" y="150" width="240" height="56" rx="10" fill="#FFF7ED" stroke="#9A3412" stroke-width="2"/>
+    <text class="a3dT" x="460" y="175" text-anchor="middle">Is it the first gate</text>
+    <text class="a3dT" x="460" y="192" text-anchor="middle">(PDP)?</text>
+
+    <rect x="640" y="140" width="200" height="60" rx="10" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.5"/>
+    <text class="a3dO" x="660" y="164">First gate: Snapshot 1</text>
+    <text class="a3dO" x="660" y="182">Owner: nav, search, merch</text>
+
+    <rect x="640" y="230" width="200" height="60" rx="10" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.5"/>
+    <text class="a3dO" x="660" y="254">Last gate: Snapshot 2</text>
+    <text class="a3dO" x="660" y="272">Owner: checkout, payments</text>
+
+    <line x1="280" y1="68" x2="640" y2="66" stroke="#575385" stroke-width="1.5"/>
+    <text class="a3dE" x="440" y="55" text-anchor="middle">no</text>
+
+    <line x1="200" y1="96" x2="340" y2="150" stroke="#575385" stroke-width="1.5"/>
+    <text class="a3dE" x="270" y="118" text-anchor="middle">yes</text>
+
+    <line x1="580" y1="170" x2="640" y2="168" stroke="#575385" stroke-width="1.5"/>
+    <text class="a3dE" x="605" y="158" text-anchor="middle">yes</text>
+
+    <line x1="530" y1="206" x2="640" y2="258" stroke="#575385" stroke-width="1.5"/>
+    <text class="a3dE" x="585" y="228" text-anchor="middle">no</text>
+
+    <text class="a3dN" x="40" y="316">Rates broken - find the gate, find the owner. Rates fine but counts down - it is a traffic or calendar story.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - a moved gate rate names its own owner before you ask why</figcaption>
+</figure>
+
 
     <details class="card" open>
       <summary><span class="mode live">Live</span>Snapshot 1 - the discovery problem<span class="mini">4 min</span><span class="caret">▶</span></summary>

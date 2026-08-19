@@ -204,7 +204,36 @@
 
     <div class="steps">
       <div class="step"><p><strong>Drill 1 - the single-lever drop.</strong> Recreate Monday's report: cut Checkout completion from 60 to 52.8 (that is exactly -12%). Confirm GMV shows -12%. One lever, full pass-through - if the whole 12% traces to one gate, your diagnosis is already 80% written.</p></div>
-      <div class="step"><p><strong>Drill 2 - the compound drop.</strong> Reset. Now cut Sessions by 5% (360,000 to 342,000) AND Add-to-cart from 25 to 23.25 (that is -7%). Confirm GMV shows about -11.7%: 0.95 x 0.93 = 0.8835. Real drops are often two medium moves, not one big one - the pass-through math is how you check your explanation actually adds up.</p></div>
+      <div class="step"><p><strong>Drill 2 - the compound drop.</strong> Reset. Now cut Sessions by 5% (360,000 to 342,000) AND Add-to-cart from 25 to 23.25 (that is -7%). Confirm GMV shows about -11.7%: 0.95 x 0.93 = 0.8835. Real drops are often two medium moves, not one big one - the pass-through math is how you check your explanation actually adds up.</p>
+<figure class="zoomable">
+  <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart showing a compound funnel drop at Mango Lane: sessions fell 5 percent and add-to-cart fell 7 percent, two moves that individually look like normal weekly wobble, multiplying to an 11.7 percent combined GMV fall.">
+    <style>
+      .b5cT{font:700 13px Inter,sans-serif;fill:#1E1B4B;}
+      .b5cL{font:600 12px Inter,sans-serif;fill:#1E1B4B;}
+      .b5cVi{font:700 12px Inter,sans-serif;fill:#1E1B4B;}
+      .b5cVw{font:700 12px Inter,sans-serif;fill:#FFFFFF;}
+      .b5cN{font:400 12px Inter,sans-serif;fill:#575385;}
+    </style>
+    <rect x="0" y="0" width="880" height="300" fill="#FFFBF7"/>
+    <text class="b5cT" x="40" y="28">Two ordinary-looking dips compound into the real drop</text>
+
+    <text class="b5cL" x="240" y="74" text-anchor="end">Sessions</text>
+    <rect x="260" y="55" width="200" height="30" rx="6" fill="#FED7AA" stroke="#9A3412" stroke-width="1.5"/>
+    <text class="b5cVi" x="272" y="75">-5%</text>
+
+    <text class="b5cL" x="240" y="126" text-anchor="end">Add-to-cart</text>
+    <rect x="260" y="107" width="280" height="30" rx="6" fill="#FED7AA" stroke="#9A3412" stroke-width="1.5"/>
+    <text class="b5cVi" x="272" y="127">-7%</text>
+
+    <text class="b5cL" x="240" y="178" text-anchor="end">Combined GMV fall</text>
+    <rect x="260" y="159" width="468" height="30" rx="6" fill="#9A3412"/>
+    <text class="b5cVw" x="272" y="179">-11.7%</text>
+
+    <text class="b5cN" x="40" y="276">Neither -5% nor -7% alone triggers an alert - together they multiply to -11.7%, the whole story.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - two unremarkable dips can multiply into the whole drop</figcaption>
+</figure>
+</div>
       <div class="step"><p><strong>Drill 3 - the reflex builder.</strong> Reset, then press <strong>Simulate a drop</strong> repeatedly. Each time, race to name the guilty gate out loud before reading the note. Ten rounds of this and the walk from "GMV fell" to "checkout completion fell" stops being a procedure and becomes a reflex.</p></div>
     </div>
 
@@ -277,6 +306,53 @@
       <summary><span class="mode self">Self-study</span>When the tracking breaks, not the business<span class="mini">4 min read</span><span class="caret">▶</span></summary>
       <div class="body">
         <p>The nastiest false positive: a tracking outage masquerading as a conversion drop. The purchase <em>events</em> stop arriving - a tag broken by a release, a consent change, an SDK update - but the <em>orders</em> keep landing in the payment and order systems just fine. Your dashboard shows checkout completion cratering; your warehouse is shipping at full speed.</p>
+<figure class="zoomable">
+  <svg viewBox="0 0 880 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A decision tree for telling a tracking outage from a real demand drop: if order-system orders are normal while analytics shows a cliff, it is a measurement problem; if orders are also down and the drop started sharply at a deploy, tracking or checkout broke; if orders are down with a gradual slope, it is a real demand problem to run through the drop tree.">
+    <style>
+      .b5dT{font:700 12.5px Inter,sans-serif;fill:#1E1B4B;}
+      .b5dO{font:700 11.5px Inter,sans-serif;fill:#1E1B4B;}
+      .b5dE{font:700 11px Inter,sans-serif;fill:#575385;}
+      .b5dN{font:400 12px Inter,sans-serif;fill:#575385;}
+    </style>
+    <rect x="0" y="0" width="880" height="340" fill="#FFFBF7"/>
+
+    <rect x="40" y="40" width="240" height="56" rx="10" fill="#FFF7ED" stroke="#9A3412" stroke-width="2"/>
+    <text class="b5dT" x="160" y="65" text-anchor="middle">Order-system orders</text>
+    <text class="b5dT" x="160" y="82" text-anchor="middle">normal?</text>
+
+    <rect x="640" y="20" width="200" height="60" rx="10" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.5"/>
+    <text class="b5dO" x="660" y="44">Measurement problem</text>
+    <text class="b5dO" x="660" y="62">Tag broke, not demand</text>
+
+    <rect x="340" y="150" width="240" height="56" rx="10" fill="#FFF7ED" stroke="#9A3412" stroke-width="2"/>
+    <text class="b5dT" x="460" y="175" text-anchor="middle">Sharp cliff at a</text>
+    <text class="b5dT" x="460" y="192" text-anchor="middle">deploy?</text>
+
+    <rect x="640" y="120" width="200" height="60" rx="10" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.5"/>
+    <text class="b5dO" x="660" y="144">Deploy broke it -</text>
+    <text class="b5dO" x="660" y="162">check release logs</text>
+
+    <rect x="640" y="230" width="200" height="60" rx="10" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.5"/>
+    <text class="b5dO" x="660" y="254">Real sloping demand -</text>
+    <text class="b5dO" x="660" y="272">run the b3-b5 tree</text>
+
+    <line x1="280" y1="60" x2="640" y2="50" stroke="#575385" stroke-width="1.5"/>
+    <text class="b5dE" x="440" y="42" text-anchor="middle">yes</text>
+
+    <line x1="280" y1="76" x2="340" y2="168" stroke="#575385" stroke-width="1.5"/>
+    <text class="b5dE" x="300" y="130" text-anchor="middle">no</text>
+
+    <line x1="580" y1="168" x2="640" y2="150" stroke="#575385" stroke-width="1.5"/>
+    <text class="b5dE" x="605" y="150" text-anchor="middle">yes</text>
+
+    <line x1="580" y1="188" x2="640" y2="258" stroke="#575385" stroke-width="1.5"/>
+    <text class="b5dE" x="600" y="228" text-anchor="middle">no</text>
+
+    <text class="b5dN" x="40" y="316">Analytics down, orders steady means the tag broke, not demand - check that before writing a finding.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - before writing a finding, rule out a tracking outage first</figcaption>
+</figure>
+
         <ul>
           <li><strong>The cross-check:</strong> before declaring a business problem, compare event-counted orders (from analytics) against order-system orders (from the platform's order admin or finance) for the same period. If the order system shows normal volume while analytics shows a cliff, you have a measurement problem, not a demand problem.</li>
           <li><strong>The tell:</strong> tracking breaks tend to be sharp cliffs starting at a deploy timestamp, often on one platform (app vs web) only. Real demand problems usually slope.</li>

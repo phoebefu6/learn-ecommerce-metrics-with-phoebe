@@ -100,7 +100,31 @@
       <summary><span class="mode live">Live</span>Session CR, then visitor CR, step by step<span class="mini">6 min</span><span class="caret">▶</span></summary>
       <div class="body">
         <div class="steps">
-          <div class="step"><p><strong>Session CR</strong> = purchase events ÷ sessions = 9,720 ÷ 360,000. Divide: 9,720 ÷ 360,000 = 0.027 = <strong>2.7%</strong>. This is Shopify's "online store conversion rate" definition, and this course's default.</p></div>
+          <div class="step"><p><strong>Session CR</strong> = purchase events ÷ sessions = 9,720 ÷ 360,000. Divide: 9,720 ÷ 360,000 = 0.027 = <strong>2.7%</strong>. This is Shopify's "online store conversion rate" definition, and this course's default.</p>
+<figure class="zoomable">
+  <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart comparing Mango Lane's session-based conversion rate of 2.7 percent against its visitor-based conversion rate of about 3.9 percent, the same 9,720 orders divided by two different honest denominators.">
+    <style>
+      .b2cT{font:700 13px Inter,sans-serif;fill:#1E1B4B;}
+      .b2cL{font:600 12px Inter,sans-serif;fill:#1E1B4B;}
+      .b2cV{font:700 12px Inter,sans-serif;fill:#FFFFFF;}
+      .b2cN{font:400 12px Inter,sans-serif;fill:#575385;}
+    </style>
+    <rect x="0" y="0" width="880" height="300" fill="#FFFBF7"/>
+    <text class="b2cT" x="40" y="28">Same store, same orders, two honest conversion rates</text>
+
+    <text class="b2cL" x="240" y="74" text-anchor="end">Session CR - sessions</text>
+    <rect x="260" y="55" width="259" height="30" rx="6" fill="#EA580C"/>
+    <text class="b2cV" x="272" y="75">2.7%</text>
+
+    <text class="b2cL" x="240" y="126" text-anchor="end">Visitor CR - visitors</text>
+    <rect x="260" y="107" width="374" height="30" rx="6" fill="#FB923C"/>
+    <text class="b2cV" x="272" y="127">~3.9%</text>
+
+    <text class="b2cN" x="40" y="276">Same 9,720 orders, two honest denominators: sessions give 2.7%, distinct buying visitors give about 3.9%.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - same orders, different denominator, different rate</figcaption>
+</figure>
+</div>
           <div class="step"><p><strong>Visitor CR</strong> needs buying <em>people</em>, not orders. Roughly 9,300 distinct visitors placed those 9,720 orders - some people bought twice in the month. So buying visitors &lt; orders, always.</p></div>
           <div class="step"><p><strong>Visitor CR</strong> = buying visitors ÷ distinct visitors = 9,300 ÷ 240,000 ≈ 0.0388 = <strong>~3.9%</strong>. Same store, same month, and both numbers are correct.</p></div>
           <div class="step"><p>Notice you could NOT compute visitor CR from the raw-counts table alone - "buying visitors" is a sixth count, a people-level dedupe of the purchase events. When a tool reports visitor CR, that dedupe is happening behind the curtain.</p></div>
@@ -263,6 +287,32 @@
       <summary><span class="mode live">Live</span>Habit 1 - cross-foot everything<span class="mini">3 min</span><span class="caret">▶</span></summary>
       <div class="body">
         <p>Cross-footing is accountant-speak for checking that a table's parts sum to its total. For metrics: <strong>orders x AOV must equal summed revenue</strong> (9,720 x $68 = $660,960 ✓), units per transaction x item price must equal AOV (2 x $34 = $68 ✓), and channel revenues must sum to total GMV. If two of these disagree, one of the source counts is wrong - and you found out at your desk, not in the Monday meeting.</p>
+<figure class="zoomable">
+  <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Before and after panels contrasting a broken cross-foot, where orders times a new average order value overshoot summed revenue by nine percent and reveal a double-firing bug, against a healthy cross-foot where 9,720 orders times 68 dollars equals 660,960 dollars and 2 units times 34 dollars equals 68 dollars, both checks closing exactly.">
+    <style>
+      .b2fH{font:700 13px Inter,sans-serif;fill:#1E1B4B;}
+      .b2fB{font:400 12px Inter,sans-serif;fill:#1E1B4B;}
+      .b2fN{font:400 12px Inter,sans-serif;fill:#575385;}
+    </style>
+    <rect x="0" y="0" width="880" height="300" fill="#FFFBF7"/>
+
+    <rect x="40" y="50" width="390" height="180" rx="12" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="2"/>
+    <text class="b2fH" x="58" y="84">&#10007; Cross-foot fails silently</text>
+    <text class="b2fB" x="58" y="114">Team celebrates a 12% AOV jump</text>
+    <text class="b2fB" x="58" y="134">Orders x new AOV overshoots</text>
+    <text class="b2fB" x="58" y="154">revenue by 9% - metric broken</text>
+
+    <rect x="450" y="50" width="390" height="180" rx="12" fill="#FED7AA" stroke="#9A3412" stroke-width="2"/>
+    <text class="b2fH" x="468" y="84">&#10003; Cross-foot closes exactly</text>
+    <text class="b2fB" x="468" y="114">9,720 orders x $68 AOV</text>
+    <text class="b2fB" x="468" y="134">= $660,960 total revenue</text>
+    <text class="b2fB" x="468" y="154">2 units x $34 price = $68 AOV</text>
+
+    <text class="b2fN" x="40" y="276">A failing cross-foot once caught a double-firing bug before the room saw the number.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - a cross-foot that does not close means a number is broken, not the business</figcaption>
+</figure>
+
         <div class="callout example">
           <span class="ex-pill">Real world</span>
           <p><strong>The check that pays for itself:</strong> a team celebrates a 12% AOV jump. A cross-foot shows orders x new AOV overshoots summed revenue by 9%. Cause: a deploy started double-firing the revenue parameter on some purchase events. Revenue was fine; the metric was broken. Ten seconds of multiplication beat a week of wrong decisions.</p>

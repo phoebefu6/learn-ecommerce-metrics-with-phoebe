@@ -145,7 +145,43 @@
     <details class="card" open>
       <summary><span class="mode live">Live</span>Eight metrics, seven fields each<span class="mini">14 min</span><span class="caret">▶</span></summary>
       <div class="body">
-        <table class="clean">
+        
+<figure class="zoomable">
+  <svg viewBox="0 0 880 370" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart of Mango Lane's metric spec sheet alert bands: unique visitors and sessions both carry a wide plus or minus 20 percent band, while session conversion rate and GMV carry plus or minus 10 percent and AOV carries plus or minus 8 percent, showing volatile counts get looser bands than stable rates.">
+    <style>
+      .b8bT{font:700 13px Inter,sans-serif;fill:#1E1B4B;}
+      .b8bL{font:600 12px Inter,sans-serif;fill:#1E1B4B;}
+      .b8bVw{font:700 12px Inter,sans-serif;fill:#FFFFFF;}
+      .b8bN{font:400 12px Inter,sans-serif;fill:#575385;}
+    </style>
+    <rect x="0" y="0" width="880" height="370" fill="#FFFBF7"/>
+    <text class="b8bT" x="40" y="28">Volatile counts get wide bands, stable rates get tight ones</text>
+
+    <text class="b8bL" x="240" y="74" text-anchor="end">UV (unique visitors)</text>
+    <rect x="260" y="55" width="480" height="30" rx="6" fill="#575385"/>
+    <text class="b8bVw" x="272" y="75">+/-20%</text>
+
+    <text class="b8bL" x="240" y="126" text-anchor="end">Sessions</text>
+    <rect x="260" y="107" width="480" height="30" rx="6" fill="#575385"/>
+    <text class="b8bVw" x="272" y="127">+/-20%</text>
+
+    <text class="b8bL" x="240" y="178" text-anchor="end">Session CR</text>
+    <rect x="260" y="159" width="240" height="30" rx="6" fill="#EA580C"/>
+    <text class="b8bVw" x="272" y="179">+/-10%</text>
+
+    <text class="b8bL" x="240" y="230" text-anchor="end">AOV</text>
+    <rect x="260" y="211" width="192" height="30" rx="6" fill="#EA580C"/>
+    <text class="b8bVw" x="272" y="231">+/-8%</text>
+
+    <text class="b8bL" x="240" y="282" text-anchor="end">GMV</text>
+    <rect x="260" y="263" width="240" height="30" rx="6" fill="#EA580C"/>
+    <text class="b8bVw" x="272" y="283">+/-10%</text>
+
+    <text class="b8bN" x="40" y="344">Wide +/-20% bands catch big traffic breaks; tight +/-8% to +/-10% bands catch real rate moves.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - band width is tuned to how much a metric normally wobbles</figcaption>
+</figure>
+<table class="clean">
           <thead><tr><th>Metric</th><th>Definition + formula</th><th>Denominator</th><th>Source event(s)</th><th>Owner</th><th>Alert</th></tr></thead>
           <tbody>
             <tr><td><strong>UV (unique visitors)</strong></td><td>Distinct people who visited in the period. Count of users. Mango Lane: 240,000/mo</td><td>None - a count</td><td>GA4 users (Active users by default) · any event</td><td>Analytics</td><td>+/-20% WoW</td></tr>
@@ -232,6 +268,32 @@
           </tbody>
         </table>
         <p>The good alert is longer to write and ten times faster to act on: the definition is settled (spec row named), the size is quantified, the owner is a person, and the deadline already exists because b7's pack ships Friday whether or not the mystery is solved.</p>
+<figure class="zoomable">
+  <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Before and after panels contrasting a bad alert sent to a 74 member channel with zero readers saying only conversion looks off, against a good alert addressed to the checkout engineering lead by name stating checkout completion moved from 60 percent to 52 percent, a 13 percent drop, with the next step being the b5 playbook due in Friday's pack.">
+    <style>
+      .b8aH{font:700 13px Inter,sans-serif;fill:#1E1B4B;}
+      .b8aB{font:400 12px Inter,sans-serif;fill:#1E1B4B;}
+      .b8aN{font:400 12px Inter,sans-serif;fill:#575385;}
+    </style>
+    <rect x="0" y="0" width="880" height="300" fill="#FFFBF7"/>
+
+    <rect x="40" y="50" width="390" height="180" rx="12" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="2"/>
+    <text class="b8aH" x="58" y="84">&#10007; Bad alert</text>
+    <text class="b8aB" x="58" y="114">To: #analytics-alerts (0 readers)</text>
+    <text class="b8aB" x="58" y="134">Msg: Conversion looks off??</text>
+    <text class="b8aB" x="58" y="154">Next: someone should look?</text>
+
+    <rect x="450" y="50" width="390" height="180" rx="12" fill="#FED7AA" stroke="#9A3412" stroke-width="2"/>
+    <text class="b8aH" x="468" y="84">&#10003; Good alert</text>
+    <text class="b8aB" x="468" y="114">To: checkout eng lead, by name</text>
+    <text class="b8aB" x="468" y="134">Msg: completion 60% to 52%, -13%</text>
+    <text class="b8aB" x="468" y="154">Next: b5 playbook, Friday pack</text>
+
+    <text class="b8aN" x="40" y="276">The good alert names the row, sizes the move, and gives the owner a deadline.</text>
+  </svg>
+  <figcaption>🔍 Click to zoom - a named owner and a sized number beat a channel and a question mark</figcaption>
+</figure>
+
       </div>
     </details>
 
