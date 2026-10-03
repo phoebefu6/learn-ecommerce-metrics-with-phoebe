@@ -3,6 +3,9 @@
    (CSS var names still read --indigo/--amber; they hold tangerine/indigo values.) */
 
 :root {
+  --indigo-solid: #C84B0A;
+  --indigo-text: #C3490A;
+  --fill-solid: #C84B0A;
   --indigo: #EA580C;
   --indigo-deep: #9A3412;
   --indigo-mid: #FB923C;
@@ -39,7 +42,7 @@ body {
 
 /* ---------- header band ---------- */
 .masthead {
-  background: var(--indigo);
+  background: var(--indigo-solid);
   color: #fff;
   padding: 2.5rem 0 2.25rem;
 }
@@ -71,7 +74,7 @@ body {
   font-weight: 600;
   white-space: nowrap;
 }
-.chip.level { background: #fff; color: var(--indigo); }
+.chip.level { background: #fff; color: var(--indigo-text); }
 .chip.audience { background: rgba(255,255,255,.16); color: #fff; border: 1px solid rgba(255,255,255,.35); }
 .chip.time { background: var(--ink); color: #fff; font-variant-numeric: tabular-nums; }
 
@@ -119,7 +122,7 @@ body {
   transition: all .15s ease;
 }
 .btn:hover { border-color: var(--indigo); color: var(--indigo); }
-.btn.primary { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+.btn.primary { background: var(--indigo-solid); border-color: var(--indigo-solid); color: #fff; }
 .btn.primary:hover { background: var(--indigo-deep); }
 
 /* ---------- sections ---------- */
@@ -153,7 +156,7 @@ main { padding: 2.5rem 0 4rem; }
   text-transform: uppercase;
   letter-spacing: .08em;
 }
-.tag.concept { background: var(--indigo-50); color: var(--indigo); }
+.tag.concept { background: var(--indigo-50); color: var(--indigo-text); }
 .tag.demo { background: var(--amber-50); color: var(--amber-ink); }
 .tag.exercise { background: var(--ink); color: #fff; }
 
@@ -169,7 +172,7 @@ main { padding: 2.5rem 0 4rem; }
   border-radius: 999px;
   flex: none;
 }
-.mode.live { background: var(--indigo); color: #fff; }
+.mode.live { background: var(--indigo-solid); color: #fff; }
 .mode.self { background: #fff; color: var(--muted); border: 1px solid var(--hairline); }
 
 /* ---------- accordions ---------- */
@@ -221,8 +224,8 @@ details.card .body h4:first-child { margin-top: 0; }
   font-size: .78rem;
   font-weight: 600;
 }
-.pill.solid { background: var(--indigo); color: #fff; }
-.pill.light { background: var(--indigo-50); color: var(--indigo); }
+.pill.solid { background: var(--indigo-solid); color: #fff; }
+.pill.light { background: var(--indigo-50); color: var(--indigo-text); }
 .pill.inkpill { background: var(--ink); color: #fff; }
 .pill.amber, .pill.peach { background: var(--amber); color: #fff; }
 .pill.bare { color: var(--faint); }
@@ -271,7 +274,7 @@ table.clean td:first-child { font-weight: 600; }
   position: absolute;
   top: -0.7rem;
   left: 1rem;
-  background: var(--indigo);
+  background: var(--indigo-solid);
   color: #fff;
   font-family: "Inter", -apple-system, sans-serif;
   font-size: .68rem;
@@ -321,7 +324,7 @@ table.clean td:first-child { font-weight: 600; }
   width: 1.7rem; height: 1.7rem;
   border-radius: 999px;
   background: var(--indigo-50);
-  color: var(--indigo);
+  color: var(--indigo-text);
   font-weight: 700;
   font-size: .85rem;
   display: inline-flex;
@@ -557,7 +560,7 @@ details.card summary:hover { background: #FFF3E8; }
   font-variant-numeric: tabular-nums;
 }
 .journey a:hover { border-color: #fff; transform: scale(1.12); }
-.journey a.here { background: #fff; color: var(--indigo); border-color: #fff; }
+.journey a.here { background: #fff; color: var(--indigo-text); border-color: #fff; }
 .journey a.dd-chip { width: auto; border-radius: 999px; padding: 0 .7rem; font-size: .72rem; }
 
 /* ---------- check-yourself quiz ---------- */
@@ -585,7 +588,7 @@ details.card summary:hover { background: #FFF3E8; }
   transition: all .15s ease;
 }
 .quiz-q .qopt:hover { border-color: var(--indigo); background: var(--indigo-50); }
-.quiz-q .qopt.correct { background: var(--indigo); border-color: var(--indigo); color: #fff; font-weight: 600; }
+.quiz-q .qopt.correct { background: var(--indigo-solid); border-color: var(--indigo-solid); color: #fff; font-weight: 600; }
 .quiz-q .qopt.correct::after { content: "  ✓"; }
 .quiz-q .qopt.wrong { background: #FEF2F2; border-color: #FCA5A5; color: #991B1B; animation: qshake .3s ease; }
 .quiz-q .qopt.wrong::after { content: "  ✗ try again"; font-size: .78rem; }
@@ -764,7 +767,7 @@ table.sql-table tr:last-child td { border-bottom: none; }
 .tree-suffix { font-size: 12px; font-weight: 600; color: #575385; }
 .tree-delta { position: absolute; top: -10px; right: -8px; font-size: 10.5px; font-weight: 800; padding: 2px 7px; border-radius: 999px; }
 .tree-delta.down { background: #4F46E5; color: #FFFFFF; }
-.tree-delta.up { background: #EA580C; color: #FFFFFF; }
+.tree-delta.up { background: var(--fill-solid); color: #FFFFFF; }
 .tree-kids { display: flex; gap: 16px; margin-top: 26px; position: relative; align-items: flex-start; justify-content: center; }
 .tree-kids::before { content: ""; position: absolute; top: -14px; left: 50%; width: 1.5px; height: 14px; background: #FED7AA; }
 .tree-kids > .tree-node-wrap { position: relative; }
